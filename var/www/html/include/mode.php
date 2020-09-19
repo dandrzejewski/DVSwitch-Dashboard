@@ -22,8 +22,9 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
 <?php
 $testMMDVModeDMR = getConfigItem("DMR", "Enable", $mmdvmconfigs);
 if ( $testMMDVModeDMR == 1 ) { //Hide the DMR information when DMR mode not enabled.
+if (file_exists('/opt/DMRGateway/DMRGateway.ini')) {
 $dmrGatewayConfigFile = '/opt/DMRGateway/DMRGateway.ini';
-if (fopen($dmrGatewayConfigFile,'r')) { $configdmrgateway = parse_ini_file($dmrGatewayConfigFile, true); }
+if (fopen($dmrGatewayConfigFile,'r')) { $configdmrgateway = parse_ini_file($dmrGatewayConfigFile, true); } }
 $dmrMasterFile = fopen("/var/lib/mmdvm/DMR_Hosts.txt", "r");
 $dmrMasterHost = getConfigItem("DMR Network", "Address", $mmdvmconfigs);
 $dmrMasterPort = getConfigItem("DMR Network", "Port", $mmdvmconfigs);
