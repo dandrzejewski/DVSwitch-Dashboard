@@ -19,6 +19,8 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
   <tr><?php showMode("D-Star Network", $mmdvmconfigs);?><td style="background:#606060; color:#b0b0b0; width:15%;"></tr>
 </table>
 <?php
+$dmrGatewayConfigFile = '/opt/DMRGateway/DMRGateway.ini';
+if (fopen($dmrGatewayConfigFile,'r')) { $configdmrgateway = parse_ini_file($dmrGatewayConfigFile, true); }
 $testMMDVModeDMR = getConfigItem("DMR", "Enable", $mmdvmconfigs);
 if ( $testMMDVModeDMR == 1 ) { //Hide the DMR information when DMR mode not enabled.
 $dmrMasterFile = fopen("/var/lib/mmdvm/DMR_Hosts.txt", "r");
@@ -110,7 +112,7 @@ if ( $testMMDVModeYSF == 1 ) { //Hide the YSF information when System Fusion Net
         if ($ysfLinkedTo == 'Not Linked' || $ysfLinkedTo == 'Service Not Started') {
                 $ysfLinkedToTxt = $ysfLinkedTo;
         } else {
-                $ysfHostFile = fopen("/var/lib/mmdvmYSFHosts.txt", "r");
+                $ysfHostFile = fopen("/var/lib/mmdvm/YSFHosts.txt", "r");
                 $ysfLinkedToTxt = "null";
                 while (!feof($ysfHostFile)) {
                         $ysfHostFileLine = fgets($ysfHostFile);
