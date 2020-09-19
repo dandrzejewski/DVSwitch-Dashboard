@@ -925,7 +925,7 @@ if (!in_array($_SERVER["PHP_SELF"],array('/include/bm_links.php','/include/bm_ma
 	$lastHeard = getLastHeard($reverseLogLinesMMDVM);
 
 	// Only need these in repeaterinfo.php
-	if (strpos($_SERVER["PHP_SELF"], 'repeaterinfo.php') !== false || strpos($_SERVER["PHP_SELF"], 'index.php') !== false) {
+	if (strpos($_SERVER["PHP_SELF"], 'mode.php') !== false || strpos($_SERVER["PHP_SELF"], 'index.php') !== false) {
 		//$YSFGatewayconfigs = getYSFGatewayConfig();
 		$logLinesYSFGateway = getYSFGatewayLog();
 		$reverseLogLinesYSFGateway = $logLinesYSFGateway;
