@@ -3,17 +3,6 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/config.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/include/tools.php';        
 include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
 
-//Load the ircDDBGateway config file
-$configs = array();
-if ($configfile = fopen('/etc/ircddbgateway','r')) {
-        while ($line = fgets($configfile)) {
-                list($key,$value) = preg_split('/=/',$line);
-                $value = trim(str_replace('"','',$value));
-                if ($key != 'ircddbPassword' && strlen($value) > 0)
-                $configs[$key] = $value;
-        }
-}
-
 ?>
 <span style="font-weight: bold;font-size:14px;">Status</span>
 <fieldset style="background-color:#e8e8e8e8;width:160px;margin-top:8px;;margin-bottom:0px;margin-left:0px;margin-right:3px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
@@ -31,10 +20,10 @@ if ($configfile = fopen('/etc/ircddbgateway','r')) {
   <tr><?php showMode("D-Star Network", $mmdvmconfigs);?><td style="background:#606060; color:#b0b0b0; width:15%;"></tr>
 </table>
 <?php
-$dmrGatewayConfigFile = '/opt/DMRGateway/DMRGateway.ini';
-if (fopen($dmrGatewayConfigFile,'r')) { $configdmrgateway = parse_ini_file($dmrGatewayConfigFile, true); }
 $testMMDVModeDMR = getConfigItem("DMR", "Enable", $mmdvmconfigs);
 if ( $testMMDVModeDMR == 1 ) { //Hide the DMR information when DMR mode not enabled.
+$dmrGatewayConfigFile = '/opt/DMRGateway/DMRGateway.ini';
+if (fopen($dmrGatewayConfigFile,'r')) { $configdmrgateway = parse_ini_file($dmrGatewayConfigFile, true); }
 $dmrMasterFile = fopen("/var/lib/mmdvm/DMR_Hosts.txt", "r");
 $dmrMasterHost = getConfigItem("DMR Network", "Address", $mmdvmconfigs);
 $dmrMasterPort = getConfigItem("DMR Network", "Port", $mmdvmconfigs);
@@ -168,6 +157,16 @@ if ( $testMMDVModeNXDN == 1 ) { //Hide the NXDN information when NXDN Network mo
 }
 $testMMDVModeDSTAR = getConfigItem("D-Star", "Enable", $mmdvmconfigs);
 if ( $testMMDVModeDSTAR == 1 ) { //Hide the D-Star Reflector information when D-Star Network not enabled.
+//Load the ircDDBGateway config file
+$configs = array();
+if ($configfile = fopen('/etc/ircddbgateway','r')) {
+        while ($line = fgets($configfile)) {
+                list($key,$value) = preg_split('/=/',$line);
+                $value = trim(str_replace('"','',$value));
+                if ($key != 'ircddbPassword' && strlen($value) > 0)
+                $configs[$key] = $value;
+        }
+}
     echo "<br />\n";
     echo "<table>\n";
     echo "<tr><th colspan=\"2\">DStar Net</th></tr>\n";
