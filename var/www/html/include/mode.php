@@ -1,7 +1,19 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'].'/include/config.php';         
 include_once $_SERVER['DOCUMENT_ROOT'].'/include/tools.php';        
-include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';    
+include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
+
+//Load the ircDDBGateway config file
+$configs = array();
+if ($configfile = fopen('/etc/ircddbgateway','r')) {
+        while ($line = fgets($configfile)) {
+                list($key,$value) = preg_split('/=/',$line);
+                $value = trim(str_replace('"','',$value));
+                if ($key != 'ircddbPassword' && strlen($value) > 0)
+                $configs[$key] = $value;
+        }
+}
+
 ?>
 <span style="font-weight: bold;font-size:14px;">Status</span>
 <fieldset style="background-color:#e8e8e8e8;width:160px;margin-top:8px;;margin-bottom:0px;margin-left:0px;margin-right:3px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
