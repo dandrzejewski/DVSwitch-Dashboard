@@ -59,9 +59,9 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
 			echo "<td>$listElem[5]</td>";
 		}
 		if ($listElem[6] == null) {
-				echo "<td style=\"background:#f33;\">TX</td><td></td><td></td>";
+				echo "<td colspan=\"3\" style=\"background:#f33;\">TX</td>";
 			} else if ($listElem[6] == "SMS") {
-				echo "<td style=\"background:#1d1;\">SMS</td><td></td><td></td>";
+				echo "<td colspan=\"3\" style=\"background:#1d1;\">SMS</td>";
 			} else {
 			echo "<td>$listElem[6]</td>";
 
