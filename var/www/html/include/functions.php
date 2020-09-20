@@ -300,6 +300,8 @@ function getHeardList($logLines) {
 			continue;
 		} else if(strpos($logLine,"invalid access")) {
 			continue;
+		} else if(strpos($logLine,"GPS Position")) {
+			continue;
 		} else if(strpos($logLine,"received RF header for wrong repeater")) {
 			continue;
 		} else if(strpos($logLine,"unable to decode the network CSBK")) {
