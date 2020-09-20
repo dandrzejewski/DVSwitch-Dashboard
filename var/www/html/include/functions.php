@@ -434,19 +434,28 @@ function getHeardList($logLines) {
 		$ts2loss = "0%";
                 $ts2ber	 = "0.0%";
 		}
-
 		if (strpos($logLine,"from")) {
 		$timestamp = substr($logLine, 3, 19);
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
-		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);		
-		$target = substr($logLine, strpos($logLine, "to") + 3);
-		
+		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
 		$callsign = $callsign2;
+		if (strpos($callsign2,"/") > 0) {
+			$callsign = substr($callsign2, 0, strpos($callsign2,"/"));
+		}
 		$callsign = trim($callsign);
+
 		$id ="";
-		$source = "Net";
+		if ($mode == "D-Star") {
+			$id = substr($callsign2, strpos($callsign2,"/") + 1);
 		}
 
+		$target = trim(substr($logLine, strpos($logLine, "to") + 3));
+		// Handle more verbose logging from MMDVMHost
+                if (strpos($target,",") !== 'false') { $target = explode(",", $target)[0]; }
+			
+		$source = "Net";
+			
+		}
 		switch ($mode) {
 			case "D-Star":
 				$duration	= $dstarduration;
