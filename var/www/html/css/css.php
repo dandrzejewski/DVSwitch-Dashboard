@@ -219,7 +219,8 @@ a:link, a:visited {
   text-align: left;
   border-radius: 6px;
   padding: 8px 0;
-  left: 100%
+  top: -50px;
+  left: 150%;
   opacity: 1;
   /* Position the tooltip */
   position: absolute;
