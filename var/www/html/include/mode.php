@@ -68,7 +68,7 @@ if (file_exists('/var/www/html/ABInfo.json')) {
     $abinfo = getABInfo();
     echo "<br />\n";
     echo "<table>\n";
-    echo "<tr><th colspan=\"2\"><div class=\"tooltip\">AB Info<span class=\"tooltiptext\" style=\"font-size:10px;\">";
+    echo "<tr><th colspan=\"2\"><div class=\"tooltip\">AB Info<span class=\"tooltiptext\" style=\"font-size:12px;\">";
     echo "&nbsp;[Analog Bridge]";
     echo "<br>&nbsp;&nbsp;&nbsp;Version: ".$abinfo['ab']['version'];
     echo "<br>&nbsp;&nbsp;&nbsp;Date: ".$abinfo['ab']['date'];
