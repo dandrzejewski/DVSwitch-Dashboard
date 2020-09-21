@@ -220,7 +220,7 @@ a:link, a:visited {
   border-radius: 6px;
   padding: 8px 0;
   top: -100px;
-  right: -140%;
+  right: -130%;
   opacity: 1;
   /* Position the tooltip */
   position: absolute;
