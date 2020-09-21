@@ -17,7 +17,6 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
       <th>BER</th>
     </tr>
 <?php
-//setlocale(LC_TIME, 'pl_PL.UTF-8');
 $i = 0;
 for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
 	if (isset($lastHeard[$i])) {
