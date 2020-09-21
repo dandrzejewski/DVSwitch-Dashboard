@@ -764,22 +764,22 @@ function getActualLink($logLines, $mode) {
                   $to = substr($logLine, 51, 5);
                }
                if (strpos($logLine,"Disconnect via DTMF")) {
-                  $to = "not linked";
+                  $to = "Not Linked";
                }
                if (strpos($logLine,"Opening YSF network connection")) {
-                  $to = "not linked";
+                  $to = "Not Linked";
                }
 	       if (strpos($logLine,"Link has failed")) {
-                  $to = "not linked";
+                  $to = "Not Linked";
                }
                if (strpos($logLine,"DISCONNECT Reply")) {
-                  $to = "not linked";
+                  $to = "Not Linked";
                }
                if ($to !== "") {
                   return $to;
                }
             }
-            return "not linked";
+            return "Not Linked";
          } else {
             return "No YSF Network";
          }
@@ -806,13 +806,13 @@ function getActualLink($logLines, $mode) {
                   return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
                }
 	       if (strpos($logLine,"Starting NXDNGateway")) {
-                  return "Not Linked";
+                  return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
                if (strpos($logLine,"unlinking")) {
-                  return "Not Linked";
+                  return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
                if (strpos($logLine,"Unlinked from")) {
-                  return "Not Linked";
+                  return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
             }
         } else {
@@ -841,13 +841,13 @@ function getActualLink($logLines, $mode) {
 		  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
                }
 	       if (strpos($logLine,"Starting P25Gateway")) {
-                  return "Not Linked";
+                  return "N<span style=\"color:#b0b0b0;\"><b>ot Linked</b></span>";
                }
 	       if (strpos($logLine,"unlinking")) {
-                  return "Not Linked";
+                  return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
                if (strpos($logLine,"Unlinked")) {
-                  return "Not Linked";
+                  return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
 	    }
 	} else {
