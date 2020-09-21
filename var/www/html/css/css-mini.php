@@ -202,104 +202,33 @@ a:link, a:visited {
     font-weight: normal;
 }
 
-a.tooltip, a.tooltip:link, a.tooltip:visited, a.tooltip:active  {
-    text-decoration: none;
-    position: relative;
-    color: #FFFFFF;
+.tooltip {
+  position: relative;
+  opacity: 1;
+  display: inline-block;
+  border-bottom: 1px dotted black;
 }
 
-a.tooltip:hover {
-    text-shadow: none;
-    text-decoration: none;
-    color: #FFFFFF;
-    background: transparent;
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 280px;
+  background-color: #6E6E6E;
+  box-shadow: 4px 4px 6px #800000;
+  color: #FFFFFF;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px 0;
+  left: 100%
+  opacity: 1;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
 }
 
-a.tooltip span {
-    text-shadow: none;
-    text-decoration: none;
-    display: none;
-}
-
-a.tooltip:hover span {
-    text-shadow: none;
-    text-decoration: none;
-    display: block;
-    position: absolute;
-    top: 20px;
-    left: 0;
-    width: 200px;
-    z-index: 100;
-    color: #000000;
-    border:1px solid #000000;
-    background: #f7f7f7;
-    font: 12px Verdana, sans-serif; 
-    text-align: left;
-}
-
-a.tooltip span b {
-    text-shadow: none;
-    text-decoration: none;
-    display: block;
-    color: #000000;
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    font-weight: bold;
-    border: 0px;
-    border-bottom: 1px solid black;
-    background: #d0d0d0;
-}
-
-a.tooltip2, a.tooltip2:link, a.tooltip2:visited, a.tooltip2:active  {
-    text-shadow: none;
-    text-decoration: none;
-    position: relative;
-    font-weight: bold;
-    color: #000000;
-}
-
-a.tooltip2:hover {
-    text-shadow: none;
-    text-decoration: none;
-    color: #000000;
-    background: transparent;
-}
-
-a.tooltip2 span {
-    text-shadow: none;
-    text-decoration: none;
-    display: none;
-}
-
-a.tooltip2:hover span {
-    text-shadow: none;
-    text-decoration: none;
-    display: block;
-    position: absolute;
-    top: 20px;
-    left: 0;
-    width: 200px;
-    z-index: 100;
-    color: #000000;
-    border:1px solid #000000;
-    background: #f7f7f7;
-    font: 12px Verdana, sans-serif; 
-    text-align: left;
-}
-
-a.tooltip2 span b {
-    text-shadow: none;
-    text-decoration: none;
-    display: block;
-    color: #000000;
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    font-weight: bold;
-    border: 0px;
-    border-bottom: 1px solid black;
-    background: #d0d0d0;
+.tooltip:hover .tooltiptext {
+  right: 100%
+  opacity: 1;
+  visibility: visible;
 }
 
 ul {
