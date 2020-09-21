@@ -18,7 +18,6 @@ $localTXList = $lastHeard;
       <th>BER</th>
     </tr>
 <?php
-//setlocale(LC_TIME, 'pl_PL.UTF-8');
 $counter = 0;
 $i = 0;
 for ($i = 0; $i < count($localTXList); $i++) {
