@@ -30,21 +30,17 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 <body style="background-color: #f8f8f8f8;font: 11pt arial, sans-serif;">
 <center>
 <fieldset style="box-shadow:0 0 10px #999; background-color:#fafafa; width:770px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-
 <div class="container"> 
-
 <div class="header">
 <center>
 <h2>DVSwitch Server Dashboard</h2>
 </center>
 </div>
-
 <div class="content"><center>
 <div style="margin-top:5px;">
 <a target='_blank' href="http://<?=$_SERVER['SERVER_NAME']?>:2812"><button class="button link"><b>MONIT Service Manager</b></button></a>
 </div></center>
 </div>
-
 <?php
 include 'include/config.php';
 include_once 'include/tools.php';
@@ -62,7 +58,6 @@ function getMMDVMConfigFileContent() {
 	}
 
 $mmdvmconfigfile = getMMDVMConfigFileContent();
-
     echo '<table style="border:none; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#fafafa;"><tr style="border:none;background-color:#fafafa;">';
     echo '<td valign="top" style="border:none;background-color:#fafafa;">';
     echo '<div class="nav">'."\n";
@@ -117,7 +112,7 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
     echo '</div>'."\n";
 ?>
 <div class="content">
-<center><span style="font: 7pt arial, sans-serif;">DVSwitch Dashboard based on Pi-Star MW0MWZ. Verison SP2ONG 2020.</span></cnter>
+<center><span style="font: 7pt arial, sans-serif;">DVSwitch Server Dashboard (2020) based on Pi-Star MW0MWZ</span></cnter>
 </div>
 </div>
 </fieldset>
