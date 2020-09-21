@@ -953,4 +953,10 @@ if (!in_array($_SERVER["PHP_SELF"],array('/include/bm_links.php','/include/bm_ma
 		$logLinesDAPNETGateway = getDAPNETGatewayLog();
 	}
 }
+function getABInfo() {
+	$json = file_get_contents('/var/www/html/ABInfo.json');
+	$json_data = json_decode($json,true);
+	return $json_data;
+}
+
 ?>
