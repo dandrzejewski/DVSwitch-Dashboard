@@ -71,7 +71,6 @@ if (file_exists('/var/www/html/ABInfo.json')) {
     echo "<tr><th colspan=\"2\"><div class=\"tooltip\">AB Info<span class=\"tooltiptext\" style=\"font-size:11px;\">";
     echo "&nbsp;[Analog Bridge]";
     echo "<br>&nbsp;&nbsp;&nbsp;Version: ".$abinfo['ab']['version'];
-    echo "<br>&nbsp;&nbsp;&nbsp;Date: ".$abinfo['ab']['date'];
     echo "<br>&nbsp;[Digital]<br/>";
     echo "&nbsp;&nbsp;&nbsp;Callsign: ".$abinfo['digital']['call'];
     echo "<br>&nbsp;&nbsp;&nbsp;GW: ".$abinfo['digital']['gw'];
