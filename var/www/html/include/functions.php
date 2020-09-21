@@ -612,7 +612,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 function getDSTARLinks() {
 	// returns link-states of all D-Star-modules
 	if (filesize(LINKLOGPATH."/Links.log") == 0) {
-		return "not linked";
+		return "Not linked";
 	}
 	if ($linkLog = fopen(LINKLOGPATH."/Links.log",'r')) {
 		while ($linkLine = fgets($linkLog)) {
@@ -655,7 +655,7 @@ function getDSTARLinks() {
 				$linkDest	= $linx[4][0];
 				$linkDir	= $linx[5][0];
 			}
-			$out = "Linked to <b>" . $linkDest . "</b><br />\n(" . $protocol . " " . $linkDir . ")";
+			$out = "Linked to <span style=\"color:#b5651d;font-weight:bold;\">" . $linkDest . "</span><br />\n(" . $protocol . " " . $linkDir . ")";
 		}
 	}
 	fclose($linkLog);
@@ -781,7 +781,7 @@ function getActualLink($logLines, $mode) {
             }
             return "not linked";
          } else {
-            return "Service Not Started";
+            return "No YSF Network";
          }
          break;
 
@@ -798,12 +798,12 @@ function getActualLink($logLines, $mode) {
                if (strpos($logLine,"Linked to")) {
                   $to = preg_replace('/[^0-9]/', '', substr($logLine, 44, 5));
                   $to = preg_replace('/[^0-9]/', '', $to);
-                  return "Linked to: TG".$to;
+                  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
                }
                if (strpos($logLine,"Linked at start")) {
                   $to = preg_replace('/[^0-9]/', '', substr($logLine, 55, 5));
                   $to = preg_replace('/[^0-9]/', '', $to);
-                  return "Linked to: TG".$to;
+                  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
                }
 	       if (strpos($logLine,"Starting NXDNGateway")) {
                   return "Not Linked";
@@ -816,7 +816,7 @@ function getActualLink($logLines, $mode) {
                }
             }
         } else {
-            return "Service Not Started";
+            return "No NXDN Network";
         }
         break;
 
@@ -833,12 +833,12 @@ function getActualLink($logLines, $mode) {
                if (strpos($logLine,"Linked to")) {
 		  $to = preg_replace('/[^0-9]/', '', substr($logLine, 44, 5));
 		  $to = preg_replace('/[^0-9]/', '', $to);
-		  return "Linked to: TG".$to;
+		  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
                }
                if (strpos($logLine,"Linked at startup to")) {
 		  $to = preg_replace('/[^0-9]/', '', substr($logLine, 55, 5));
 		  $to = preg_replace('/[^0-9]/', '', $to);
-		  return "Linked to: TG".$to;
+		  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
                }
 	       if (strpos($logLine,"Starting P25Gateway")) {
                   return "Not Linked";
@@ -851,7 +851,7 @@ function getActualLink($logLines, $mode) {
                }
 	    }
 	} else {
-            return "Service Not Started";
+            return "No P25 Network";
         }
 	break;
 	}
