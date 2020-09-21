@@ -69,7 +69,7 @@ if (file_exists('/var/www/html/ABInfo.json')) {
     echo "<br />\n";
     echo "<table>\n";
     echo "<tr><th colspan=\"2\"><div class=\"tooltip\">AB Info<span class=\"tooltiptext\" style=\"font-size:11px;\">";
-    echo "&nbsp;[Analog Bridge]";
+    echo "<br/>&nbsp;[Analog Bridge]";
     echo "<br>&nbsp;&nbsp;&nbsp;Version: ".$abinfo['ab']['version'];
     echo "<br>&nbsp;[Digital]<br/>";
     echo "&nbsp;&nbsp;&nbsp;Callsign: ".$abinfo['digital']['call'];
@@ -100,7 +100,7 @@ if (file_exists('/var/www/html/ABInfo.json')) {
     echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shape: ".$abinfo['usrp']['to_pcm']['shape'];
     echo "<br>&nbsp;Last tune: ".$abinfo['last_tune'];
     echo "<br>&nbsp;Mute: ".$abinfo['mute'];
-    echo "</span></div></th></tr>\n";
+    echo "<br/><br/></span></div></th></tr>\n";
     echo "<tr><th>Callsign</th><td style=\"background: #ffffff;\">".$abinfo['digital']['call']."</td></tr>\n";
     echo "<tr><th>GW ID</th><td style=\"background: #ffffff;\">".$abinfo['digital']['gw']."</td></tr>\n";
     echo "<tr><th>RPT ID</th><td style=\"background: #ffffff;\">".$abinfo['digital']['rpt']."</td></tr>\n";
