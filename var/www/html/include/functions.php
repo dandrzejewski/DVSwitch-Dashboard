@@ -673,7 +673,7 @@ function getActualLink($logLines, $mode) {
     	if (isProcessRunning(IRCDDBGATEWAY)) {
 			return getDSTARLinks();
     	} else {
-    		return "No D-Star Network";
+    		return "<span style=\"color:#b0b0b0;\"><b>No D-Star Network</b></span>";
     	}
         break;
     case "DMR Slot 1":
@@ -816,7 +816,7 @@ function getActualLink($logLines, $mode) {
                }
             }
         } else {
-            return "No NXDN Network";
+            return "<span style=\"color:#b0b0b0;\"><b>No NXDN Network</b></span>";
         }
         break;
 
@@ -851,11 +851,11 @@ function getActualLink($logLines, $mode) {
                }
 	    }
 	} else {
-            return "No P25 Network";
+            return "<span style=\"color:#b0b0b0;\"><b>No P25 Network</b></span>";
         }
 	break;
 	}
-	return "Service Not Started";
+	return "<span style=\"color:#b0b0b0;\"><b>Service Not Started</b></span>";
 }
 
 function getActualReflector($logLines, $mode) {
