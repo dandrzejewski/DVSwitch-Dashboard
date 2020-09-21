@@ -103,7 +103,7 @@ if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
 	}
     }
     else {
-	echo "<tr><td colspan=\"2\" style=\"background:#606060; color:#b0b0b0;\">No DMR Network</td></tr>\n";
+	echo "<tr><td colspan=\"2\" style=\"background:#606060; color:#b0b0b0;\"><b>No DMR Network</b></td></tr>\n";
     }
 echo "</table>\n";
 }
@@ -112,7 +112,7 @@ $testMMDVModeYSF = getConfigItem("System Fusion Network", "Enable", $mmdvmconfig
 if ( $testMMDVModeYSF == 1 ) { //Hide the YSF information when System Fusion Network mode not enabled.
         $ysfLinkedTo = getActualLink($reverseLogLinesYSFGateway, "YSF");
         if ($ysfLinkedTo == 'Not Linked' || $ysfLinkedTo == 'No YSF Network') {
-                $ysfLinkedToTxt = '<span style="color:#b0b0b0;">.$ysfLinkedTo.'</span>';
+                $ysfLinkedToTxt = '<span style="color:#b0b0b0;"><b>'.$ysfLinkedTo.'</b></span>';
         } else {
                 $ysfHostFile = fopen("/var/lib/mmdvm/YSFHosts.txt", "r");
                 $ysfLinkedToTxt = "null";
