@@ -211,21 +211,25 @@ a:link, a:visited {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 220px;
+  width: 180px;
   background-color: #6E6E6E;
   box-shadow: 4px 4px 6px #800000;
   color: #FFFFFF;
   text-align: left;
-  border-radius: 6px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px
   padding: 8px 0;
   top: -100px;
-  right: -195%;
+  right: -135%;
   opacity: 1;
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
+  -webkit-transition: opacity;
+  -webkit-transition-timing-function: ease-out;
+  -webkit-transition-duration: 500ms;
 }
-
 .tooltip:hover .tooltiptext {
   right: 100%
   opacity: 1;
