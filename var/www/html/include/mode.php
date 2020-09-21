@@ -112,7 +112,7 @@ $testMMDVModeYSF = getConfigItem("System Fusion Network", "Enable", $mmdvmconfig
 if ( $testMMDVModeYSF == 1 ) { //Hide the YSF information when System Fusion Network mode not enabled.
         $ysfLinkedTo = getActualLink($reverseLogLinesYSFGateway, "YSF");
         if ($ysfLinkedTo == 'Not Linked' || $ysfLinkedTo == 'No YSF Network') {
-                $ysfLinkedToTxt = $ysfLinkedTo;
+                $ysfLinkedToTxt = '<span style="color:#b0b0b0;">.$ysfLinkedTo.'</span>';
         } else {
                 $ysfHostFile = fopen("/var/lib/mmdvm/YSFHosts.txt", "r");
                 $ysfLinkedToTxt = "null";
