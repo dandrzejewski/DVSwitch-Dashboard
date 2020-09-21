@@ -92,11 +92,11 @@ if (file_exists('/var/www/html/ABInfo.json')) {
     echo "<br>&nbsp;&nbsp;&nbsp;rxPort: ".$abinfo['usrp']['rx_port'];
     echo "<br>&nbsp;&nbsp;&nbsp;Ping: ".$abinfo['usrp']['ping'];
     echo "<br>&nbsp;&nbsp;&nbsp;[To PCM]";;
-    echo "<br>&nbsp;&nbsp;&nbsp;usrpA: ".$abinfo['usrp']['to_pcm']['shape']."&nbsp;";
-    echo "<br>&nbsp;&nbsp;&nbsp;Gain: ".$abinfo['usrp']['to_pcm']['gain'];
+    echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;usrpA: ".$abinfo['usrp']['to_pcm']['shape']."&nbsp;";
+    echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;Gain: ".$abinfo['usrp']['to_pcm']['gain'];
     echo "<br>&nbsp;&nbsp;&nbsp;[To AMBE]";;
-    echo "<br>&nbsp;&nbsp;&nbsp;tlvA: ".$abinfo['usrp']['to_ambe']['shape']."&nbsp;";
-    echo "<br>&nbsp;&nbsp;&nbsp;Gain: ".$abinfo['usrp']['to_ambe']['gain'];
+    echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;tlvA: ".$abinfo['usrp']['to_ambe']['shape']."&nbsp;";
+    echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;Gain: ".$abinfo['usrp']['to_ambe']['gain'];
     echo "<br>&nbsp;[DV3000]<br/>";
     echo "&nbsp;&nbsp;&nbsp;address: ".$abinfo['dv3000']['ip'];
     echo "<br>&nbsp;&nbsp;&nbsp;rxPort: ".$abinfo['dv3000']['port'];
