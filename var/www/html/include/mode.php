@@ -63,6 +63,53 @@ else {
     if (strlen($dmrMasterHost) > 19) { $dmrMasterHost = substr($dmrMasterHost, 0, 17) . '..'; }
 }
 fclose($dmrMasterFile);
+	
+if (file_exists('/var/www/html/ABInfo.json')) {
+    $abinfo = getABInfo();
+    echo "<br />\n";
+    echo "<table>\n";
+    echo "<tr><th colspan=\"2\"><div class=\"tooltip\">AB Info<span class=\"tooltiptext\" style=\"font-size:10px;\">";
+    echo "&nbsp;[Analog Bridge]";
+    echo "<br>&nbsp;&nbsp;&nbsp;Version: ".$abinfo['ab']['version'];
+    echo "<br>&nbsp;&nbsp;&nbsp;Date: ".$abinfo['ab']['date'];
+    echo "<br>&nbsp;[Digital]<br/>";
+    echo "&nbsp;&nbsp;&nbsp;Callsign: ".$abinfo['digital']['call'];
+    echo "<br>&nbsp;&nbsp;&nbsp;GW: ".$abinfo['digital']['gw'];
+    echo "<br>&nbsp;&nbsp;&nbsp;RPT: ".$abinfo['digital']['rpt'];
+    echo "<br>&nbsp;&nbsp;&nbsp;TG: ".$abinfo['digital']['tg'];
+    echo "<br>&nbsp;&nbsp;&nbsp;TS: ".$abinfo['digital']['ts'];
+    echo "<br>&nbsp;[DV3000]<br/>";
+    echo "&nbsp;&nbsp;&nbsp;IP: ".$abinfo['dv3000']['ip'];
+    echo "<br>&nbsp;&nbsp;&nbsp;Port: ".$abinfo['dv3000']['port'];
+    echo "<br>&nbsp;&nbsp;&nbsp;User Serial: ".$abinfo['dv3000']['use_serial'];
+    echo "<br>&nbsp;[TLV]<br/>";
+    echo "&nbsp;&nbsp;&nbsp;AMBE Mode: ".$abinfo['tlv']['ambe_mode'];
+    echo "<br>&nbsp;&nbsp;&nbsp;AMBE Size: ".$abinfo['tlv']['ambe_size'];
+    echo "<br>&nbsp;&nbsp;&nbsp;IP: ".$abinfo['tlv']['ip'];
+    echo "<br>&nbsp;&nbsp;&nbsp;RX Port: ".$abinfo['tlv']['rx_port'];
+    echo "<br>&nbsp;&nbsp;&nbsp;TX Port: ".$abinfo['tlv']['tx_port'];
+    echo "<br>&nbsp;[USRP]<br/>";
+    echo "&nbsp;&nbsp;&nbsp;IP: ".$abinfo['usrp']['ip'];
+    echo "<br>&nbsp;&nbsp;&nbsp;RX Port: ".$abinfo['usrp']['rx_port'];
+    echo "<br>&nbsp;&nbsp;&nbsp;TX Port: ".$abinfo['usrp']['tx_port'];
+    echo "<br>&nbsp;&nbsp;&nbsp;Ping: ".$abinfo['usrp']['ping'];
+    echo "<br>&nbsp;&nbsp;&nbsp;[To AMBE]";;
+    echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gain: ".$abinfo['usrp']['to_ambe']['gain'];
+    echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shape: ".$abinfo['usrp']['to_ambe']['shape'];
+    echo "<br>&nbsp;&nbsp;&nbsp;[To PCM]";;
+    echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gain: ".$abinfo['usrp']['to_pcm']['gain'];
+    echo "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Shape: ".$abinfo['usrp']['to_pcm']['shape'];
+    echo "<br>&nbsp;Last tune: ".$abinfo['last_tune'];
+    echo "<br>&nbsp;Mute: ".$abinfo['mute'];
+    echo "</span></div></th></tr>\n";
+    echo "<tr><th>Callsign</th><td style=\"background: #ffffff;\">".$abinfo['digital']['call']."</td></tr>\n";
+    echo "<tr><th>GW ID</th><td style=\"background: #ffffff;\">".$abinfo['digital']['gw']."</td></tr>\n";
+    echo "<tr><th>RPT ID</th><td style=\"background: #ffffff;\">".$abinfo['digital']['rpt']."</td></tr>\n";
+    echo "<tr><th>Last TG</th><td style=\"background: #ffffff;\">".$abinfo['last_tune']."</td></tr>\n";
+    echo "<tr><th>AB ver</th><td style=\"background: #ffffff;\">".$abinfo['ab']['version']."</td></tr>\n";
+    echo "</table>\n";
+}
+
 echo "<br />\n";
 echo "<table>\n";
 echo "<tr><th colspan=\"2\">DMR Master</th></tr>\n";
