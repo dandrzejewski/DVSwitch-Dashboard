@@ -225,7 +225,7 @@ if ($configfile = fopen('/etc/ircddbgateway','r')) {
     echo "<br />\n";
     echo "<table>\n";
     echo "<tr><th colspan=\"2\">DStar Net</th></tr>\n";
-    echo "<tr><th>IRC</th><td style=\"background: #ffffff;color:#0065ff;\">".substr($configs['ircddbHostname'], 0 ,16)."</td></tr>\n";
+    echo "<tr><th>IRC</th><td style=\"background: #ffffff;color:brown;\">".substr($configs['ircddbHostname'], 0 ,16)."</td></tr>\n";
     echo "<tr><td colspan=\"2\" style=\"background: #ffffff;\">".getActualLink($reverseLogLinesMMDVM, "D-Star")."</td></tr>\n";
     echo "</table>\n";
 }
