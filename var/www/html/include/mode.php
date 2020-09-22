@@ -6,19 +6,6 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
 ?>
 <span style="font-weight: bold;font-size:14px;">Status</span>
 <fieldset style="background-color:#e8e8e8e8;width:160px;margin-top:4px;;margin-bottom:0px;margin-left:0px;margin-right:3px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-  <table>
-    <tr><th colspan="2">Modes Enabled</th></tr>
-    <tr><?php showMode("DMR", $mmdvmconfigs);?><?php showMode("System Fusion", $mmdvmconfigs);?></tr>
-    <tr><?php showMode("NXDN", $mmdvmconfigs);?><?php showMode("P25", $mmdvmconfigs);?></tr>
-    <tr><?php showMode("D-Star", $mmdvmconfigs);?><td style="background:#606060; color:#b0b0b0; width:15%;"></tr>
-  </table>
-<br>
-<table>
-  <tr><th colspan="2">Networks</th></tr>
-  <tr><?php showMode("DMR Network", $mmdvmconfigs);?><?php showMode("System Fusion Network", $mmdvmconfigs);?></tr>
-  <tr><?php showMode("NXDN Network", $mmdvmconfigs);?><?php showMode("P25 Network", $mmdvmconfigs);?></tr>
-  <tr><?php showMode("D-Star Network", $mmdvmconfigs);?><td style="background:#606060; color:#b0b0b0; width:15%;"></tr>
-</table>
 <?php
 $testMMDVModeDMR = getConfigItem("DMR", "Enable", $mmdvmconfigs);
 if ( $testMMDVModeDMR == 1 ) { //Hide the DMR information when DMR mode not enabled.
@@ -66,7 +53,6 @@ fclose($dmrMasterFile);
 	
 if (file_exists('/var/www/html/ABInfo.json')) {
     $abinfo = getABInfo();
-    echo "<br />\n";
     echo "<table>\n";
     echo "<tr><th colspan=\"2\"><div class=\"tooltip\">AB Info<span class=\"tooltiptext\" style=\"font-size:11px;\">";
     echo "<br>&nbsp;decoderFallBack: ".$abinfo['use_fallback'];
@@ -103,7 +89,7 @@ if (file_exists('/var/www/html/ABInfo.json')) {
     echo "<br>&nbsp;&nbsp;&nbsp;Serial: ".$abinfo['dv3000']['use_serial'];
     echo "<br>&nbsp;[Analog Bridge]";
     echo "<br>&nbsp;&nbsp;&nbsp;Version: ".$abinfo['ab']['version'];
-    echo "<br/><br/></span></div></th></tr>\n";
+    echo "<br/></span></div></th></tr>\n";
     echo "<tr><th>Callsign</th><td style=\"background: #ffffff;\">".$abinfo['digital']['call']."</td></tr>\n";
     echo "<tr><th>GW ID</th><td style=\"background: #ffffff;\">".$abinfo['digital']['gw']."</td></tr>\n";
     echo "<tr><th>RPT ID</th><td style=\"background: #ffffff;\">".$abinfo['digital']['rpt']."</td></tr>\n";
