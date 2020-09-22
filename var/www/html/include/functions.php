@@ -655,7 +655,7 @@ function getDSTARLinks() {
 				$linkDest	= $linx[4][0];
 				$linkDir	= $linx[5][0];
 			}
-			$out = "Linked to <span style=\"color:#b5651d;font-weight:bold;\">" . $linkDest . "</span><br />\n(" . $protocol . " " . $linkDir . ")";
+			$out = "Linked to <span style=\"color:#b5651d;font-weight:bold;\">" . $linkDest . "</span><br />\n(<span style=\"color:green;\"><b>" . $protocol . " " . $linkDir . "</b></span>)";
 		}
 	}
 	fclose($linkLog);
