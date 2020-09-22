@@ -93,7 +93,7 @@ if (file_exists('/var/www/html/ABInfo.json')) {
     echo "<tr><th>Callsign</th><td style=\"background: #ffffff;\">".$abinfo['digital']['call']."</td></tr>\n";
     echo "<tr><th>GW ID</th><td style=\"background: #ffffff;\">".$abinfo['digital']['gw']."</td></tr>\n";
     echo "<tr><th>RPT ID</th><td style=\"background: #ffffff;\">".$abinfo['digital']['rpt']."</td></tr>\n";
-    echo "<tr><th>Last TG</th><td style=\"background: #ffffff;\">".$abinfo['last_tune']."</td></tr>\n";
+    echo "<tr><th>Last TG</th><td style=\"background: #ffffff;font-weight: bold;color:brown;\">".$abinfo['last_tune']."</td></tr>\n";
     echo "<tr><th>AB ver</th><td style=\"background: #ffffff;\">".$abinfo['ab']['version']."</td></tr>\n";
     echo "</table>\n";
 }
