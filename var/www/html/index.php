@@ -59,7 +59,7 @@ function getMMDVMConfigFileContent() {
 
 $mmdvmconfigfile = getMMDVMConfigFileContent();
     echo '<table style="border:none; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#fafafa;"><tr style="border:none;background-color:#fafafa;">';
-    echo '<td width="200px" valign="top" style="border:none;background-color:#fafafa;">';
+    echo '<td width="200px" valign="top" class="hide" style="border:none;background-color:#fafafa;">';
     echo '<div class="nav">'."\n";
     echo '<script type="text/javascript">'."\n";
     echo 'function reloadModeInfo(){'."\n";
@@ -87,13 +87,13 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
     echo 'setTimeout(reloadLastHerd,1500);'."\n";
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
-    echo '<div id="lastHerd">'."\n";
+    echo '<center><div id="lastHerd">'."\n";
     include 'include/lh.php';
-    echo '</div>'."\n";
+    echo '</div></center>'."\n";
     echo "<br />\n";
-    echo '<div id="localTxs">'."\n";
+    echo '<center><div id="localTxs">'."\n";
     include 'include/localtx.php';
-    echo '</div>'."\n";
+    echo '</div></center>'."\n";
     echo '</td>';
 ?>
 </tr></table>
