@@ -59,7 +59,7 @@ function getMMDVMConfigFileContent() {
 
 $mmdvmconfigfile = getMMDVMConfigFileContent();
     echo '<table style="border:none; border-collapse:collapse; cellspacing:0; cellpadding:0; background-color:#fafafa;"><tr style="border:none;background-color:#fafafa;">';
-    echo '<td valign="top" style="border:none;background-color:#fafafa;">';
+    echo '<td width="205px" valign="top" style="border:none;background-color:#fafafa;">';
     echo '<div class="nav">'."\n";
     echo '<script type="text/javascript">'."\n";
     echo 'function reloadModeInfo(){'."\n";
