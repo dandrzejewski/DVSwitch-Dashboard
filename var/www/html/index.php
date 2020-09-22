@@ -74,7 +74,7 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
     echo '</div>'."\n";
     echo '</td>'."\n";
 
-    echo '<td valign="top" style="border:none; background-color:#fafafa;">';
+    echo '<td valign="top" style="border:none; height: 480px; background-color:#fafafa;">';
     echo '<div class="content">'."\n";
     echo '<script type="text/javascript">'."\n";
     echo 'function reloadLocalTx(){'."\n";
