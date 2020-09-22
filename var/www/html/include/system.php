@@ -1,5 +1,7 @@
 <?php 
 include_once $_SERVER['DOCUMENT_ROOT'].'/include/tools.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/include/config.php';         
+include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 $cpuLoad = sys_getloadavg();
 $cpuTempCRaw = exec('cat /sys/class/thermal/thermal_zone0/temp');
@@ -9,6 +11,19 @@ if ($cpuTempC < 50) { $cpuTempHTML = "<td style=\"background: #1d1\">".$cpuTempC
 if ($cpuTempC >= 50) { $cpuTempHTML = "<td style=\"background: #fa0\">".$cpuTempC."&deg;C / ".$cpuTempF."&deg;F</td>\n"; }
 if ($cpuTempC >= 69) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTempC."&deg;C / ".$cpuTempF."&deg;F</td>\n"; }
 ?>
+<fieldset style="box-shadow:0 0 10px #999;background-color:#e8e8e8e8;width:855px;margin-top:8px;;margin-bottom:0px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<table>
+    <tr><th width="18%" style="padding-top:2px;padding-bottom:2px;">Modes Enabled</th>
+    <?php showMode("DMR", $mmdvmconfigs);?><?php showMode("System Fusion", $mmdvmconfigs);?>
+    <?php showMode("NXDN", $mmdvmconfigs);?><?php showMode("P25", $mmdvmconfigs);?>
+    <?php showMode("D-Star", $mmdvmconfigs);?></tr>
+  <tr><th width="18%" style="padding-top:2px;padding-bottom:2px;">Networks</th>
+  <?php showMode("DMR Network", $mmdvmconfigs);?><?php showMode("System Fusion Network", $mmdvmconfigs);?>
+  <?php showMode("NXDN Network", $mmdvmconfigs);?><?php showMode("P25 Network", $mmdvmconfigs);?>
+  <?php showMode("D-Star Network", $mmdvmconfigs);?></tr>
+</table>
+</fieldset>
+<br>
 <span style="font-weight: bold;font-size:13px;">Hardware info</span>
 <fieldset style="box-shadow:0 0 10px #999;background-color:#e8e8e8e8; width:855px;margin-top:8px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <table>
