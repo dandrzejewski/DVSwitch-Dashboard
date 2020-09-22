@@ -98,7 +98,7 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
 ?>
 </tr></table>
 <?php
-    echo '<div class="content">'."\n";
+    echo '<div class="content2">'."\n";
     echo '<script type="text/javascript">'."\n";
     echo 'function reloadSysInfo(){'."\n";
     echo '  $("#sysInfo").load("/include/system.php",function(){ setTimeout(reloadSysInfo,15000) });'."\n";
