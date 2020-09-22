@@ -33,7 +33,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 <div class="container"> 
 <div class="header">
 <center>
-<h2>DVSwitch Server Dashboard</h2>
+<h2>PI-DVSwitch Server Dashboard</h2>
 </center>
 </div>
 <div class="content"><center>
