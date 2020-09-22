@@ -26,7 +26,7 @@ if (file_exists('/etc/pistar-css.ini')) {
     // Default values
     $backgroundPage = "edf0f5";         // usually off-white
     $backgroundContent = "fafafa";      // The White background in the content section
-    $backgroundBanners = "dd4b39";      // The ubiquitous Pi-Star Red
+    $backgroundBanners = "2A659A";      // The ubiquitous Pi-Star Red
     $textBanners = "ffffff";            // Usually white
     $bannerDropShaddows = "303030";     // Banner drop shaddow colour
     $tableHeadDropShaddow = "8b0000";   // Table Headder drop shaddows
@@ -53,7 +53,7 @@ body, font {
     font-family : verdana, arial, sans-serif;
     text-align : left;
     padding : 5px 0px 5px 0px;
-    border-radius : 10px 10px 0 0;
+    border-radius : 10px 10px 10px 10px;
  }
 
 .nav {
