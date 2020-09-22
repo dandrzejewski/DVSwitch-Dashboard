@@ -841,7 +841,7 @@ function getActualLink($logLines, $mode) {
 		  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
                }
 	       if (strpos($logLine,"Starting P25Gateway")) {
-                  return "N<span style=\"color:#b0b0b0;\"><b>ot Linked</b></span>";
+                  return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
 	       if (strpos($logLine,"unlinking")) {
                   return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
