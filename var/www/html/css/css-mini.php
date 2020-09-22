@@ -222,7 +222,7 @@ a:link, a:visited {
 
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 180px;
+  width: 190px;
   background-color: #6E6E6E;
   box-shadow: 4px 4px 6px #800000;
   color: #FFFFFF;
@@ -231,8 +231,8 @@ a:link, a:visited {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px
   padding: 8px 0;
-  top: -100px;
-  right: -135%;
+  top: -30px;
+  right: -140%;
   opacity: 1;
   /* Position the tooltip */
   position: absolute;
