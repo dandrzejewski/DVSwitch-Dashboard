@@ -74,7 +74,14 @@ body, font {
     text-align: center;
     font-size: 1.4em;
 }
-
+.content2 {
+    display: none;
+    padding : 5px 5px 5px 5px;
+    color : #<?php echo $textContent; ?>;
+    background : #<?php echo $backgroundContent; ?>;
+    text-align: center;
+    font-size: 1.4em;
+}
 .contentwide {
     padding: 5px 5px 5px 5px;
     color: #<?php echo $textContent; ?>;
