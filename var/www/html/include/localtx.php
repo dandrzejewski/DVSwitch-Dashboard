@@ -5,7 +5,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
 $localTXList = $lastHeard;
 ?>
 <div>
-<span style="font-weight: bold;font-size:13px;">DVS Mobile / pyUC Activity</span>
+<span style="font-weight: bold;font-size:13px;">DVS Mobile/pyUC Activity</span>
 <fieldset style="box-shadow:0 0 10px #999;background-color:#e8e8e8e8; width:660px;margin-top:8px;margin-left:0px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
   <table>
     <tr>
@@ -30,7 +30,6 @@ for ($i = 0; $i < count($localTXList); $i++) {
                         	$dt = new DateTime($utc_time, $utc_tz);
                         	$dt->setTimeZone($local_tz);
                                 $local_time = strftime('%H:%M:%S %b %d', $dt->getTimestamp());
-//                        	$local_time = $dt->format('H:i:s M jS');
 
 			echo"<tr>";
 			echo"<td align=\"left\">&nbsp;$local_time</td>";
