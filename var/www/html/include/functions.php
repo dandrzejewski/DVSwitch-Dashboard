@@ -300,23 +300,23 @@ function getDAPNETGatewayLog() {
 // MMDVM_Bridge loglines
 //
 // M: 2020-09-23 06:08:14.717 DMR, TX state = ON
-// I: 2020-09-23 04:56:54.073 DMR, Begin TX: src=2602074 rpt=260207498 dst=9 slot=2 cc=1 metadata=SP2ONG
+// I: 2020-09-23 04:56:54.073 DMR, Begin TX: src=2602001 rpt=260201498 dst=9 slot=2 cc=1 metadata=SP2ABC
 // M: 2020-09-23 04:57:20.031 DMR, TX state = OFF, DMR frame count was 57 frames
 //
 // M: 2020-09-23 06:47:51.710 P25, TX state = ON
-// I: 2020-09-23 04:47:51.712 P25, Begin TX: src=2602074 rpt=260207498 dst=9 slot=2 cc=1
+// I: 2020-09-23 04:47:51.712 P25, Begin TX: src=2602001 rpt=260200198 dst=9 slot=2 cc=1
 // M: 2020-09-23 04:47:55.447 P25, TX state = OFF
 //
 // M: 2020-09-23 06:44:41.587 YSF, TX state = ON
-// I: 2020-09-23 06:44:41.587 YSF, Begin TX: src=2602074 rpt=260207498 dst=10200 slot=2 cc=1 metadata=SP2ONG
+// I: 2020-09-23 06:44:41.587 YSF, Begin TX: src=2602001 rpt=260200198 dst=10200 slot=2 cc=1 metadata=SP2ABC
 // I: 2020-09-23 06:44:41.777 YSF, Narrow transmit (72 bit)
 // M: 2020-09-23 06:44:47.407 YSF, TX state = OFF
 //
 // M: 2020-09-23 05:34:44.836 NXDN, TX state = ON
-// I: 2020-09-23 05:34:44.836 NXDN, dmrToNxdn by call: SP2ONG
-// I: 2020-09-23 05:34:44.836 NXDN, Begin TX: src=2602074 rpt=260207498 dst=9 slot=2 cc=1 metadata=SP2ONG
+// I: 2020-09-23 05:34:44.836 NXDN, dmrToNxdn by call: SP2ABC
+// I: 2020-09-23 05:34:44.836 NXDN, Begin TX: src=2602001 rpt=260200198 dst=9 slot=2 cc=1 metadata=SP2ABC
 // I: 2020-09-23 05:34:44.836 NXDN, (2602074, 9) -> (4280, 9)
-// M: 2020-09-23 05:34:44.839 NXDN, received RF header from SP2ONG to TG 9
+// M: 2020-09-23 05:34:44.839 NXDN, received RF header from SP2ABC to TG 9
 
 
 function getHeardList($logLines) {
