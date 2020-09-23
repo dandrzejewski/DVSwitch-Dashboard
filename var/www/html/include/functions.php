@@ -370,6 +370,8 @@ function getHeardList($logLines) {
 			continue;
 		} else if(strpos($logLine,"GPS Position")) {
 			continue;
+		} else if(strpos($logLine,"NXDN, received RF header from")) {
+			continue;
 		} else if(strpos($logLine,"received RF header for wrong repeater")) {
 			continue;
 		} else if(strpos($logLine,"unable to decode the network CSBK")) {
@@ -491,18 +493,26 @@ function getHeardList($logLines) {
 		}
 
 		if (strpos($logLine,"Begin TX")) {
-		$mode = "DMR Slot 2";		    
-		$timestamp = substr($logLine, 3, 19);
-		$callsign2 = substr($logLine, strpos($logLine,"metadata=")+9);				
-		$callsign = $callsign2;
+		$callsign = "-----";
+		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
+		if ($mode == "DMR") {
+			$slot = trim(substr($logLine,strpos($logLine,"slot=")+5,strpos($logLine,"cc=") - strpos($logLine,"slot=")-5));
+			$mode = "DMR Slot ".$slot;
+			$callsign = substr($logLine, strpos($logLine,"metadata=")+9);				
+			$callsign = trim($callsign);
+			$ts2loss = "0%";
+                	$ts2ber	 = "0.0%";
+			$ts2rssi="---";
+			$ts1loss = "0%";
+                	$ts1ber	 = "0.0%";
+			$ts1rssi="---";}
+		$callsign = substr($logLine, strpos($logLine,"metadata=")+9);				
 		$callsign = trim($callsign);
+		$timestamp = substr($logLine, 3, 19);
 		$id ="";
 		$target = "TG ".substr($logLine,strpos($logLine,"dst=")+4,strpos($logLine,"slot=") - strpos($logLine,"dst=")-4);
 		$source = "DVSM/UC";
-		$ts2loss = "0%";
-                $ts2ber	 = "0.0%";
-		}
-		if (strpos($logLine,"from")) {
+		} else {
 		$timestamp = substr($logLine, 3, 19);
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
 		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
@@ -511,18 +521,15 @@ function getHeardList($logLines) {
 			$callsign = substr($callsign2, 0, strpos($callsign2,"/"));
 		}
 		$callsign = trim($callsign);
-
 		$id ="";
 		if ($mode == "D-Star") {
 			$id = substr($callsign2, strpos($callsign2,"/") + 1);
 		}
-
 		$target = trim(substr($logLine, strpos($logLine, "to") + 3));
 		// Handle more verbose logging from MMDVMHost
                 if (strpos($target,",") !== 'false') { $target = explode(",", $target)[0]; }
 			
-		$source = "Net";
-			
+		$source = "Net";		
 		}
 		switch ($mode) {
 			case "D-Star":
