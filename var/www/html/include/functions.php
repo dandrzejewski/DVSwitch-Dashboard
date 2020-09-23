@@ -261,6 +261,63 @@ function getDAPNETGatewayLog() {
 	return array_filter($logLines);
 }
 
+// MMDVMHost
+// 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
+// 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
+// M: 2000-00-00 00:00:00.000 D-Star, received network header from M1ABC   /ABCD to CQCQCQ   via REF000 A
+// M: 2000-00-00 00:00:00.000 DMR Slot 2, received network voice header from M1ABC to TG 1
+// M: 2000-00-00 00:00:00.000 DMR Slot 2, received RF voice header from M1ABC to 5000
+// M: 2000-00-00 00:00:00.000 DMR Slot 2, received RF end of voice transmission, 1.8 seconds, BER: 3.9%
+// M: 2000-00-00 00:00:00.000 DMR Slot 2, received network end of voice transmission from M1ABC to TG 2, 0.0 seconds, 0% packet loss, BER: 0.0%
+// M: 2000-00-00 00:00:00.000 DMR Slot 2, RF voice transmission lost, 1.1 seconds, BER: 6.5%
+// M: 2000-00-00 00:00:00.000 DMR Slot 2, received RF CSBK Preamble CSBK (1 to follow) from M1ABC to TG 1
+// M: 2000-00-00 00:00:00.000 DMR Slot 2, received network Data Preamble VSBK (11 to follow) from 123456 to TG 123456
+// M: 2000-00-00 00:00:00.000 DMR Talker Alias (Data Format 1, Received 24/24 char): 'Hide the bottle from Ont'
+// M: 2000-00-00 00:00:00.000 0000:  07 00 20 4F 6E 74 00 00 00                         *.. Ont...*
+// M: 2000-00-00 00:00:00.000 DMR Slot 2, Embedded Talker Alias Block 3
+// M: 2000-00-00 00:00:00.000 P25, received RF transmission from M1ABC to TG 10200
+// M: 2000-00-00 00:00:00.000 Debug: P25RX: pos/neg/centre/threshold 106 -105 0 106
+// M: 2000-00-00 00:00:00.000 Debug: P25RX: sync found in Ldu pos/centre/threshold 3986 9 104
+// M: 2000-00-00 00:00:00.000 Debug: P25RX: pos/neg/centre/threshold 267 -222 22 245
+// M: 2000-00-00 00:00:00.000 Debug: P25RX: sync found in Ldu pos/centre/threshold 3986 10 112
+// M: 2000-00-00 00:00:00.000 P25, received RF end of transmission, 0.4 seconds, BER: 0.0%
+// M: 2000-00-00 00:00:00.000 P25, received network transmission from 10999 to TG 10200
+// M: 2000-00-00 00:00:00.000 P25, network end of transmission, 1.8 seconds, 0% packet loss
+// M: 2000-00-00 00:00:00.000 YSF, received RF data from MW0MWZ     to ALL
+// M: 2000-00-00 00:00:00.000 YSF, received RF end of transmission, 5.1 seconds, BER: 3.8%
+// M: 2000-00-00 00:00:00.000 YSF, received network data from M1ABC      to ALL        at MB6IBK
+// M: 2000-00-00 00:00:00.000 YSF, network watchdog has expired, 5.0 seconds, 0% packet loss, BER: 0.0%
+// M: 2000-00-00 00:00:00.000 NXDN, received RF transmission from MW0MWZ to TG 65000
+// M: 2000-00-00 00:00:00.000 Debug: NXDNRX: pos/neg/centre/threshold 106 -105 0 106
+// M: 2000-00-00 00:00:00.000 Debug: NXDNRX: sync found in Ldu pos/centre/threshold 3986 9 104
+// M: 2000-00-00 00:00:00.000 Debug: NXDNRX: pos/neg/centre/threshold 267 -222 22 245
+// M: 2000-00-00 00:00:00.000 Debug: NXDNRX: sync found in Ldu pos/centre/threshold 3986 10 112
+// M: 2000-00-00 00:00:00.000 NXDN, received RF end of transmission, 0.4 seconds, BER: 0.0%
+// M: 2000-00-00 00:00:00.000 NXDN, received network transmission from 10999 to TG 65000
+// M: 2000-00-00 00:00:00.000 NXDN, network end of transmission, 1.8 seconds, 0% packet loss
+// M: 2000-00-00 00:00:00.000 POCSAG, transmitted 1 frame(s) of data from 1 message(s)
+/
+// MMDVM_Bridge loglines
+//
+// M: 2020-09-23 06:08:14.717 DMR, TX state = ON
+// I: 2020-09-23 04:56:54.073 DMR, Begin TX: src=2602074 rpt=260207498 dst=9 slot=2 cc=1 metadata=SP2ONG
+// M: 2020-09-23 04:57:20.031 DMR, TX state = OFF, DMR frame count was 57 frames
+//
+// M: 2020-09-23 06:47:51.710 P25, TX state = ON
+// I: 2020-09-23 04:47:51.712 P25, Begin TX: src=2602074 rpt=260207498 dst=9 slot=2 cc=1
+// M: 2020-09-23 04:47:55.447 P25, TX state = OFF
+//
+// M: 2020-09-23 06:44:41.587 YSF, TX state = ON
+// I: 2020-09-23 06:44:41.587 YSF, Begin TX: src=2602074 rpt=260207498 dst=10200 slot=2 cc=1 metadata=SP2ONG
+// I: 2020-09-23 06:44:41.777 YSF, Narrow transmit (72 bit)
+// M: 2020-09-23 06:44:47.407 YSF, TX state = OFF
+//
+// M: 2020-09-23 05:34:44.836 NXDN, TX state = ON
+// I: 2020-09-23 05:34:44.836 NXDN, dmrToNxdn by call: SP2ONG
+// I: 2020-09-23 05:34:44.836 NXDN, Begin TX: src=2602074 rpt=260207498 dst=9 slot=2 cc=1 metadata=SP2ONG
+// I: 2020-09-23 05:34:44.836 NXDN, (2602074, 9) -> (4280, 9)
+// M: 2020-09-23 05:34:44.839 NXDN, received RF header from SP2ONG to TG 9
+
 
 function getHeardList($logLines) {
 	//array_multisort($logLines,SORT_DESC);
