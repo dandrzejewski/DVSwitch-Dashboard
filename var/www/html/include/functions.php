@@ -83,60 +83,60 @@ function showMode($mode, $mmdvmconfigs) {
 	if (getEnabled($mode, $mmdvmconfigs) == 1) {
 		if ($mode == "D-Star Network") {
 			if (isProcessRunning("ircddbgatewayd")) {
-				echo "<td style=\"background:#0b0; color:#030; width:15%;\">";
+				echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 			} else {
-				echo "<td style=\"background:#b00; color:#500; width:15%;\">";
+				echo "<td style=\"background:#b00; color:#500; width:10%;\">";
 			}
 		}
 		elseif ($mode == "System Fusion Network") {
 			if (isProcessRunning("YSFGateway")) {
-				echo "<td style=\"background:#0b0; color:#030; width:15%;\">";
+				echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 			} else {
-				echo "<td style=\"background:#b00; color:#500; width:15%;\">";
+				echo "<td style=\"background:#b00; color:#500; width:10%;\">";
 			}
 		}
 		elseif ($mode == "P25 Network") {
 			if (isProcessRunning("P25Gateway")) {
-				echo "<td style=\"background:#0b0; color:#030; width:15%;\">";
+				echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 			} else {
-				echo "<td style=\"background:#b00; color:#500; width:15%;\">";
+				echo "<td style=\"background:#b00; color:#500; width:10%;\">";
 			}
 		}
 		elseif ($mode == "NXDN Network") {
 			if (isProcessRunning("NXDNGateway")) {
-				echo "<td style=\"background:#0b0; color:#030; width:15%;\">";
+				echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 			} else {
-				echo "<td style=\"background:#b00; color:#500; width:15%;\">";
+				echo "<td style=\"background:#b00; color:#500; width:10%;\">";
 			}
 		}
 		elseif ($mode == "DMR Network") {
 			if (getConfigItem("DMR Network", "Address", $mmdvmconfigs) == '127.0.0.1') {
 				if (isProcessRunning("DMRGateway")) {
-					echo "<td style=\"background:#0b0; color:#030; width:15%;\">";
+					echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 				} else {
-					echo "<td style=\"background:#b00; color:#500; width:15%;\">";
+					echo "<td style=\"background:#b00; color:#500; width:10%;\">";
 				}
 			}
 			else {
 				if (isProcessRunning("MMDVM_Bridge")) {
-					echo "<td style=\"background:#0b0; color:#030; width:15%;\">";
+					echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 				} else {
-					echo "<td style=\"background:#b00; color:#500; width:15%;\">";
+					echo "<td style=\"background:#b00; color:#500; width:10%;\">";
 				}
 			}
 		}
 		else {
 			if ($mode == "D-Star" || $mode == "DMR" || $mode == "System Fusion" || $mode == "P25" || $mode == "NXDN" ) {
 				if (isProcessRunning("MMDVM_Bridge")) {
-					echo "<td style=\"background:#0b0; color:#030; width:15%;\">";
+					echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 				} else {
-					echo "<td style=\"background:#b00; color:#500; width:15%;\">";
+					echo "<td style=\"background:#b00; color:#500; width:10%;\">";
 				}
 			}
 		}
 	}
 	else {
-		echo "<td style=\"background:#606060; color:#b0b0b0; width:15%;\">";
+		echo "<td style=\"background:#606060; color:#b0b0b0; width:10%;\">";
     }
     $mode = str_replace("System Fusion", "YSF", $mode);
     $mode = str_replace("Network", "Net", $mode);
