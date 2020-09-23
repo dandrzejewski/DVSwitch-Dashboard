@@ -307,7 +307,7 @@ function getDAPNETGatewayLog() {
 // M: 2000-00-00 00:00:00.000 NXDN, received network transmission from 10999 to TG 65000
 // M: 2000-00-00 00:00:00.000 NXDN, network end of transmission, 1.8 seconds, 0% packet loss
 // M: 2000-00-00 00:00:00.000 POCSAG, transmitted 1 frame(s) of data from 1 message(s)
-/
+//
 // MMDVM_Bridge loglines
 //
 // M: 2020-09-23 06:08:14.717 DMR, TX state = ON
