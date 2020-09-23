@@ -554,15 +554,15 @@ function getHeardList($logLines) {
 				if ($source == "Net" && $target == "TG 10") {$callsign = "PARROT";}
 				if ($source == "Net" && $callsign == "10999") {$callsign = "MMDVM";}
                 		$duration	= $p25duration;
-                		$loss		= $p25loss;
-                		$ber		= $p25ber;
+                		$loss		= strlen($p25loss) ? $p25loss : "---";
+                		$ber		= strlen($p25ber) ? $p25ber : "---";
 				$rssi		= $p25rssi;
                 		break;
 			case "NXDN":
 				if ($source == "Net" && $target == "TG 10") {$callsign = "PARROT";}
                 		$duration	= $nxdnduration;
-                		$loss		= $nxdnloss;
-                		$ber		= $nxdnber;
+                		$loss		= strlen($nxdnloss) ? $nxdnloss : "---";
+                		$ber		= strlen($nxdnber) ? $nxdnber : "---";
 				$rssi		= $nxdnrssi;
                 		break;
 			case "POCSAG":
