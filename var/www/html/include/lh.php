@@ -32,7 +32,7 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
 //                        $local_time = $dt->getTimestamp();
 		echo"<tr>";
 		echo"<td align=\"left\">&nbsp;$local_time</td>";
-		echo"<td align=\"left\">&nbsp;$listElem[1]</td>";
+		echo"<td align=\"left\" style=\"color:green; font-weight:bold;\">&nbsp;$listElem[1]</td>";
 		if (is_numeric($listElem[2]) || $listElem[2] == "DAPNET") {
 			echo "<td align=\"left\">&nbsp;$listElem[2]</td>";
 		} else {
