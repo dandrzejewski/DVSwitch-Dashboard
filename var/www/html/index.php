@@ -112,7 +112,7 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
     echo '</div>'."\n";
 ?>
 <div class="content">
-<center><span style="font: 7pt arial, sans-serif;">DVSwitch Server Dashboard &copy; <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?> (based on Pi-Star MW0MWZ)</span></cnter>
+<center><span style="font: 7pt arial, sans-serif;">PI-DVSwitch Server Dashboard &copy; <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?> (based on Pi-Star MW0MWZ)</span></cnter>
 </div>
 </div>
 </fieldset>
