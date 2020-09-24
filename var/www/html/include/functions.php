@@ -626,7 +626,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
     }
 
     $now =  new DateTime();
-    $hangtime = "3";
+    $hangtime = "2";
 
     if ($hangtime != "") {
 	$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
@@ -666,7 +666,7 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
 	    $hangtime = getConfigItem("POCSAG Network", "ModeHang", $mmdvmconfigs);
 	}
 	else {
-	    $hangtime = "3";
+	    $hangtime = "2";
 	}
 	$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
     }
