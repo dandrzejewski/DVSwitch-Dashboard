@@ -101,7 +101,7 @@ if (file_exists('/var/www/html/ABInfo.json')) {
 }
 
 // TRX Status code
-echo '<br><table><tr><th colspan="2">TRX Info</th></tr>';
+echo '<br><table><tr><th colspan="2">TRX Info</th></tr><tr>';
 if (isset($lastHeard[0])) {
     $listElem = $lastHeard[0];
     if ( $listElem[2] && $listElem[6] == null && $listElem[5] !== 'DVSM/UC') {
