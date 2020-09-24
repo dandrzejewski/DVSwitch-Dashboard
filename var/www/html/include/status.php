@@ -255,7 +255,7 @@ if ( $testMMDVModeNXDN == 1 ) { //Hide the NXDN information when NXDN Network mo
     }
     echo "</table>\n";
 }
-$testMMDVModeDSTAR = getConfigItem("D-Star", "Enable", $mmdvmconfigs);
+$testMMDVModeDSTAR = getConfigItem("D-Star Network", "Enable", $mmdvmconfigs);
 if ( $testMMDVModeDSTAR == 1 ) { //Hide the D-Star Reflector information when D-Star Network not enabled.
 //Load the ircDDBGateway config file
 $configs = array();
