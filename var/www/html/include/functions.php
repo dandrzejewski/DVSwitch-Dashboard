@@ -163,13 +163,13 @@ function getMMDVMLog() {
 	$logLines2 = array();
 	if (file_exists(LOGPATH."/".MMDVMLOGPREFIX."-".gmdate("Y-m-d").".log")) {
 		$logPath = LOGPATH."/".MMDVMLOGPREFIX."-".gmdate("Y-m-d").".log";
-		$logLines1 = explode("\n", `egrep -h "Begin|frames|from|end|watchdog|lost" $logPath | sed '/\(CSBK\|overflow\|Downlink\)/d' | sed 's/I:/M:/g' | tail -250`);
+		$logLines1 = explode("\n", `egrep -h "Begin|state|frames|from|end|watchdog|lost" $logPath | sed '/\(CSBK\|overflow\|Downlink\)/d' | sed 's/I:/M:/g' | tail -250`);
 	}
 	$logLines1 = array_slice($logLines1, -250);
 	if (sizeof($logLines1) < 250) {
 		if (file_exists(LOGPATH."/".MMDVMLOGPREFIX."-".gmdate("Y-m-d", time() - 86340).".log")) {
 			$logPath = LOGPATH."/".MMDVMLOGPREFIX."-".gmdate("Y-m-d", time() - 86340).".log";
-			$logLines2 = explode("\n", `egrep -h "Begin|frames|from|end|watchdog|lost" $logPath | sed '/\(CSBK\|overflow\|Downlink\)/d' | sed 's/I:/M:/g' | tail -250`);
+			$logLines2 = explode("\n", `egrep -h "Begin|state|frames|from|end|watchdog|lost" $logPath | sed '/\(CSBK\|overflow\|Downlink\)/d' | sed 's/I:/M:/g' | tail -250`);
 		}
 	}
 	$logLines2 = array_slice($logLines2, -250);
@@ -366,6 +366,8 @@ function getHeardList($logLines) {
 			continue;
 		} else if(strpos($logLine,"NXDN, received RF header from")) {
 			continue;
+		} else if(strpos($logLine,"TX state = ON")) {
+			continue;
 		} else if(strpos($logLine,"received RF header for wrong repeater")) {
 			continue;
 		} else if(strpos($logLine,"unable to decode the network CSBK")) {
@@ -384,12 +386,17 @@ function getHeardList($logLines) {
                         continue;
 		}
 //		print($logLine);
-		if(strpos($logLine,"DMR frame count was") || strpos($logLine, "end of") || strpos($logLine, "watchdog has expired") || strpos($logLine, "ended RF data") || strpos($logLine, "ended network") || strpos($logLine, "RF user has timed out") || strpos($logLine, "transmission lost") || strpos($logLine, "POCSAG")) {
+		if(strpos($logLine,"TX state") || strpos($logLine, "end of") || strpos($logLine, "watchdog has expired") || strpos($logLine, "ended RF data") || strpos($logLine, "ended network") || strpos($logLine, "RF user has timed out") || strpos($logLine, "transmission lost") || strpos($logLine, "POCSAG")) {
 
-		if (strpos($logLine,"DMR frame count was")){
-			$duration = substr($logLine, strpos($logLine,"was")+4, strpos($logLine,"frames") - strpos($logLine,"was")-5)*0.059;
-			$ts2duration=number_format($duration, 1, '.', '.');
-			} 
+		if (strpos($logLine,"TX state = OFF,")){
+			$dvsm=substr($logLine, 27, strpos($logLine,",") - 27);
+			if ($dvsm="DMR") {
+				$duration = substr($logLine, strpos($logLine,"was")+4, strpos($logLine,"frames") - strpos($logLine,"was")-5)*0.059;
+				$dmrduration=number_format($duration, 1, '.', '.');
+				$dmrber = "---";
+				$dmrloss = "---";}
+			} else {
+
 			$lineTokens = explode(", ",$logLine);
 			if (array_key_exists(2,$lineTokens)) {
 				$duration = strtok($lineTokens[2], " ");
@@ -406,6 +413,7 @@ function getHeardList($logLines) {
 			if (startsWith($loss,"RSSI")) {
 				$lineTokens[4] = $loss; //move RSSI to the position expected on code below
 				$loss = 'BER: ??%';
+				}
 			}
 
 			// if RF-Packet, no LOSS would be reported, so BER is in LOSS position
@@ -447,37 +455,36 @@ function getHeardList($logLines) {
 						$dstarduration	= $duration;
 						$dstarloss	= $loss;
 						$dstarber	= $ber;
-						$dstarrssi	= $rssi;
+						break;
+					case "DMR":
+						$dmrduration	= $dmrduration;
+						$dmrloss	= $dmrloss;
+						$dmrber		= $dmrber;
 						break;
 					case "DMR Slot 1":
 						$ts1duration	= $duration;
 						$ts1loss	= $loss;
 						$ts1ber		= $ber;
-						$ts1rssi	= $rssi;
 						break;
 					case "DMR Slot 2":
 						$ts2duration	= $duration;
 						$ts2loss	= $loss;
 						$ts2ber		= $ber;
-						$ts2rssi	= $rssi;
 						break;
 					case "YSF":
 						$ysfduration	= $duration;
 						$ysfloss	= $loss;
 						$ysfber		= $ber;
-						$ysfrssi	= $rssi;
 						break;
 					case "P25":
 						$p25duration	= $duration;
 						$p25loss	= $loss;
 						$p25ber		= $ber;
-						$p25rssi	= $rssi;
 						break;
 					case "NXDN":
 						$nxdnduration	= $duration;
 						$nxdnloss	= $loss;
 						$nxdnber	= $ber;
-						$nxdnrssi	= $rssi;
 						break;
 					case "POCSAG":
 						$pocsagduration	= "";
@@ -487,50 +494,48 @@ function getHeardList($logLines) {
 		}
 
 		if (strpos($logLine,"Begin TX")) {
-		$callsign = "-----";
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
-		if ($mode == "DMR") {
-			$slot = trim(substr($logLine,strpos($logLine,"slot=")+5,strpos($logLine,"cc=") - strpos($logLine,"slot=")-5));
-			$mode = "DMR Slot ".$slot;
-			$callsign = substr($logLine, strpos($logLine,"metadata=")+9);				
+		if ($mode == "DMR" || $mode == "YSF" || $mode == "NXDN") {
+			$callsign = substr($logLine, strpos($logLine,"metadata=")+9);
 			$callsign = trim($callsign);
-			$ts2loss = "0%";
-                	$ts2ber	 = "0.0%";
-			$ts2rssi="---";
-			$ts1loss = "0%";
-                	$ts1ber	 = "0.0%";
-			$ts1rssi="---";}
-		$callsign = substr($logLine, strpos($logLine,"metadata=")+9);				
-		$callsign = trim($callsign);
-		$timestamp = substr($logLine, 3, 19);
-		$id ="";
+		    } else { $callsign= trim(substr($logLine,strpos($logLine,"src=")+4,strpos($logLine,"rpt=") - strpos($logLine,"src=")-5));}
 		$target = "TG ".substr($logLine,strpos($logLine,"dst=")+4,strpos($logLine,"slot=") - strpos($logLine,"dst=")-4);
 		$source = "DVSM/UC";
-		} else {
 		$timestamp = substr($logLine, 3, 19);
+		$id ="";
+		} 
+		if (strpos($logLine,"from")){
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
+		$timestamp = substr($logLine, 3, 19);
 		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
 		$callsign = $callsign2;
 		if (strpos($callsign2,"/") > 0) {
 			$callsign = substr($callsign2, 0, strpos($callsign2,"/"));
 		}
 		$callsign = trim($callsign);
+
 		$id ="";
 		if ($mode == "D-Star") {
 			$id = substr($callsign2, strpos($callsign2,"/") + 1);
 		}
+
 		$target = trim(substr($logLine, strpos($logLine, "to") + 3));
 		// Handle more verbose logging from MMDVMHost
                 if (strpos($target,",") !== 'false') { $target = explode(",", $target)[0]; }
 			
 		$source = "Net";		
-		}
+		};
 		switch ($mode) {
 			case "D-Star":
 				$duration	= $dstarduration;
 				$loss		= $dstarloss;
 				$ber		= $dstarber;
 				$rssi		= $dstarrssi;
+				break;
+			case "DMR":
+				$duration	= $dmrduration;
+                		$loss		= strlen($dmrloss) ? $dmrloss : "---";
+                		$ber		= strlen($dmrber) ? $dmrber : "---";
 				break;
 			case "DMR Slot 1":
 				$duration	= $ts1duration;
@@ -577,11 +582,10 @@ function getHeardList($logLines) {
 
 		// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
 		if ( strlen($callsign) < 11 ) {
-			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber, $rssi));
+			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
 			$duration = "";
 			$loss ="";
 			$ber = "";
-			$rssi = "";
 		}
 	}
 	return $heardList;
