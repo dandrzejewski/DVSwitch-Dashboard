@@ -33,7 +33,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 <div class="container"> 
 <div class="header">
 <center>
-<h2>PI-DVSwitch Server Dashboard</h2>
+<h2>PI-DVSwitch Dashboard</h2>
 </center>
 </div>
 <div class="content"><center>
@@ -112,7 +112,7 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
     echo '</div>'."\n";
 ?>
 <div class="content">
-<center><span style="font: 7pt arial, sans-serif;">PI-DVSwitch Server Dashboard &copy; <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?> (based on Pi-Star MW0MWZ)</span></cnter>
+<center><span style="font: 7pt arial, sans-serif;">PI-DVSwitch Dashboard &copy; <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?> (based on Pi-Star MW0MWZ)</span></cnter>
 </div>
 </div>
 </fieldset>
