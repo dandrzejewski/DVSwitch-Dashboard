@@ -54,7 +54,7 @@ fclose($dmrMasterFile);
 if (file_exists('/var/www/html/ABInfo.json')) {
     $abinfo = getABInfo();
     echo "<table>\n";
-    echo "<tr><th colspan=\"2\"><div class=\"tooltip\">AB Info<span class=\"tooltiptext\" style=\"font-size:11px;\">";
+    echo "<tr><th colspan=\"2\"><div class=\"tooltip\">Analog Bridge Info<span class=\"tooltiptext\" style=\"font-size:11px;\">";
     echo "<br>&nbsp;decoderFallBack: ".$abinfo['use_fallback'];
     echo "<br>&nbsp;useEmulator: ".$abinfo['use_emulator'];
     echo "<br>&nbsp;Mute: ".$abinfo['mute'];
