@@ -63,13 +63,13 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
     echo '<div class="nav">'."\n";
     echo '<script type="text/javascript">'."\n";
     echo 'function reloadModeInfo(){'."\n";
-    echo '  $("#modeInfo").load("/include/mode.php",function(){ setTimeout(reloadModeInfo,1000) });'."\n";
+    echo '  $("#modeInfo").load("/include/status.php",function(){ setTimeout(reloadModeInfo,1000) });'."\n";
     echo '}'."\n";
     echo 'setTimeout(reloadModeInfo,1000);'."\n";
     echo '$(window).trigger(\'resize\');'."\n";
     echo '</script>'."\n";
     echo '<div id="modeInfo">'."\n";
-    include 'include/mode.php';			// Mode and Networks Info
+    include 'include/status.php';			// Mode and Networks Info
     echo '</div>'."\n";
     echo '</div>'."\n";
     echo '</td>'."\n";
