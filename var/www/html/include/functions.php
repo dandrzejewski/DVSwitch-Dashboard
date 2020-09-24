@@ -614,72 +614,72 @@ function getLastHeard($logLines) {
 }
 
 function getActualMode($metaLastHeard, $mmdvmconfigs) {
-	// returns mode of repeater actual working in
+    // returns mode of repeater actual working in
         $utc_tz =  new DateTimeZone('UTC');
         $local_tz = new DateTimeZone(date_default_timezone_get ());
         $listElem = $metaLastHeard[0];
         $timestamp = new DateTime($listElem[0], $utc_tz);
         $timestamp->setTimeZone($local_tz); 
         $mode = $listElem[1];
-	if (startsWith($mode, "DMR")) {
-		$mode = "DMR";
-	}
+    if (startsWith($mode, "DMR")) {
+	$mode = "DMR";
+    }
 
-	$now =  new DateTime();
-	$hangtime = getConfigItem("General", "ModeHang", $mmdvmconfigs);
+    $now =  new DateTime();
+    $hangtime = "3";
 
-	if ($hangtime != "") {
-		$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
-	} else {
-		$source = $listElem[5];
-		if ($source == "RF" && $mode === "D-Star") {
-			$hangtime = getConfigItem("D-Star", "ModeHang", $mmdvmconfigs);
-		}
-		else if ($source == "Net" && $mode === "D-Star") {
-			$hangtime = getConfigItem("D-Star Network", "ModeHang", $mmdvmconfigs);
-		}
-		else if ($source == "RF" && $mode === "DMR") {
-			$hangtime = getConfigItem("DMR", "ModeHang", $mmdvmconfigs);
-		}
-		else if ($source == "Net" && $mode === "DMR") {
-			$hangtime = getConfigItem("DMR Network", "ModeHang", $mmdvmconfigs);
-		}
-		else if ($source == "RF" && $mode === "YSF") {
-			$hangtime = getConfigItem("System Fusion", "ModeHang", $mmdvmconfigs);
-		}
-		else if ($source == "Net" && $mode === "YSF") {
-			$hangtime = getConfigItem("System Fusion Network", "ModeHang", $mmdvmconfigs);
-		}
-		else if ($source == "RF" && $mode === "P25") {
-			$hangtime = getConfigItem("P25", "ModeHang", $mmdvmconfigs);
-		}
-		else if ($source == "Net" && $mode === "P25") {
-			$hangtime = getConfigItem("P25 Network", "ModeHang", $mmdvmconfigs);
-		}
-		else if ($source == "RF" && $mode === "NXDN") {
-			$hangtime = getConfigItem("NXDN", "ModeHang", $mmdvmconfigs);
-		}
-		else if ($source == "Net" && $mode === "NXDN") {
-			$hangtime = getConfigItem("NXDN Network", "ModeHang", $mmdvmconfigs);
-		}
-		else if ($source == "Net" && $mode === "POCSAG") {
-			$hangtime = getConfigItem("POCSAG Network", "ModeHang", $mmdvmconfigs);
-		}
-		else {
-			$hangtime = getConfigItem("General", "RFModeHang", $mmdvmconfigs);
-		}
-		$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
+    if ($hangtime != "") {
+	$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
+    } else {
+	$source = $listElem[5];
+	if ($source == "DVSM/UC" && $mode === "D-Star") {
+	    $hangtime = getConfigItem("D-Star", "ModeHang", $mmdvmconfigs);
 	}
-	if ($listElem[6] != null) { //if terminated, hangtime counts after end of transmission
-		$timestamp->add(new DateInterval('PT' . ceil($listElem[6]) . 'S'));
-	} else { //if not terminated, always return mode
-		return $mode;
+	else if ($source == "Net" && $mode === "D-Star") {
+	    $hangtime = getConfigItem("D-Star Network", "ModeHang", $mmdvmconfigs);
 	}
-	if ($now->format('U') > $timestamp->format('U')) {
-		return "idle";
-	} else {
-		return $mode;
+	else if ($source == "DVSM/UC" && $mode === "DMR") {
+	    $hangtime = getConfigItem("DMR", "ModeHang", $mmdvmconfigs);
 	}
+	else if ($source == "Net" && $mode === "DMR") {
+	    $hangtime = getConfigItem("DMR Network", "ModeHang", $mmdvmconfigs);
+	}
+	else if ($source == "DVSM/UC" && $mode === "YSF") {
+	    $hangtime = getConfigItem("System Fusion", "ModeHang", $mmdvmconfigs);
+	}
+	else if ($source == "Net" && $mode === "YSF") {
+	    $hangtime = getConfigItem("System Fusion Network", "ModeHang", $mmdvmconfigs);
+	}
+	else if ($source == "DVSM/UC" && $mode === "P25") {
+	    $hangtime = getConfigItem("P25", "ModeHang", $mmdvmconfigs);
+	}
+	else if ($source == "Net" && $mode === "P25") {
+	    $hangtime = getConfigItem("P25 Network", "ModeHang", $mmdvmconfigs);
+	}
+	else if ($source == "DVSM/UC" && $mode === "NXDN") {
+	    $hangtime = getConfigItem("NXDN", "ModeHang", $mmdvmconfigs);
+	}
+	else if ($source == "Net" && $mode === "NXDN") {
+	    $hangtime = getConfigItem("NXDN Network", "ModeHang", $mmdvmconfigs);
+	}
+	else if ($source == "Net" && $mode === "POCSAG") {
+	    $hangtime = getConfigItem("POCSAG Network", "ModeHang", $mmdvmconfigs);
+	}
+	else {
+	    $hangtime = "3";
+	}
+	$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
+    }
+    if ($listElem[6] != null) { //if terminated, hangtime counts after end of transmission
+	$timestamp->add(new DateInterval('PT' . ceil($listElem[6]) . 'S'));
+    } else { //if not terminated, always return mode
+	return $mode;
+    }
+    if ($now->format('U') > $timestamp->format('U')) {
+	return "idle";
+    } else {
+	return $mode;
+    }
 }
 
 function getDSTARLinks() {
