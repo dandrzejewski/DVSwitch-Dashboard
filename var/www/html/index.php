@@ -1,5 +1,5 @@
 <?php
-// DVSwitch Server Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ). Version SP2ONG 2020
+// PI-DVSwitch Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ). Version SP2ONG 2020
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -17,7 +17,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="pragma" content="no-cache" />
 <link rel="shortcut icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/png">
-    <title>DVSwitch Server Dashboard</title>
+    <title>PI-DVSwitch Dashboard</title>
 <?php include_once "include/browserdetect.php"; ?>
     <script type="text/javascript" src="/scripts/jquery.min.js"></script>
     <script type="text/javascript" src="/scripts/functions.js"></script>
