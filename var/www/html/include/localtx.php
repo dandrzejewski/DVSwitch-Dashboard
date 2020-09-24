@@ -33,7 +33,7 @@ for ($i = 0; $i < count($localTXList); $i++) {
 
 			echo"<tr>";
 			echo"<td align=\"left\">&nbsp;$local_time</td>";
-			echo"<td align=\"left\">&nbsp;$listElem[1]</td>";
+			echo"<td align=\"left\" style=\"color:green; font-weight:bold;\">&nbsp;$listElem[1]</td>";
 			if (is_numeric($listElem[2])) {
 				echo "<td align=\"left\">&nbsp;$listElem[2]</td>";
 			} else {
