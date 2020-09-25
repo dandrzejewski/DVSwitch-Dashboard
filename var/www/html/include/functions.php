@@ -394,7 +394,7 @@ function getHeardList($logLines) {
 				$duration = substr($logLine, strpos($logLine,"was")+4, strpos($logLine,"frames") - strpos($logLine,"was")-5)*0.059;
 				$duration=number_format($duration, 1, '.', '.'); }
 			if ($dvsm == "YSF" || $dvsm == "NXDN" || $dvsm == "P25") {
-				$duration="0.0"; }
+				$duration="---"; }
 			$ber = "---";
 			$loss = "---";
 			} else {
