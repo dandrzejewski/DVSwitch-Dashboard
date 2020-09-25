@@ -96,28 +96,28 @@ function showMode($mode, $mmdvmconfigs) {
 			if (isProcessRunning("ircddbgatewayd")) {
 				echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 			} else {
-				echo "<td style=\"background:#b00; color:#500; width:10%;\">";
+				echo "<td style=\"background:#b00; color:#f9f9f9; width:10%;\">";
 			}
 		}
 		elseif ($mode == "System Fusion Network") {
 			if (isProcessRunning("YSFGateway")) {
 				echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 			} else {
-				echo "<td style=\"background:#b00; color:#500; width:10%;\">";
+				echo "<td style=\"background:#b00; color:#f9f9f9; width:10%;\">";
 			}
 		}
 		elseif ($mode == "P25 Network") {
 			if (isProcessRunning("P25Gateway")) {
 				echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 			} else {
-				echo "<td style=\"background:#b00; color:#500; width:10%;\">";
+				echo "<td style=\"background:#b00; color:#f9f9f9; width:10%;\">";
 			}
 		}
 		elseif ($mode == "NXDN Network") {
 			if (isProcessRunning("NXDNGateway")) {
 				echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 			} else {
-				echo "<td style=\"background:#b00; color:#500; width:10%;\">";
+				echo "<td style=\"background:#b00; color:#f9f9f9; width:10%;\">";
 			}
 		}
 		elseif ($mode == "DMR Network") {
@@ -125,14 +125,14 @@ function showMode($mode, $mmdvmconfigs) {
 				if (isProcessRunning("DMRGateway")) {
 					echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 				} else {
-					echo "<td style=\"background:#b00; color:#500; width:10%;\">";
+					echo "<td style=\"background:#b00; color:#f9f9f9; width:10%;\">";
 				}
 			}
 			else {
 				if (isProcessRunning("MMDVM_Bridge")) {
 					echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 				} else {
-					echo "<td style=\"background:#b00; color:#500; width:10%;\">";
+					echo "<td style=\"background:#b00; color:#f9f9f9; width:10%;\">";
 				}
 			}
 		}
@@ -141,7 +141,7 @@ function showMode($mode, $mmdvmconfigs) {
 				if (isProcessRunning("MMDVM_Bridge")) {
 					echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
 				} else {
-					echo "<td style=\"background:#b00; color:#500; width:10%;\">";
+					echo "<td style=\"background:#b00; color:#f9f9f9; width:10%;\">";
 				}
 			}
 		}
