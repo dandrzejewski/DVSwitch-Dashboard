@@ -416,7 +416,6 @@ function getHeardList($logLines) {
 				$lineTokens[4] = $loss; //move RSSI to the position expected on code below
 				$loss = 'BER: ??%';
 				}
-			}
 
 			// if RF-Packet, no LOSS would be reported, so BER is in LOSS position
 			if (startsWith($loss,"BER")) {
@@ -440,8 +439,8 @@ function getHeardList($logLines) {
 				if (array_key_exists(4,$lineTokens)) {
 					$ber = substr($lineTokens[4], 5);
 				}
+			 }
 			}
-
 			if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
 				switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
 					case "DMR Slot 1":
