@@ -12,7 +12,7 @@ if ($cpuTempC >= 50) { $cpuTempHTML = "<td style=\"background: #fa0\">".$cpuTemp
 if ($cpuTempC >= 69) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTempC."&deg;C / ".$cpuTempF."&deg;F</td>\n"; }
 ?>
 <fieldset style="box-shadow:0 0 10px #999;background-color:#e8e8e8e8;width:855px;margin-top:8px;;margin-bottom:8px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<table>
+<table style="margin-top:2px;">
     <tr><th style="padding-top:4px;padding-bottom:4px;">&nbsp;Modes&nbsp;</th>
     <?php showMode("DMR", $mmdvmconfigs);?><?php showMode("System Fusion", $mmdvmconfigs);?>
     <?php showMode("NXDN", $mmdvmconfigs);?><?php showMode("P25", $mmdvmconfigs);?>
@@ -26,7 +26,7 @@ if ($cpuTempC >= 69) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTemp
 </fieldset>
 <span style="font-weight: bold;font-size:13px;">Hardware info</span>
 <fieldset style="box-shadow:0 0 10px #999;background-color:#e8e8e8e8; width:855px;margin-top:8px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-<table>
+<table style="margin-top:2px;">
   <tr>
     <th>Hostname<br/><span style="font-weight: bold;font-size:10px;">IP: <?php echo str_replace(',', ',<br />', exec('hostname -I'));?></span></th>
     <th><b>Kernel<br/>release</b></th>
