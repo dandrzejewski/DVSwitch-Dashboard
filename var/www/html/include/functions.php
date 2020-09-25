@@ -388,13 +388,15 @@ function getHeardList($logLines) {
 //		print($logLine);
 		if(strpos($logLine,"TX state") || strpos($logLine, "end of") || strpos($logLine, "watchdog has expired") || strpos($logLine, "ended RF data") || strpos($logLine, "ended network") || strpos($logLine, "RF user has timed out") || strpos($logLine, "transmission lost") || strpos($logLine, "POCSAG")) {
 
-		if (strpos($logLine,"TX state = OFF,")){
+		if (strpos($logLine,"TX state = OFF")){
 			$dvsm=substr($logLine, 27, strpos($logLine,",") - 27);
-			if ($dvsm="DMR") {
+			if ($dvsm == "DMR") {
 				$duration = substr($logLine, strpos($logLine,"was")+4, strpos($logLine,"frames") - strpos($logLine,"was")-5)*0.059;
-				$dmrduration=number_format($duration, 1, '.', '.');
-				$dmrber = "---";
-				$dmrloss = "---";}
+				$duration=number_format($duration, 1, '.', '.'); }
+			if ($dvsm == "YSF" || $dvsm == "NXDN" || $dvsm == "P25") {
+				$duration="0.0"; }
+			$ber = "---";
+			$loss = "---";
 			} else {
 
 			$lineTokens = explode(", ",$logLine);
@@ -457,9 +459,9 @@ function getHeardList($logLines) {
 						$dstarber	= $ber;
 						break;
 					case "DMR":
-						$dmrduration	= $dmrduration;
-						$dmrloss	= $dmrloss;
-						$dmrber		= $dmrber;
+						$dmrduration	= $duration;
+						$dmrloss	= $loss;
+						$dmrber		= $ber;
 						break;
 					case "DMR Slot 1":
 						$ts1duration	= $duration;
