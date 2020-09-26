@@ -356,12 +356,13 @@ input.toggle-round-flat:checked + label:after {
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
+  font-weight: 500;
   margin: 4px 2px;
   border-radius: 8px;
   box-shadow: 0px 8px 10px rgba(0,0,0,0.1);
 }
 .link {background-color: #2A6594;}
-.link:hover {background-color: #35bbe3;}
+.link:hover {background-color: #3e8e41;}
 
 .dropbtn {
   background-color: #2A659A;
@@ -372,6 +373,7 @@ input.toggle-round-flat:checked + label:after {
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
+  font-weight: 500;
   margin: 4px 2px;
   border-radius: 8px;
   box-shadow: 0px 8px 10px rgba(0,0,0,0.1);
@@ -388,7 +390,7 @@ input.toggle-round-flat:checked + label:after {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 140px;
+  min-width: 110px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
