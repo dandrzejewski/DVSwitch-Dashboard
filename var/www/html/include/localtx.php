@@ -15,7 +15,6 @@ $localTXList = $lastHeard;
       <th>Target</th>
       <th>Src</th>
       <th>Dur(s)</th>
-      <th>BER</th>
     </tr>
 <?php
 $counter = 0;
