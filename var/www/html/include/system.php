@@ -34,7 +34,7 @@ if ($cpuTempC >= 69) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTemp
     <th><span><b>CPU Load</b></span></th>
     <th><span><b>CPU Temp</b></span></th>
   </tr>
-  <tr height="25px">
+  <tr height="24px">
     <td><?php echo php_uname('n');?></td>
     <td><?php echo php_uname('r');?></td>
     <td colspan="2"><?php echo exec('/usr/local/bin/platformDetect.sh');?></td>
