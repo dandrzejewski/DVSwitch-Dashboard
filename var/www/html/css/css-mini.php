@@ -390,7 +390,7 @@ input.toggle-round-flat:checked + label:after {
   display: none;
   position: absolute;
   background-color: #f1f1f1;
-  min-width: 110px;
+  min-width: 135px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
