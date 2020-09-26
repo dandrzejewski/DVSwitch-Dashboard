@@ -228,7 +228,7 @@ a:link, a:visited {
   -webkit-border-radius: 5px
   padding: 8px 0;
   top: -15px;
-  right: -20%;
+  right: -25%;
   opacity: 1;
   /* Position the tooltip */
   position: absolute;
