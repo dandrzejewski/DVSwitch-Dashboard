@@ -156,7 +156,7 @@ if (isset($lastHeard[0])) {
 else {
     echo "<td></td>";
 }
-
+echo "</tr></table>\n";
 echo "<br />\n";
 echo "<table>\n";
 echo "<tr><th colspan=\"2\">DMR Master</th></tr>\n";
