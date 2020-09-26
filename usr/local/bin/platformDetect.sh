@@ -4,6 +4,11 @@
 # Written by Andy Taylor (MW0MWZ)
 #
 
+BOARD_NAME=""
+if [ -f /etc/armbian-release ]; then
+    source /etc/armbian-release
+fi
+
 # Pull the CPU Model from /proc/cpuinfo
 modelName=`grep 'model name' /proc/cpuinfo | sed 's/.*: //'`
 hardwareField=`grep 'Hardware' /proc/cpuinfo | sed 's/.*: //'`
@@ -65,7 +70,11 @@ if [[ ${modelName} == "ARM"* ]]; then
 	if [[ ${hardwareField} == "ODROID"* ]]; then
 		echo "Odroid XU3/XU4 System"
 	elif [[ ${hardwareField} == *"sun8i"* ]]; then
-		echo "sun8i based Pi Clone"
+		if [[ $BOARD_NAME != "" ]]; then
+			echo $BOARD_NAME
+		else
+			echo "sun8i based Pi Clone"
+		fi
 	elif [[ ${hardwareField} == *"s5p4418"* ]]; then
 		echo "Samsung Artik"
 	else
