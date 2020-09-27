@@ -3,6 +3,30 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/tools.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/include/config.php';         
 include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
+
+// Retrieve mem used
+$system = system_information();
+
+function system_information() {
+    @list($system, $host, $kernel) = preg_split('/[\s,]+/', php_uname('a'), 5);
+    $meminfo = false;
+    if (@is_readable('/proc/meminfo')) {
+        $data = explode("\n", file_get_contents("/proc/meminfo"));
+        $meminfo = array();
+        foreach ($data as $line) {
+            if (strpos($line, ':') !== false) {
+                list($key, $val) = explode(":", $line);
+                $meminfo[$key] = 1024 * floatval( trim( str_replace( ' kB', '', $val ) ) );
+            }
+        }
+    }
+    return array('date' => date('Y-m-d H:i:s T'),
+                 'mem_info' => $meminfo,
+                 );
+}
+$sysRamUsed = $system['mem_info']['MemTotal'] - $system['mem_info']['MemFree'] - $system['mem_info']['Buffers'] - $system['mem_info']['Cached'];
+$sysRamPercent = sprintf('%.0f',($sysRamUsed / $system['mem_info']['MemTotal']) * 100);
+
 $cpuLoad = sys_getloadavg();
 $cpuTempCRaw = exec('cat /sys/class/thermal/thermal_zone0/temp');
 if ($cpuTempCRaw > 1000) { $cpuTempC = round($cpuTempCRaw / 1000); } else { $cpuTempC = round($cpuTempCRaw); }
@@ -31,6 +55,7 @@ if ($cpuTempC >= 69) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTemp
     <th>Hostname<br/><span style="font-weight: bold;color:yellow;font-size:10px;">IP: <?php echo str_replace(',', ',<br />', exec('hostname -I'));?></span></th>
     <th><b>Kernel<br/>release</b></th>
     <th colspan="2">Platform <br><span style="font-weight: bold;color:yellow;font-size:12px;">Uptime: <?php echo str_replace(',', ',', exec('uptime -p'));?></span></th>
+    <th><span>&nbsp;<b>Memory&nbsp;<br> used</b></span></th>
     <th><span><b>CPU Load</b></span></th>
     <th><span><b>CPU Temp</b></span></th>
   </tr>
@@ -38,6 +63,7 @@ if ($cpuTempC >= 69) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTemp
     <td><?php echo php_uname('n');?></td>
     <td><?php echo php_uname('r');?></td>
     <td colspan="2"><?php echo exec('/usr/local/bin/platformDetect.sh');?></td>
+    <td><?php echo $sysRamPercent."%";?></td>
     <td><?php echo round($cpuLoad[0],1);?> / <?php echo round($cpuLoad[1],1);?> / <?php echo round($cpuLoad[2],1);?></td>
     <?php echo $cpuTempHTML; ?>
   </tr>
