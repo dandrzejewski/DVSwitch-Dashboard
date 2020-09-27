@@ -37,9 +37,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 </center>
 </div>
 <div class="content"><center>
-<div style="margin-top:5px;">
-<a target='_blank' href="http://<?=$_SERVER['SERVER_NAME']?>:2812"><button class="button link"><b>&nbsp;MONIT Service Manager&nbsp;</b></button></a>
-</div></center>
+<div style="margin-top:8px;"></div></center>
 </div>
 <?php
 include 'include/config.php';
