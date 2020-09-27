@@ -4,28 +4,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/config.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 
-// Retrieve mem used
-$system = system_information();
-
-function system_information() {
-    @list($system, $host, $kernel) = preg_split('/[\s,]+/', php_uname('a'), 5);
-    $meminfo = false;
-    if (@is_readable('/proc/meminfo')) {
-        $data = explode("\n", file_get_contents("/proc/meminfo"));
-        $meminfo = array();
-        foreach ($data as $line) {
-            if (strpos($line, ':') !== false) {
-                list($key, $val) = explode(":", $line);
-                $meminfo[$key] = 1024 * floatval( trim( str_replace( ' kB', '', $val ) ) );
-            }
-        }
-    }
-    return array('date' => date('Y-m-d H:i:s T'),
-                 'mem_info' => $meminfo,
-                 );
-}
-$sysRamUsed = $system['mem_info']['MemTotal'] - $system['mem_info']['MemFree'] - $system['mem_info']['Buffers'] - $system['mem_info']['Cached'];
-$sysRamPercent = sprintf('%.0f',($sysRamUsed / $system['mem_info']['MemTotal']) * 100);
+$free_mem=shell_exec("free -m | awk 'NR==2{printf \"%.0f%%\", $3*100/$2 }'");
 
 $cpuLoad = sys_getloadavg();
 $cpuTempCRaw = exec('cat /sys/class/thermal/thermal_zone0/temp');
@@ -63,7 +42,7 @@ if ($cpuTempC >= 69) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTemp
     <td><?php echo php_uname('n');?></td>
     <td><?php echo php_uname('r');?></td>
     <td colspan="2"><?php echo exec('/usr/local/bin/platformDetect.sh');?></td>
-    <td><?php echo $sysRamPercent."%";?></td>
+    <td><?php echo $free_mem;?></td>
     <td><?php echo round($cpuLoad[0],1);?> / <?php echo round($cpuLoad[1],1);?> / <?php echo round($cpuLoad[2],1);?></td>
     <?php echo $cpuTempHTML; ?>
   </tr>
