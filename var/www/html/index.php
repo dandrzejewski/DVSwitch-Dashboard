@@ -39,15 +39,6 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 <div class="content"><center>
 <div style="margin-top:5px;">
 <a target='_blank' href="http://<?=$_SERVER['SERVER_NAME']?>:2812"><button class="button link"><b>&nbsp;MONIT Service Manager&nbsp;</b></button></a>
-&nbsp;
-<div class="dropdown"><button class="dropbtn"><b>&nbsp;Switch DV Mode&nbsp;</b></button>
-    <div class="dropdown-content">
-    <a href="http://<?=$_SERVER['SERVER_NAME']?>/other/smode.php?m=DMR"><b>DMR</b></a>
-    <a href="http://<?=$_SERVER['SERVER_NAME']?>/other/smode.php?m=YSF"><b>YSF</b></a>
-    <a href="http://<?=$_SERVER['SERVER_NAME']?>/other/smode.php?m=P25"><b>P25</b></a>
-    <a href="http://<?=$_SERVER['SERVER_NAME']?>/other/smode.php?m=NXDN"><b>NXDN</b></a>
-    <a href="http://<?=$_SERVER['SERVER_NAME']?>/other/smode.php?m=DStar"><b>D-Star</b></a>
-    </div></div>
 </div></center>
 </div>
 <?php
