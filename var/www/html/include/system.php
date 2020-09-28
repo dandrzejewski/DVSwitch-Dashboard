@@ -5,6 +5,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 
 $free_mem=shell_exec("free -m | awk 'NR==2{printf \"%.0f%%\", $3*100/$2 }'");
+$disk_used=shell_exec("df -h | awk '\$NF==\"/\"{printf \"%s\",$5}'");
 
 $cpuLoad = sys_getloadavg();
 $cpuTempCRaw = exec('cat /sys/class/thermal/thermal_zone0/temp');
@@ -34,6 +35,7 @@ if ($cpuTempC >= 69) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTemp
     <th>Hostname<br/><span style="font-weight: bold;color:yellow;font-size:10px;">IP: <?php echo str_replace(',', ',<br />', exec('hostname -I'));?></span></th>
     <th><b>Kernel<br/>release</b></th>
     <th colspan="2">Platform <br><span style="font-weight: bold;color:yellow;font-size:12px;">Uptime: <?php echo str_replace(',', ',', exec('uptime -p'));?></span></th>
+    <th><span>&nbsp;<b>Disk&nbsp;<br> used</b></span></th>
     <th><span>&nbsp;<b>Memory&nbsp;<br> used</b></span></th>
     <th><span><b>CPU Load</b></span></th>
     <th><span><b>CPU Temp</b></span></th>
@@ -42,6 +44,7 @@ if ($cpuTempC >= 69) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTemp
     <td><?php echo php_uname('n');?></td>
     <td><?php echo php_uname('r');?></td>
     <td colspan="2"><?php echo exec('/usr/local/bin/platformDetect.sh');?></td>
+    <td><?php echo $disk_used;?></td>
     <td><?php echo $free_mem;?></td>
     <td><?php echo round($cpuLoad[0],1);?> / <?php echo round($cpuLoad[1],1);?> / <?php echo round($cpuLoad[2],1);?></td>
     <?php echo $cpuTempHTML; ?>
