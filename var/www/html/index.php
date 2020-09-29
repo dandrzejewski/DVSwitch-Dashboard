@@ -17,7 +17,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
     <meta http-equiv="expires" content="0" />
     <meta http-equiv="pragma" content="no-cache" />
 <link rel="shortcut icon" href="images/favicon.ico" sizes="16x16 32x32" type="image/png">
-    <title>PI-DVSwitch Dashboard</title>
+    <title>DVSwitch Dashboard</title>
 <?php include_once "include/browserdetect.php"; ?>
     <script type="text/javascript" src="/scripts/jquery.min.js"></script>
     <script type="text/javascript" src="/scripts/functions.js"></script>
@@ -33,7 +33,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 <div class="container"> 
 <div class="header">
 <center>
-<h2>PI-DVSwitch Dashboard</h2>
+<h2>DVSwitch Dashboard</h2>
 </center>
 </div>
 <div class="content"><center>
@@ -110,7 +110,7 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
     echo '</div>'."\n";
 ?>
 <div class="content">
-<center><span style="font: 7pt arial, sans-serif;">PI-DVSwitch Dashboard &copy; <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?> (based on Pi-Star MW0MWZ)</span></cnter>
+<center><span style="font: 7pt arial, sans-serif;">DVSwitch Dashboard &copy; <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?> (based on Pi-Star MW0MWZ)</span></cnter>
 </div>
 </div>
 </fieldset>
