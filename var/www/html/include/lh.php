@@ -61,6 +61,8 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
 				echo "<td colspan=\"3\" style=\"background:#f33;\">TX</td>";
 			} else if ($listElem[6] == "SMS") {
 				echo "<td colspan=\"3\" style=\"background:#1d1;\">SMS</td>";
+			} else if ($listElem[6] == "GPS") {
+				echo "<td colspan=\"3\" style=\"background:#1d1;\">GPS</td>";
 			} else {
 			echo "<td>$listElem[6]</td>";
 
