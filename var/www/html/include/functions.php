@@ -362,8 +362,8 @@ function getHeardList($logLines) {
 			continue;
 		} else if(strpos($logLine,"invalid access")) {
 			continue;
-		} else if(strpos($logLine,"GPS Position")) {
-			continue;
+//		} else if(strpos($logLine,"GPS Position")) {
+//			continue;
 		} else if(strpos($logLine,"NXDN, received RF header from")) {
 			continue;
 		} else if(strpos($logLine,"TX state = ON")) {
@@ -386,7 +386,7 @@ function getHeardList($logLines) {
                         continue;
 		}
 //		print($logLine);
-		if(strpos($logLine,"TX state") || strpos($logLine, "end of") || strpos($logLine, "watchdog has expired") || strpos($logLine, "ended RF data") || strpos($logLine, "ended network") || strpos($logLine, "RF user has timed out") || strpos($logLine, "transmission lost") || strpos($logLine, "POCSAG")) {
+		if(strpos($logLine,"TX state") || strpos($logLine,"GPS Position") || strpos($logLine, "end of") || strpos($logLine, "watchdog has expired") || strpos($logLine, "ended RF data") || strpos($logLine, "ended network") || strpos($logLine, "RF user has timed out") || strpos($logLine, "transmission lost") || strpos($logLine, "POCSAG")) {
 
 		if (strpos($logLine,"TX state = OFF")){
 			$dvsm=substr($logLine, 27, strpos($logLine,",") - 27);
@@ -441,13 +441,16 @@ function getHeardList($logLines) {
 				}
 			 }
 			}
-			if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network") ) {
+			if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network") || strpos($logLine,"GPS Position") ) {
 				switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
 					case "DMR Slot 1":
 						$ts1duration = "SMS";
 						break;
 					case "DMR Slot 2":
 						$ts2duration = "SMS";
+						break;
+					case "YSF":
+						$ysfduration = "GPS";
 						break;
 				}
 			} else {
@@ -505,7 +508,7 @@ function getHeardList($logLines) {
 		$timestamp = substr($logLine, 3, 19);
 		$id ="";
 		} 
-		if (strpos($logLine,"from")){
+		if (strpos($logLine,"from") and strpos($logLine,"GPS Position") == False){
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
 		$timestamp = substr($logLine, 3, 19);
 		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
