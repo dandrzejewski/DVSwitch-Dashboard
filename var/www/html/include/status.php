@@ -51,8 +51,8 @@ else {
 }
 fclose($dmrMasterFile);
 	
-if (file_exists('/var/www/html/ABInfo.json')) {
-    $abinfo = getABInfo();
+if (file_exists('/tmp/ABInfo_'.ABINFO.'.json')) {
+    $abinfo = getABInfo('/tmp/ABInfo_'.ABINFO.'.json');
     echo "<table style=\"margin-top:4px;\">\n";
     echo "<tr><th colspan=\"2\"><div class=\"tooltip\">Analog Bridge Info<span class=\"tooltiptext\" style=\"font-size:11px;\">";
     echo "<br>&nbsp;decoderFallBack: ".$abinfo['use_fallback'];
