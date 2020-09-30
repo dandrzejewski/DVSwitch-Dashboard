@@ -352,6 +352,8 @@ function getHeardList($logLines) {
         $nxdnber	= "";
 	$nxdnrssi	= "";
 	$pocsagduration	= "";
+	$lat		= "";
+	$long		= "";
 	foreach ($logLines as $logLine) {
 		$duration	= "";
 		$loss		= "";
@@ -451,6 +453,8 @@ function getHeardList($logLines) {
 						break;
 					case "YSF":
 						$ysfduration = "GPS";
+						$ysflat=trim(substr($logLine,strpos($logLine,"lat=")+4,strpos($logLine,"long=") - strpos($logLine,"lat=")-4));
+						$ysflong=trim(substr($logLine, strpos($logLine,"long=")+5));
 						break;
 				}
 			} else {
@@ -558,6 +562,8 @@ function getHeardList($logLines) {
                 		$loss		= $ysfloss;
                 		$ber		= $ysfber;
 				$rssi		= $ysfrssi;
+                		$lat		= $ysflat;
+				$long		= $ysflong;
 				$target		= preg_replace('!\s+!', ' ', $target);
                 		break;
 			case "P25":
@@ -586,10 +592,12 @@ function getHeardList($logLines) {
 
 		// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
 		if ( strlen($callsign) < 11 ) {
-			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber));
+			array_push($heardList, array($timestamp, $mode, $callsign, $id, $target, $source, $duration, $loss, $ber, $lat, $long));
 			$duration = "";
 			$loss ="";
 			$ber = "";
+			$lat ="";
+			$long = "";
 		}
 	}
 	return $heardList;
