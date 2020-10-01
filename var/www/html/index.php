@@ -37,7 +37,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 </center>
 </div>
 <div class="content"><center>
-<div style="margin-top:8px;"></div></center>
+<div style="margin-top:20px;"></div></center>
 </div>
 <?php
 include 'include/config.php';
