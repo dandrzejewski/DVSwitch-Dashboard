@@ -33,16 +33,17 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
 		echo"<tr>";
 		echo"<td align=\"left\">&nbsp;$local_time</td>";
 		echo"<td align=\"left\" style=\"color:green; font-weight:bold;\">&nbsp;$listElem[1]</td>";
-		if (is_numeric($listElem[2]) || $listElem[2] == "DAPNET") {
-			echo "<td align=\"left\">&nbsp;$listElem[2]</td>";
+		if (is_numeric($listElem[2]) || strpos($listElem[2], "openSPOT") !== FALSE) {
+		    echo "<td align=\"left\">&nbsp;$listElem[2]</td>";
+		} elseif (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $listElem[2])) {
+ 	                       echo "<td align=\"left\">&nbsp;$listElem[2]</td>";
 		} else {
-			if ( $listElem[3] && $listElem[3] != '    ' ) {
-				//echo "<td align=\"left\"><a href=\"http://www.qrz.com/db/$listElem[2]\" data-featherlight=\"iframe\" data-featherlight-iframe-min-width=\"90%\" data-featherlight-iframe-max-width=\"90%\" data-featherlight-iframe-width=\"2000\" data-featherlight-iframe-height=\"2000\">$listElem[2]</a>/$listElem[3]</td>";
-				echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</a>/$listElem[3]</b></td>";
-			} else {
-				//echo "<td align=\"left\"><a href=\"http://www.qrz.com/db/$listElem[2]\" data-featherlight=\"iframe\" data-featherlight-iframe-min-width=\"90%\" data-featherlight-iframe-max-width=\"90%\" data-featherlight-iframe-width=\"2000\" data-featherlight-iframe-height=\"2000\">$listElem[2]</a></td>";
-				echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</b></a></td>";
-			}
+		    if (strpos($listElem[2],"-") > 0) { $listElem[2] = substr($listElem[2], 0, strpos($listElem[2],"-")); }
+			    if ( $listElem[3] && $listElem[3] != '    ' ) {
+			echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</b></a><b>/$listElem[3]</b></td>";
+		    } else {
+			echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</b></a></td>";
+		    }
 		}
 		if (strlen($listElem[4]) == 1) { $listElem[4] = str_pad($listElem[4], 8, " ", STR_PAD_LEFT); }
 		if ( substr($listElem[4], 0, 6) === 'CQCQCQ' ) {
