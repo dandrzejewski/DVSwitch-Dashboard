@@ -33,15 +33,18 @@ for ($i = 0; $i < count($localTXList); $i++) {
 			echo"<tr>";
 			echo"<td align=\"left\">&nbsp;$local_time</td>";
 			echo"<td align=\"left\" style=\"color:green; font-weight:bold;\">&nbsp;$listElem[1]</td>";
-			if (is_numeric($listElem[2])) {
-				echo "<td align=\"left\">&nbsp;$listElem[2]</td>";
+			    if (is_numeric($listElem[2]) || strpos($listElem[2], "openSPOT") !== FALSE) {
+				echo "<td align=\"left\">$listElem[2]</td>";
+			    } elseif (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $listElem[2])) {
+				echo "<td align=\"left\">$listElem[2]</td>";
+	    			} else {
+			if (strpos($listElem[2],"-") > 0) { $listElem[2] = substr($listElem[2], 0, strpos($listElem[2],"-")); }
+			if ($listElem[3] && $listElem[3] != '    ' ) {
+			    echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</b></a><b>/$listElem[3]</b></td>";
 			} else {
-				if ($listElem[3] && $listElem[3] != '    ' ) {
-					echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</a>/$listElem[3]</b></td>";
-				} else {
-					echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</b></a></td>";
-				}
+			    echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</b></a></td>";
 			}
+		    }
 			if (strlen($listElem[4]) == 1) { $listElem[4] = str_pad($listElem[4], 8, " ", STR_PAD_LEFT); }
 			echo"<td align=\"left\">&nbsp;<span style=\"color:#b5651d;font-weight:bold;\">".str_replace(" ","&nbsp;", $listElem[4])."</span></td>";
 			if ($listElem[5] == "DVSM/UC"){
