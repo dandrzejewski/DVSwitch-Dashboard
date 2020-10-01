@@ -42,6 +42,7 @@ for ($i = 0; $i < count($localTXList); $i++) {
 					echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</b></a></td>";
 				}
 			}
+			if (strlen($listElem[4]) == 1) { $listElem[4] = str_pad($listElem[4], 8, " ", STR_PAD_LEFT); }
 			echo"<td align=\"left\">&nbsp;<span style=\"color:#b5651d;font-weight:bold;\">".str_replace(" ","&nbsp;", $listElem[4])."</span></td>";
 			if ($listElem[5] == "DVSM/UC"){
 				echo "<td style=\"background:#1d1;\">DVSM/UC</td>";
