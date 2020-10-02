@@ -364,8 +364,6 @@ function getHeardList($logLines) {
 			continue;
 		} else if(strpos($logLine,"invalid access")) {
 			continue;
-//		} else if(strpos($logLine,"GPS Position")) {
-//			continue;
 		} else if(strpos($logLine,"NXDN, received RF header from")) {
 			continue;
 		} else if(strpos($logLine,"TX state = ON")) {
@@ -387,7 +385,7 @@ function getHeardList($logLines) {
 		} else if(strpos($logLine,"Preamble CSBK")) {
                         continue;
 		}
-//		print($logLine);
+
 		if(strpos($logLine,"TX state") || strpos($logLine,"GPS Position") || strpos($logLine, "end of") || strpos($logLine, "watchdog has expired") || strpos($logLine, "ended RF data") || strpos($logLine, "ended network") || strpos($logLine, "RF user has timed out") || strpos($logLine, "transmission lost") || strpos($logLine, "POCSAG")) {
 
 		if (strpos($logLine,"TX state = OFF")){
@@ -955,51 +953,6 @@ function getActualReflector($logLines, $mode) {
 	return "No Ref";
 }
 
-// Not used - to be removed
-//function getActiveYSFReflectors($logLines) {
-// 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
-// 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
-// D: 2016-06-11 19:09:31.371 Have reflector status reply from 89164/FUSIONBE2       /FusionBelgium /002
-//	$reflectors = Array();
-//	$reflectorlist = Array();
-//	foreach ($logLines as $logLine) {
-//		if (strpos($logLine, "Have reflector status reply from")) {
-//			$timestamp = substr($logLine, 3, 19);
-//			$timestamp2 = new DateTime($timestamp);
-//			$now =  new DateTime();
-//			$timestamp2->add(new DateInterval('PT2H'));
-//			if ($now->format('U') <= $timestamp2->format('U')) {
-//				$str = substr($logLine, 60);
-//				$id = strtok($str, "/");
-//				$name = strtok("/");
-//				$description = strtok("/");
-//				$concount = strtok("/");
-//				if(!(array_search($name, $reflectors) > -1)) {
-//					array_push($reflectors,$name);
-//					array_push($reflectorlist, array($name, $description, $id, $concount, $timestamp));
-//				}
-//			}
-//		}
-//	}
-//	array_multisort($reflectorlist);
-//	return $reflectorlist;
-//}
-
-// Not used - to be removed
-//function getName($callsign) {
-//	$callsign = trim($callsign);
-//	if (strpos($callsign,"-")) {
-//		$callsign = substr($callsign,0,strpos($callsign,"-"));
-//	}
-//	exec("grep ".$callsign." ".DMRIDDATPATH, $output);
-//	$delimiter =" ";
-//	if (strpos($output[0],"\t")) {
-//	$delimiter = "\t";
-//	}
-//	$name = substr($output[0], strpos($output[0],$delimiter)+1);
-//	$name = substr($name, strpos($name,$delimiter)+1);
-//	return $name;
-//}
 
 //Some basic inits
 $mmdvmconfigs = getMMDVMConfig();
