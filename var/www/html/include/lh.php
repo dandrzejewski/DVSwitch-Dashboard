@@ -27,9 +27,8 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
                         $local_tz = new DateTimeZone(date_default_timezone_get ());
                         $dt = new DateTime($utc_time, $utc_tz);
                         $dt->setTimeZone($local_tz);
-//                        $local_time = $dt->format('H:i:s M jS');
                         $local_time = strftime('%H:%M:%S %b %d', $dt->getTimestamp());
-//                        $local_time = $dt->getTimestamp();
+
 		echo"<tr>";
 		echo"<td align=\"left\">&nbsp;$local_time</td>";
 		echo"<td align=\"left\" style=\"color:green; font-weight:bold;\">&nbsp;$listElem[1]</td>";
