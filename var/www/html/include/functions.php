@@ -308,7 +308,7 @@ function getDAPNETGatewayLog() {
 // M: 2000-00-00 00:00:00.000 NXDN, network end of transmission, 1.8 seconds, 0% packet loss
 // M: 2000-00-00 00:00:00.000 POCSAG, transmitted 1 frame(s) of data from 1 message(s)
 //
-// MMDVM_Bridge loglines
+// MMDVM_Bridge loglines from DVSM / pyUC traffic
 //
 // I: 2020-09-23 04:56:54.073 DMR, Begin TX: src=2602001 rpt=260201498 dst=9 slot=2 cc=1 metadata=SP2ABC
 // M: 2020-09-23 04:57:20.031 DMR, TX state = OFF, DMR frame count was 57 frames
@@ -321,7 +321,7 @@ function getDAPNETGatewayLog() {
 //
 // I: 2020-09-23 05:34:44.836 NXDN, Begin TX: src=2602001 rpt=260200198 dst=9 slot=2 cc=1 metadata=SP2ABC
 //
-
+//
 
 
 function getHeardList($logLines) {
