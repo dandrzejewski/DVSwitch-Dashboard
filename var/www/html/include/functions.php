@@ -515,7 +515,7 @@ function getHeardList($logLines) {
 		$timestamp = substr($logLine, 3, 19);
 		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
 		$callsign = $callsign2;
-		if($callsign == "0") {$callsign="N0CALL";}
+		if( $callsign == "0" || $callsign == "1234" || $callsign == "1234567") {$callsign="N0CALL";}
 		if (strpos($callsign2,"/") > 0) {
 			$callsign = substr($callsign2, 0, strpos($callsign2,"/"));
 		}
