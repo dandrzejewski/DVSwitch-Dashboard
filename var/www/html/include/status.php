@@ -95,9 +95,9 @@ if (file_exists('/tmp/ABInfo_'.ABINFO.'.json')) {
     echo "<tr><th>GW ID</th><td style=\"background: #f9f9f9;\">".$abinfo['digital']['gw']."</td></tr>\n";
     echo "<tr><th>RPT ID</th><td style=\"background: #f9f9f9;\">".$abinfo['digital']['rpt']."</td></tr>\n";
     echo "<tr><th>Mode</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b5651d;\">".$abinfo['tlv']['ambe_mode']."</td></tr>\n";
-    if ($abinfo['last_tune']=="") {$tginfo=$abinfo['digital']['tg'];} else {$tginfo=$abinfo['last_tune']; }
-    if (strlen($tginfo) > 12) { $tginfo = substr($tginfo, 0, 10) . '..'; }
-    echo "<tr><th>Last TG</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b5651d;\">".$tginfo."</td></tr>\n";
+    if ($abinfo['last_tune']=="") {$tuneinfo=$abinfo['digital']['tg'];} else {$tuneinfo=$abinfo['last_tune']; }
+    if (strlen($tuneinfo) > 12) { $tuneinfo = substr($tuneinfo, 0, 10) . '..'; }
+    echo "<tr><th>Last tune</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b5651d;\">".$tuneinfo."</td></tr>\n";
     echo "<tr><th>AB ver</th><td style=\"background: #f9f9f9;\">".$abinfo['ab']['version']."</td></tr>\n";
     echo "</table>\n";
 }
