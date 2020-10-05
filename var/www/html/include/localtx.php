@@ -34,9 +34,9 @@ for ($i = 0; $i < count($localTXList); $i++) {
 			echo"<td align=\"left\">&nbsp;$local_time</td>";
 			echo"<td align=\"left\" style=\"color:green; font-weight:bold;\">&nbsp;$listElem[1]</td>";
 			    if (is_numeric($listElem[2]) || strpos($listElem[2], "openSPOT") !== FALSE) {
-				echo "<td align=\"left\">$listElem[2]</td>";
+				echo "<td align=\"left\" style=\"color:#464646;\"><b>&nbsp;$listElem[2]</b></td>";
 			    } elseif (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $listElem[2])) {
-				echo "<td align=\"left\">$listElem[2]</td>";
+				echo "<td align=\"left\" style=\"color:#464646;\"><b>&nbsp;$listElem[2]</b></td>";
 	    			} else {
 			if (strpos($listElem[2],"-") > 0) { $listElem[2] = substr($listElem[2], 0, strpos($listElem[2],"-")); }
 			if ($listElem[3] && $listElem[3] != '    ' ) {
