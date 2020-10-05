@@ -321,7 +321,9 @@ function getDAPNETGatewayLog() {
 //
 // I: 2020-09-23 05:34:44.836 NXDN, Begin TX: src=2602001 rpt=260200198 dst=9 slot=2 cc=1 metadata=SP2ABC
 //
-//
+//I: 2020-10-05 04:52:43.155 D-Star, Begin TX: src=260201 rpt=260200198 dst=9 slot=2 cc=1 metadata=SP2ABC
+//M: 2020-10-05 04:52:47.843 D-Star, TX state = OFF
+
 
 
 function getHeardList($logLines) {
