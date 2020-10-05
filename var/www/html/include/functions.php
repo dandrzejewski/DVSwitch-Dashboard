@@ -503,10 +503,8 @@ function getHeardList($logLines) {
 
 		if (strpos($logLine,"Begin TX")) {
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
-		if ($mode == "DMR" || $mode == "YSF" || $mode == "NXDN" || $mode == "D-Star" || $mode == "P25") {
-			$callsign = substr($logLine, strpos($logLine,"metadata=")+9);
-			$callsign = trim($callsign);
-		    } else { $callsign= trim(substr($logLine,strpos($logLine,"src=")+4,strpos($logLine,"rpt=") - strpos($logLine,"src=")-5));}
+		$callsign = substr($logLine, strpos($logLine,"metadata=")+9);
+		$callsign = trim($callsign);
 		$target = "TG ".substr($logLine,strpos($logLine,"dst=")+4,strpos($logLine,"slot=") - strpos($logLine,"dst=")-4);
 		$source = "DVSM/UC";
 		$timestamp = substr($logLine, 3, 19);
