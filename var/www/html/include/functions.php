@@ -395,7 +395,7 @@ function getHeardList($logLines) {
 			if ($dvsm == "DMR") {
 				$duration = substr($logLine, strpos($logLine,"was")+4, strpos($logLine,"frames") - strpos($logLine,"was")-5)*0.059;
 				$duration=number_format($duration, 1, '.', '.'); }
-			if ($dvsm == "YSF" || $dvsm == "NXDN" || $dvsm == "P25") {
+			if ($dvsm == "YSF" || $dvsm == "NXDN" || $dvsm == "P25" || $dvsm == "D-Star") {
 				$duration="---"; }
 			$ber = "---";
 			$loss = "---";
@@ -503,7 +503,7 @@ function getHeardList($logLines) {
 
 		if (strpos($logLine,"Begin TX")) {
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
-		if ($mode == "DMR" || $mode == "YSF" || $mode == "NXDN") {
+		if ($mode == "DMR" || $mode == "YSF" || $mode == "NXDN" || $mode == "D-Star") {
 			$callsign = substr($logLine, strpos($logLine,"metadata=")+9);
 			$callsign = trim($callsign);
 		    } else { $callsign= trim(substr($logLine,strpos($logLine,"src=")+4,strpos($logLine,"rpt=") - strpos($logLine,"src=")-5));}
