@@ -313,7 +313,7 @@ function getDAPNETGatewayLog() {
 // I: 2020-09-23 04:56:54.073 DMR, Begin TX: src=2602001 rpt=260201498 dst=9 slot=2 cc=1 metadata=SP2ABC
 // M: 2020-09-23 04:57:20.031 DMR, TX state = OFF, DMR frame count was 57 frames
 //
-// I: 2020-09-23 04:47:51.712 P25, Begin TX: src=2602001 rpt=260200198 dst=9 slot=2 cc=1
+// I: 2020-09-23 04:47:51.712 P25, Begin TX: src=2602001 rpt=260200198 dst=9 slot=2 cc=1 metadata=SP2ABC
 // M: 2020-09-23 04:47:55.447 P25, TX state = OFF
 //
 // I: 2020-09-23 06:44:41.587 YSF, Begin TX: src=2602001 rpt=260200198 dst=10200 slot=2 cc=1 metadata=SP2ABC
@@ -503,7 +503,7 @@ function getHeardList($logLines) {
 
 		if (strpos($logLine,"Begin TX")) {
 		$mode = substr($logLine, 27, strpos($logLine,",") - 27);
-		if ($mode == "DMR" || $mode == "YSF" || $mode == "NXDN" || $mode == "D-Star") {
+		if ($mode == "DMR" || $mode == "YSF" || $mode == "NXDN" || $mode == "D-Star" || $mode == "P25") {
 			$callsign = substr($logLine, strpos($logLine,"metadata=")+9);
 			$callsign = trim($callsign);
 		    } else { $callsign= trim(substr($logLine,strpos($logLine,"src=")+4,strpos($logLine,"rpt=") - strpos($logLine,"src=")-5));}
