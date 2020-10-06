@@ -637,50 +637,9 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
     }
 
     $now =  new DateTime();
-    $hangtime = "2";
-
-    if ($hangtime != "") {
-	$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
-    } else {
-	$source = $listElem[5];
-	if ($source == "DVSM/UC" && $mode === "D-Star") {
-	    $hangtime = getConfigItem("D-Star", "ModeHang", $mmdvmconfigs);
-	}
-	else if ($source == "Net" && $mode === "D-Star") {
-	    $hangtime = getConfigItem("D-Star Network", "ModeHang", $mmdvmconfigs);
-	}
-	else if ($source == "DVSM/UC" && $mode === "DMR") {
-	    $hangtime = getConfigItem("DMR", "ModeHang", $mmdvmconfigs);
-	}
-	else if ($source == "Net" && $mode === "DMR") {
-	    $hangtime = getConfigItem("DMR Network", "ModeHang", $mmdvmconfigs);
-	}
-	else if ($source == "DVSM/UC" && $mode === "YSF") {
-	    $hangtime = getConfigItem("System Fusion", "ModeHang", $mmdvmconfigs);
-	}
-	else if ($source == "Net" && $mode === "YSF") {
-	    $hangtime = getConfigItem("System Fusion Network", "ModeHang", $mmdvmconfigs);
-	}
-	else if ($source == "DVSM/UC" && $mode === "P25") {
-	    $hangtime = getConfigItem("P25", "ModeHang", $mmdvmconfigs);
-	}
-	else if ($source == "Net" && $mode === "P25") {
-	    $hangtime = getConfigItem("P25 Network", "ModeHang", $mmdvmconfigs);
-	}
-	else if ($source == "DVSM/UC" && $mode === "NXDN") {
-	    $hangtime = getConfigItem("NXDN", "ModeHang", $mmdvmconfigs);
-	}
-	else if ($source == "Net" && $mode === "NXDN") {
-	    $hangtime = getConfigItem("NXDN Network", "ModeHang", $mmdvmconfigs);
-	}
-	else if ($source == "Net" && $mode === "POCSAG") {
-	    $hangtime = getConfigItem("POCSAG Network", "ModeHang", $mmdvmconfigs);
-	}
-	else {
-	    $hangtime = "2";
-	}
-	$timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
-    }
+    $hangtime = "0";
+    $timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
+    
     if ($listElem[6] != null) { //if terminated, hangtime counts after end of transmission
 	$timestamp->add(new DateInterval('PT' . ceil($listElem[6]) . 'S'));
     } else { //if not terminated, always return mode
