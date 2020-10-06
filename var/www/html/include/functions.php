@@ -832,12 +832,12 @@ function getActualLink($logLines, $mode) {
                if (strpos($logLine,"Linked to")) {
                   $to = preg_replace('/[^0-9]/', '', substr($logLine, 44, 5));
                   $to = preg_replace('/[^0-9]/', '', $to);
-                  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
+                  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG ".$to."</span>";
                }
                if (strpos($logLine,"Linked at start")) {
                   $to = preg_replace('/[^0-9]/', '', substr($logLine, 55, 5));
                   $to = preg_replace('/[^0-9]/', '', $to);
-                  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
+                  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG ".$to."</span>";
                }
 	       if (strpos($logLine,"Starting NXDNGateway")) {
                   return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
@@ -867,12 +867,12 @@ function getActualLink($logLines, $mode) {
                if (strpos($logLine,"Linked to")) {
 		  $to = preg_replace('/[^0-9]/', '', substr($logLine, 44, 5));
 		  $to = preg_replace('/[^0-9]/', '', $to);
-		  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
+		  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG ".$to."</span>";
                }
                if (strpos($logLine,"Linked at startup to")) {
 		  $to = preg_replace('/[^0-9]/', '', substr($logLine, 55, 5));
 		  $to = preg_replace('/[^0-9]/', '', $to);
-		  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG".$to."</span>";
+		  return "Linked to <span style=\"color:#b5651d;font-weight:bold;\">TG ".$to."</span>";
                }
 	       if (strpos($logLine,"Starting P25Gateway")) {
                   return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
