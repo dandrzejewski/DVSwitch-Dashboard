@@ -117,7 +117,7 @@ if (isset($lastHeard[0])) {
                     if (isProcessRunning("MMDVM_Bridge")) { echo "<td style=\"background:#0b0; color:#030;\">Listening</td>"; 
 		} else { echo "<td style=\"background:#606060; color:#b0b0b0;\">OFFLINE</td>"; }
                     }
-            elseif ($listElem[2] && $listElem[6] == null && $abinfo['tlv']['ambe_mode']== "D-Star" && getActualMode($lastHeard, $mmdvmconfigs) === 'D-Star') {
+            elseif ($listElem[2] && $listElem[6] == null && $abinfo['tlv']['ambe_mode']== "DSTAR" && getActualMode($lastHeard, $mmdvmconfigs) === 'D-Star') {
                     echo "<td style=\"background:#4aa361;\">RX D-Star</td>";
                     }
             elseif (getActualMode($lastHeard, $mmdvmconfigs) === 'D-Star') {
