@@ -129,7 +129,7 @@ if (isset($lastHeard[0])) {
             elseif (getActualMode($lastHeard, $mmdvmconfigs) === 'DMR') {
                     echo "<td style=\"background:#f93;\">Listening DMR</td>";
                     }
-            elseif ($listElem[2] && $listElem[6] == null && $abinfo['tlv']['ambe_mode']== "YSF" && getActualMode($lastHeard, $mmdvmconfigs) === 'YSF') {
+            elseif ($listElem[2] && $listElem[6] == null && $abinfo['tlv']['ambe_mode']== "YSFN" && getActualMode($lastHeard, $mmdvmconfigs) === 'YSF') {
                     echo "<td style=\"background:#4aa361;\">RX YSF</td>";
                     }
             elseif (getActualMode($lastHeard, $mmdvmconfigs) === 'YSF') {
