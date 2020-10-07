@@ -58,12 +58,12 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
 			echo "<td>$listElem[5]</td>";
 		}
 		if ($listElem[6] == null) {
-                             if ($listElem[1] == "DMR Slot 2" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#f93;\">TX</td>";}
-                             if ($listElem[1] == "DMR Slot 1" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#f93;\">TX</td>";}
-                             if ($listElem[1] == "YSF" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#ff9;\">TX</td>";}
-                             if ($listElem[1] == "P25" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#f9f;\">TX</td>";}
-			     if ($listElem[1] == "D-Star" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#ade;\">TX</td>";}
-                             if ($listElem[1] == "NXDN" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#f9f;\">TX</td>";}
+                             if ($listElem[1] == "DMR Slot 2" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#f93;\">RX DMR</td>";}
+                             if ($listElem[1] == "DMR Slot 1" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#f93;\">RX DMR</td>";}
+                             if ($listElem[1] == "YSF" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#ff9;\">RX YSF</td>";}
+                             if ($listElem[1] == "P25" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#f9f;\">RX P25</td>";}
+			     if ($listElem[1] == "D-Star" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#ade;\">RX NXDN</td>";}
+                             if ($listElem[1] == "NXDN" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#f9f;\">RX D-Star</td>";}
                              if ($listElem[5] == "DVSM/UC")  {echo "<td colspan=\"3\" style=\"background:#f33;\">TX</td>";}
 			} else if ($listElem[6] == "SMS") {
 				echo "<td colspan=\"3\" style=\"background:#1d1;\">SMS</td>";
