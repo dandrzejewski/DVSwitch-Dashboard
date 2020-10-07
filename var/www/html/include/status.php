@@ -97,7 +97,7 @@ if (file_exists('/tmp/ABInfo_'.ABINFO.'.json')) {
     echo "<tr><th>Mode</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b5651d;\">".$abinfo['tlv']['ambe_mode']."</td></tr>\n";
     echo "<tr><th>Tx TG</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b5651d;\">".$abinfo['digital']['tg']."</td></tr>\n";
     $tuneinfo=$abinfo['last_tune'];
-    if (strlen($tuneinfo) > 12) { $tuneinfo = substr($tuneinfo, 0, 10) . '..'; }
+    if (strlen($tuneinfo) > 10) { $tuneinfo = substr($tuneinfo, 0, 8) . '..'; }
     echo "<tr><th>Last tune</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b5651d;\">".$tuneinfo."</td></tr>\n";
     echo "<tr><th>AB ver</th><td style=\"background: #f9f9f9;\">".$abinfo['ab']['version']."</td></tr>\n";
     echo "</table>\n";
