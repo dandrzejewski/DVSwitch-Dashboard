@@ -10,7 +10,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
     <meta name="robots" content="follow" />
     <meta name="language" content="English" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="generator" content="DVSM" />
+    <meta name="generator" content="DVSwitch" />
     <meta name="Author" content="Andrew Taylor (MW0MWZ), Waldek (SP2ONG)" />
     <meta name="Description" content="DVSwitch Dashboard" />
     <meta name="KeyWords" content="MMDVM_Bridge,Analog_Bridge,ircDDBGateway,D-Star,ircDDB,DMRGateway,DMR,YSFGateway,YSF,C4FM,NXDNGateway,NXDN,P25Gateway,P25,DVSwitch,DL5DI,DG9VH,MW0MWZ,SP2ONG" />
