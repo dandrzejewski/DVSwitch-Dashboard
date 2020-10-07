@@ -69,7 +69,7 @@ if (file_exists('/tmp/ABInfo_'.ABINFO.'.json')) {
     echo "<br>&nbsp;&nbsp;&nbsp;gatewayID: ".$abinfo['digital']['gw'];
     echo "<br>&nbsp;&nbsp;&nbsp;repeaterID: ".$abinfo['digital']['rpt'];
     echo "<br>&nbsp;&nbsp;&nbsp;txTG: ".$abinfo['digital']['tg'];
-    echo "<br>&nbsp;&nbsp;&nbsp;Last tune TG: ".$abinfo['last_tune'];
+    echo "<br>&nbsp;&nbsp;&nbsp;Last tune: ".$abinfo['last_tune'];
     echo "<br>&nbsp;&nbsp;&nbsp;txTS: ".$abinfo['digital']['ts'];
     echo "<br>&nbsp;&nbsp;&nbsp;colorCode: ".$abinfo['digital']['cc'];
     echo "<br>&nbsp;[USRP]<br/>";
