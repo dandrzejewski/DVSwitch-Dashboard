@@ -1,4 +1,4 @@
 
-DVSwitch Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ). 
+DVSwitch Dashboard based on Pi-Star Dashboard © Andy Taylor (MW0MWZ). 
 
 
