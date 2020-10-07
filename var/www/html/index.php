@@ -1,5 +1,5 @@
 <?php
-// PI-DVSwitch Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ). Version SP2ONG 2020
+// DVSwitch Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ). Version SP2ONG 2020
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -11,7 +11,9 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
     <meta name="language" content="English" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="DVSM" />
-    <meta name="Description" content="Dashboard" />
+    <meta name="Author" content="Andrew Taylor (MW0MWZ), Waldek (SP2ONG)" />
+    <meta name="Description" content="DVSwitch Dashboard" />
+    <meta name="KeyWords" content="MMDVM_Bridge,Analog_Bridge,ircDDBGateway,D-Star,ircDDB,DMRGateway,DMR,YSFGateway,YSF,C4FM,NXDNGateway,NXDN,P25Gateway,P25,DVSwitch,DL5DI,DG9VH,MW0MWZ,SP2ONG" />
     <meta http-equiv="cache-control" content="max-age=0" />
     <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="expires" content="0" />
