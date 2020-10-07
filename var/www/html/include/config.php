@@ -2,9 +2,8 @@
 // Report all errors except E_NOTICE
 error_reporting(E_ALL & ~E_NOTICE);
 
-$ABrxPort=exec('/opt/MMDVM_Bridge/dvswitch.sh pif /opt/Analog_Bridge/Analog_Bridge.ini USRP rxPort');
 
-define("ABINFO", $ABrxPort);
+define("ABINFO", "34001");
 define("LOGPATH", "/var/log/mmdvm");
 define("MMDVMLOGPREFIX", "MMDVM_Bridge");
 define("MMDVMINIPATH", "/opt/MMDVM_Bridge/");
