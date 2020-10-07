@@ -848,6 +848,9 @@ function getActualLink($logLines, $mode) {
                if (strpos($logLine,"Unlinked from")) {
                   return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
+	       if (strpos($logLine,"Cannot find address")) {
+                  return "<span style=\"color:#b0b0b0;\"><b>Cannot find address</b></span>";
+               }
             }
         } else {
             return "<span style=\"color:#b0b0b0;\"><b>No NXDN Network</b></span>";
@@ -882,6 +885,9 @@ function getActualLink($logLines, $mode) {
                }
                if (strpos($logLine,"Unlinked")) {
                   return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
+               }
+	       if (strpos($logLine,"Cannot find address")) {
+                  return "<span style=\"color:#b0b0b0;\"><b>Cannot find address</b></span>";
                }
 	    }
 	} else {
