@@ -35,7 +35,7 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
 		if (is_numeric($listElem[2]) || strpos($listElem[2], "openSPOT") !== FALSE || $listElem[2] == "N0CALL") {
 		    echo "<td align=\"left\" style=\"color:#464646;\"><b>&nbsp;$listElem[2]</b></td>";
 		} elseif (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $listElem[2])) {
- 	                       echo "<td align=\"left\" style=\"color:#464646;\"><b>&nbsp;$listElem[2]</b></td>";
+ 	                       echo "<td align=\"left\" style=\"color:#464646;\">&nbsp;<a href=\"https://database.radioid.net/database/view?id=$listElem[2]\" target=\"_blank\"><span style=\"color:#464646;font-weight:bold;\">$listElem[2]</span></a></td>";
 		} else {
 		    if (strpos($listElem[2],"-") > 0) { $listElem[2] = substr($listElem[2], 0, strpos($listElem[2],"-")); }
 			    if ( $listElem[3] && $listElem[3] != '    ' ) {
