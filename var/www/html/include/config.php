@@ -2,13 +2,12 @@
 // Report all errors except E_NOTICE
 error_reporting(E_ALL & ~E_NOTICE);
 
-
+// ABINFO = rxPort from [USRP] Analog_Bridge.ini
 define("ABINFO", "34001");
 define("LOGPATH", "/var/log/mmdvm");
 define("MMDVMLOGPREFIX", "MMDVM_Bridge");
 define("MMDVMINIPATH", "/opt/MMDVM_Bridge/");
 define("MMDVMINIFILENAME", "MMDVM_Bridge.ini");
-define("MMDVMHOSTPATH", "/usr/local/bin");
 define("DMRIDDATPATH", "/var/lib/mmdvm");
 define("YSFGATEWAYLOGPREFIX", "YSFGateway");
 define("YSFGATEWAYINIPATH", "/opt/YSFGateway");
@@ -21,9 +20,6 @@ define("NXDNGATEWAYINIPATH", "/opt/NXDNGateway");
 define("NXDNGATEWAYINIFILENAME", "NXDNGateway.ini");
 define("LINKLOGPATH", "/var/log/ircddbgateway");
 define("IRCDDBGATEWAY", "ircddbgatewayd");
-define("REFRESHAFTER", "30");
-
-define("TEMPERATUREHIGHLEVEL", "");
 
 
 ?>
