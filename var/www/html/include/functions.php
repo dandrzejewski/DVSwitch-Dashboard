@@ -175,7 +175,6 @@ function getMMDVMLog() {
 	$logLines2 = array_slice($logLines2, -250);
 	$logLines = $logLines1 + $logLines2;
 	$logLines = array_slice($logLines, -250);
-//	print_r($logLines);
 	return $logLines;
 }
 
@@ -200,10 +199,6 @@ function getYSFGatewayLog() {
 		}
 		$logLines2 = array_filter($logLines2);
 	}
-	//$logLines2 = array_slice($logLines2, -250);
-	//$logLines = $logLines1 + $logLines2;
-	//$logLines = array_slice($logLines, -250);
-	//return $logLines;
 	if (sizeof($logLines1) == 0) { $logLines = $logLines2; } else { $logLines = $logLines1; }
         return array_filter($logLines);
 }
@@ -272,7 +267,7 @@ function getDAPNETGatewayLog() {
 	return array_filter($logLines);
 }
 
-// MMDVMHost
+// MMDVM_Bridge loglines from Network
 // 00000000001111111111222222222233333333334444444444555555555566666666667777777777888888888899999999990000000000111111111122
 // 01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901
 // M: 2000-00-00 00:00:00.000 D-Star, received network header from M1ABC   /ABCD to CQCQCQ   via REF000 A
@@ -527,7 +522,7 @@ function getHeardList($logLines) {
 		}
 
 		$target = trim(substr($logLine, strpos($logLine, "to") + 3));
-		// Handle more verbose logging from MMDVMHost
+		// Handle more verbose logging from MMDVM_Bridge
                 if (strpos($target,",") !== 'false') { $target = explode(",", $target)[0]; }
 			
 		$source = "Net";		
@@ -615,10 +610,7 @@ function getLastHeard($logLines) {
 				array_push($heardCalls, $callUuid);
 				array_push($lastHeard, $listElem);
 				$counter++;
-			}/*
-			if ($counter == LHLINES) {
-				return $lastHeard;
-			}*/
+			}
 		}
 	}
 	return $lastHeard;
@@ -918,10 +910,8 @@ function getActualReflector($logLines, $mode) {
 $mmdvmconfigs = getMMDVMConfig();
 if (!in_array($_SERVER["PHP_SELF"],array('/include/bm_links.php','/include/bm_manager.php'),true)) {
 	$logLinesMMDVM = getMMDVMLog();
-//	print_r($logLinesMMDVM);
 	$reverseLogLinesMMDVM = $logLinesMMDVM;
 	array_multisort($reverseLogLinesMMDVM,SORT_DESC);
-//	print_r($reverseLogLinesMMDVM);
 	$lastHeard = getLastHeard($reverseLogLinesMMDVM);
 
 	// Only need these in repeaterinfo.php
@@ -942,6 +932,7 @@ if (!in_array($_SERVER["PHP_SELF"],array('/include/bm_links.php','/include/bm_ma
 		$logLinesDAPNETGateway = getDAPNETGatewayLog();
 	}
 }
+
 function getABInfo($filename) {
 	$json = file_get_contents($filename);
 	$json_data = json_decode($json,true);
