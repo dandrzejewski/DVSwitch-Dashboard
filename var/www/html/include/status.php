@@ -95,7 +95,7 @@ if (file_exists('/tmp/ABInfo_'.ABINFO.'.json')) {
     echo "<tr><th>GW ID</th><td style=\"background: #f9f9f9;\">".$abinfo['digital']['gw']."</td></tr>\n";
     echo "<tr><th>RPT ID</th><td style=\"background: #f9f9f9;\">".$abinfo['digital']['rpt']."</td></tr>\n";
     echo "<tr><th>Mode</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b5651d;\">".$abinfo['tlv']['ambe_mode']."</td></tr>\n";
-    echo "<tr><th>Tx TG</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b5651d;\">".$abinfo['digital']['tg']."</td></tr>\n";
+    echo "<tr><th>Tx TG</th><td style=\"background: #f9f9f9;font-weight: bold;color:#ff8106;\">".$abinfo['digital']['tg']."</td></tr>\n";
     echo "<tr><th>AB ver</th><td style=\"background: #f9f9f9;\">".$abinfo['ab']['version']."</td></tr>\n";
     echo "</table>\n";
 }
