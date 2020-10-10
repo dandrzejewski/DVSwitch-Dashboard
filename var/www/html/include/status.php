@@ -102,20 +102,20 @@ if (file_exists('/tmp/ABInfo_'.ABINFO.'.json')) {
     echo "<br/></span></div></th></tr>\n";
     if (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/',$abinfo['digital']['call'])) {$call=""; 
     } else { $call=$abinfo['digital']['call']; }
-    echo "<tr><th>Callsign</th><td style=\"background: #f9f9f9f9;color:#b44010;font-weight: bold;\">".$call."</td></tr>\n";
-    echo "<tr><th>GW ID</th><td style=\"background: #f9f9f9;\">".$abinfo['digital']['gw']."</td></tr>\n";
-    echo "<tr><th>RPT ID</th><td style=\"background: #f9f9f9;\">".$abinfo['digital']['rpt']."</td></tr>\n";
-    echo "<tr><th>Mode</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b44010;\">".$abinfo['tlv']['ambe_mode']."</td></tr>\n";
-    echo "<tr><th>Tx TG</th><td style=\"background: #f9f9f9;font-weight: bold;color:#ef7215;\">".$abinfo['digital']['tg']."</td></tr>\n";
-    echo "<tr><th>AB ver</th><td style=\"background: #f9f9f9;\">".$abinfo['ab']['version']."</td></tr>\n";
+    echo "<tr><th width=50%>Callsign</th><td style=\"background: #f9f9f9f9;color:#b44010;font-weight: bold;\">".$call."</td></tr>\n";
+    echo "<tr><th width=50%>GW ID</th><td style=\"background: #f9f9f9;\">".$abinfo['digital']['gw']."</td></tr>\n";
+    echo "<tr><th width=50%>RPT ID</th><td style=\"background: #f9f9f9;\">".$abinfo['digital']['rpt']."</td></tr>\n";
+    echo "<tr><th width=50%>Mode</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b44010;\">".$abinfo['tlv']['ambe_mode']."</td></tr>\n";
+    echo "<tr><th width=50%>Tx TG</th><td style=\"background: #f9f9f9;font-weight: bold;color:#ef7215;\">".$abinfo['digital']['tg']."</td></tr>\n";
+    echo "<tr><th width=50%>AB ver</th><td style=\"background: #f9f9f9;\">".$abinfo['ab']['version']."</td></tr>\n";
     echo "</table>\n"; 
     } else { echo "<span style=\"font-size:13px;\">Analog Bridge Info</span></th></tr>\n";
     if (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/',$abinfo['digital']['call'])) {$call="";} 
 	else {$call=$abinfo['digital']['call'];}
-    echo "<tr><th>Callsign</th><td style=\"background: #f9f9f9f9;color:#b44010;font-weight: bold;\">".$call."</td></tr>\n";
-    echo "<tr><th>Mode</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b44010;\">".$abinfo['tlv']['ambe_mode']."</td></tr>\n";
-    echo "<tr><th>Tx TG</th><td style=\"background: #f9f9f9;font-weight: bold;color:#ef7215;\">".$abinfo['digital']['tg']."</td></tr>\n";
-    echo "<tr><th>AB ver</th><td style=\"background: #f9f9f9;\">".$abinfo['ab']['version']."</td></tr>\n";
+    echo "<tr><th width=50%>Callsign</th><td style=\"background: #f9f9f9f9;color:#b44010;font-weight: bold;\">".$call."</td></tr>\n";
+    echo "<tr><th width=50%>Mode</th><td style=\"background: #f9f9f9;font-weight: bold;color:#b44010;\">".$abinfo['tlv']['ambe_mode']."</td></tr>\n";
+    echo "<tr><th width=50%>Tx TG</th><td style=\"background: #f9f9f9;font-weight: bold;color:#ef7215;\">".$abinfo['digital']['tg']."</td></tr>\n";
+    echo "<tr><th width=50%>AB ver</th><td style=\"background: #f9f9f9;\">".$abinfo['ab']['version']."</td></tr>\n";
     echo "</table>\n"; 
    }
 }
