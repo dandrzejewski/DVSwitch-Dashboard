@@ -50,11 +50,20 @@ else {
     if (strlen($dmrMasterHost) > 19) { $dmrMasterHost = substr($dmrMasterHost, 0, 17) . '..'; }
 }
 fclose($dmrMasterFile);
-	
+
+$ip = isset($_SERVER['HTTP_CLIENT_IP'])?$_SERVER['HTTP_CLIENT_IP']:isset($_SERVER['HTTP_X_FORWARDED_FOR'])?$_SERVER['HTTP_X_FORWARDED_FOR']:$_SERVER['REMOTE_ADDR']; 
+
+$net1= cidr_match($ip,"192.168.0.0/16");
+$net2= cidr_match($ip,"172.16.0.0/12");
+$net3= cidr_match($ip,"127.0.0.0/8");
+$net4= cidr_match($ip,"10.0.0.0/8");
+
 if (file_exists('/tmp/ABInfo_'.ABINFO.'.json')) {
     $abinfo = getABInfo('/tmp/ABInfo_'.ABINFO.'.json');
     echo "<table style=\"margin-top:4px;\">\n";
-    echo "<tr><th colspan=\"2\"><div class=\"tooltip\">Analog Bridge Info<span class=\"tooltiptext\" style=\"font-size:11px;\">";
+   echo "<tr><th colspan=\"2\">";
+    if ($net1 == TRUE || $net2 == TRUE || $net3 == TRUE || $net4 == TRUE) {
+    echo "<div class=\"tooltip\" style=\"font-size:12px;\">Analog Bridge Info<span class=\"tooltiptext\" style=\"font-size:11px;\">";
     echo "<br>&nbsp;decoderFallBack: ".$abinfo['use_fallback'];
     echo "<br>&nbsp;useEmulator: ".$abinfo['use_emulator'];
     echo "<br>&nbsp;Mute: ".$abinfo['mute'];
@@ -89,7 +98,9 @@ if (file_exists('/tmp/ABInfo_'.ABINFO.'.json')) {
     echo "<br>&nbsp;&nbsp;&nbsp;Serial: ".$abinfo['dv3000']['use_serial'];
     echo "<br>&nbsp;[Analog Bridge]";
     echo "<br>&nbsp;&nbsp;&nbsp;Version: ".$abinfo['ab']['version'];
-    echo "<br/></span></div></th></tr>\n";
+    echo "<br/></span></div>";}
+    else { echo "<span style=\"font-size:12px;\">Analog Bridge Info</span>";}
+    echo "</th></tr>\n";
     if (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/',$abinfo['digital']['call'])) {$call ="";} else { $call=$abinfo['digital']['call'];}
     echo "<tr><th>Callsign</th><td style=\"background: #f9f9f9f9;color:#b44010;font-weight: bold;\">".$call."</td></tr>\n";
     echo "<tr><th>GW ID</th><td style=\"background: #f9f9f9;\">".$abinfo['digital']['gw']."</td></tr>\n";
