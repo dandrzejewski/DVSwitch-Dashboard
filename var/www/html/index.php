@@ -113,7 +113,8 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
 ?>
 <div class="content">
 <center><span style="font: 7pt arial, sans-serif;">DVSwitch Dashboard <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?></span></center>
-</div>
+<!-- DVSwitch Dashboard: version 20201010 -->
+	</div>
 </div>
 </fieldset>
 </body>
