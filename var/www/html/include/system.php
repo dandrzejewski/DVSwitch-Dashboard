@@ -8,6 +8,7 @@ $free_mem=shell_exec("free -m | awk 'NR==2{printf \"%.0f%%\", $3*100/$2 }'");
 $disk_used=shell_exec("df -h | awk '\$NF==\"/\"{printf \"%s\",$5}'");
 
 $cpuLoad = sys_getloadavg();
+if (file_exists('/sys/class/thermal/thermal_zone0/temp2')) {
 $cpuTempCRaw = exec('cat /sys/class/thermal/thermal_zone0/temp');
 if ($cpuTempCRaw !="") {
  if ($cpuTempCRaw > 1000) { $cpuTempC = round($cpuTempCRaw / 1000); } else { $cpuTempC = round($cpuTempCRaw); }
@@ -16,6 +17,7 @@ if ($cpuTempCRaw !="") {
  if ($cpuTempC >= 55) { $cpuTempHTML = "<td style=\"background: #fa0\">".$cpuTempC."&deg;C / ".$cpuTempF."&deg;F</td>\n"; }
  if ($cpuTempC >= 70) { $cpuTempHTML = "<td style=\"background: #f00\">".$cpuTempC."&deg;C / ".$cpuTempF."&deg;F</td>\n"; }
  } else { $cpuTempHTML = "<td style=\"background: #white\">---</td>\n"; }
+} else { $cpuTempHTML = "<td style=\"background: #white\">---</td>\n"; }
 ?>
 <fieldset style="box-shadow:0 0 10px #999;background-color:#e8e8e8e8;width:855px;margin-top:8px;;margin-bottom:8px;margin-left:6px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <table style="margin-top:2px;">
