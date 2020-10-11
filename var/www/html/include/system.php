@@ -8,7 +8,7 @@ $free_mem=shell_exec("free -m | awk 'NR==2{printf \"%.0f%%\", $3*100/$2 }'");
 $disk_used=shell_exec("df -h | awk '\$NF==\"/\"{printf \"%s\",$5}'");
 
 $cpuLoad = sys_getloadavg();
-if (file_exists('/sys/class/thermal/thermal_zone0/temp2')) {
+if (file_exists('/sys/class/thermal/thermal_zone0/temp')) {
 $cpuTempCRaw = exec('cat /sys/class/thermal/thermal_zone0/temp');
 if ($cpuTempCRaw !="") {
  if ($cpuTempCRaw > 1000) { $cpuTempC = round($cpuTempCRaw / 1000); } else { $cpuTempC = round($cpuTempCRaw); }
