@@ -1,5 +1,4 @@
 <?php
-// DVSwitch Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ). Version SP2ONG 2020
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
