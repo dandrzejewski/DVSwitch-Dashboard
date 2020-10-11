@@ -12,7 +12,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="DVSwitch" />
     <meta name="Author" content="Andrew Taylor (MW0MWZ), Waldek (SP2ONG)" />
-    <meta name="Description" content="DVSwitch Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ). Version SP2ONG 2020" />
+    <meta name="Description" content="Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ) and adapted to DVSwitch by SP2ONG" />
     <meta name="KeyWords" content="MMDVM_Bridge,Analog_Bridge,ircDDBGateway,D-Star,ircDDB,DMRGateway,DMR,YSFGateway,YSF,C4FM,NXDNGateway,NXDN,P25Gateway,P25,DVSwitch,DL5DI,DG9VH,MW0MWZ,SP2ONG" />
     <meta http-equiv="cache-control" content="max-age=0" />
     <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
@@ -112,7 +112,8 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
     echo '</div>'."\n";
 ?>
 <div class="content">
-<center><span style="font: 7pt arial, sans-serif;">DVSwitch Dashboard <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?></span></center>
+<center><span style="font: 7pt arial, sans-serif;">DVSwitch Dashboard <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?>
+	<br>(Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ) and adapted to DVSwitch by SP2ONG)</span></center>
 <!-- DVSwitch Dashboard: version 20201010 -->
 	</div>
 </div>
