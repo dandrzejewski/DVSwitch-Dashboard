@@ -112,7 +112,7 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
 ?>
 <div class="content">
 <center><span style="font: 7pt arial, sans-serif;">DVSwitch Dashboard <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?>
-	<br>(Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ) and adapted to DVSwitch by SP2ONG)</span></center>
+	<br>Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ) and adapted to DVSwitch by SP2ONG</span></center>
 <!-- DVSwitch Dashboard: version 20201010 -->
 	</div>
 </div>
