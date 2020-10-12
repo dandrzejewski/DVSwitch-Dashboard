@@ -39,7 +39,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 </div>
 <div class="content"><center>
 <div style="margin-top:8px;">
-<button class="button link" onclick="playAudio(this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style="vertical-align:middle">RX Monitor&nbsp;&nbsp;&nbsp;</b></button>
+<button class="button link" onclick="playAudio(this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style="vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button>
 </div></center>
 </div>
 <?php
