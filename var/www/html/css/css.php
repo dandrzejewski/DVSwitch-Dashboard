@@ -363,7 +363,7 @@ input.toggle-round-flat:checked + label:after {
   box-shadow: 0px 8px 10px rgba(0,0,0,0.1);
 }
 .link {background-color: #2A6594;}
-.link:hover {background-color: #3e8e41;}
+.link:hover {background-color: #3a87cd;}
 
 .dropbtn {
   background-color: #2A659A;
@@ -411,4 +411,4 @@ input.toggle-round-flat:checked + label:after {
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #3a87cd;}
