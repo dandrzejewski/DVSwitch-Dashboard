@@ -38,7 +38,9 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 </center>
 </div>
 <div class="content"><center>
-<div style="margin-top:20px;"></div></center>
+<div style="margin-top:8px;">
+<button class="button link" onclick="playAudio(this)"><b>&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;</b></button>
+</div></center>
 </div>
 <?php
 include 'include/config.php';
