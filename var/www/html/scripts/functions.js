@@ -49,7 +49,7 @@ function playAudio(btn) {
        ws.onclose = function(){
             // connection closed, discard old websocket and create a new one in 5s
             ws = null
-            btn.style.backgroundColor = "red";
+            btn.style.backgroundColor = "#b00";
             setTimeout(function() {
                 playAudio(btn);
             }, 5000)
