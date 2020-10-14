@@ -22,6 +22,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 <?php include_once "include/browserdetect.php"; ?>
     <script type="text/javascript" src="/scripts/jquery.min.js"></script>
     <script type="text/javascript" src="/scripts/functions.js"></script>
+    <script type="text/javascript" src="/scripts/pcm-player.min.js"></script>
     <script type="text/javascript">
       $.ajaxSetup({ cache: false });
     </script>
@@ -39,7 +40,7 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 </div>
 <div class="content"><center>
 <div style="margin-top:8px;">
-<button class="button link" onclick="playAudio(this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style="vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button>
+<button class="button link" onclick="playAudioToggle(8080, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style="vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button>
 </div></center>
 </div>
 <?php
