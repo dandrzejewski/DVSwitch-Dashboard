@@ -365,8 +365,8 @@ input.toggle-round-flat:checked + label:after {
   border-radius: 8px;
   box-shadow: 0px 8px 10px rgba(0,0,0,0.1);
 }
-.link {background-color: #2A6594;}
-.link:hover {background-color: #3a87cd;}
+.link {background-color: #2A6594; outline:none;}
+.link:hover {background-color: #3a87cd; outline:none;}
 
 .dropbtn {
   background-color: #2A659A;
