@@ -818,7 +818,7 @@ function getActualLink($logLines, $mode) {
         // 2000-01-01 00:00:00.000 Unlinked from reflector 10100 by M1ABC
         // 2000-01-01 00:00:00.000 Linked to reflector 10200 by M1ABC
         // 2000-01-01 00:00:00.000 No response from 10200, unlinking
-        if (isProcessRunning("NXDNGateway")) {
+        if (isProcessRunning("NXDNGateway") && !empty($logLines)) {
             foreach($logLines as $logLine) {
                $to = "";
                if (strpos($logLine,"Linked to")) {
@@ -853,7 +853,7 @@ function getActualLink($logLines, $mode) {
 	// 2000-01-01 00:00:00.000 Unlinked from reflector 10100 by M1ABC
 	// 2000-01-01 00:00:00.000 Linked to reflector 10200 by M1ABC
 	// 2000-01-01 00:00:00.000 No response from 10200, unlinking
-	if (isProcessRunning("P25Gateway")) {
+	if (isProcessRunning("P25Gateway") && !empty($logLines)) {
 	    foreach($logLines as $logLine) {
                $to = "";
                if (strpos($logLine,"Linked to")) {
