@@ -768,7 +768,7 @@ function getActualLink($logLines, $mode) {
 	// M: 0000-00-00 00:00:00.000 Connect to 00003 - "YSF2NXDN        " has been requested by M1ABC
 	// M: 0000-00-00 00:00:00.000 Link has failed, polls lost
 
-         if (isProcessRunning("YSFGateway")) {
+         if (isProcessRunning("YSFGateway") && !empty($logLines)) {
             $to = "";
             foreach($logLines as $logLine) {
                if ( (strpos($logLine,"Linked to")) && (!strpos($logLine,"Linked to MMDVM")) ) {
