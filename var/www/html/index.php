@@ -40,7 +40,10 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 </div>
 <div class="content"><center>
 <div style="margin-top:8px;">
-<button class="button link" onclick="playAudioToggle(8080, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style="vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button>
+<?php 
+if ( RXMONITOR == "YES" ) {
+echo '<button class="button link" onclick="playAudioToggle(8080, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style="vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button>';}
+?>
 </div></center>
 </div>
 <?php
@@ -78,7 +81,9 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
 
     echo '<td valign="top" style="border:none; height: 480px; background-color:#fafafa;">';
     echo '<div class="content">'."\n";
-    echo '<script type="text/javascript">'."\n";
+    echo '<script type="text/javascript">'."\n";define("RXMON","YES");define("RXMON","YES");
+
+
     echo 'function reloadLocalTx(){'."\n";
     echo '  $("#localTxs").load("/include/localtx.php",function(){ setTimeout(reloadLocalTx,1500) });'."\n";
     echo '}'."\n";
