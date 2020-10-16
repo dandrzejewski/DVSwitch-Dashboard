@@ -7,6 +7,8 @@ define("ABINFO", "34001");
 // Put remote Network or IP address from which want to see tooltip ABInfo
 // IP address has mast /32 for netoworks use /24 etc 
 define("REMOTENET", "127.0.0.1/32");
+// RX Monitor YES = enabled NO = disabled
+define("RXMONITOR","NO");
 define("LOGPATH", "/var/log/mmdvm");
 define("MMDVMLOGPREFIX", "MMDVM_Bridge");
 define("MMDVMINIPATH", "/opt/MMDVM_Bridge/");
