@@ -841,6 +841,7 @@ function getActualLink($logLines, $mode) {
                   return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
             }
+            return "Not Linked";
         } else {
             return "<span style=\"color:#b0b0b0;\"><b>No NXDN Network</b></span>";
         }
@@ -876,6 +877,7 @@ function getActualLink($logLines, $mode) {
                   return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
 	    }
+            return "Not Linked";
 	} else {
             return "<span style=\"color:#b0b0b0;\"><b>No P25 Network</b></span>";
         }
