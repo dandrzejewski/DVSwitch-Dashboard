@@ -1,5 +1,7 @@
 <?php
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
+include 'include/config.php';
+include_once 'include/tools.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -40,16 +42,13 @@ $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 </div>
 <div class="content"><center>
 <div style="margin-top:8px;">
-<?php 
+<?php
 if ( RXMONITOR == "YES" ) {
 echo '<button class="button link" onclick="playAudioToggle(8080, this)"><b>&nbsp;&nbsp;&nbsp;<img src=images/speaker.png alt="" style="vertical-align:middle">&nbsp;&nbsp;RX Monitor&nbsp;&nbsp;&nbsp;</b></button>';}
 ?>
 </div></center>
 </div>
 <?php
-include 'include/config.php';
-include_once 'include/tools.php';
-
 function getMMDVMConfigFileContent() {
 		// loads ini fule into array for further use
 		$conf = array();
