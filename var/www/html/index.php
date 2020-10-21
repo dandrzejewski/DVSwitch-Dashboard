@@ -1,6 +1,6 @@
 <?php
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
-include 'include/config.php';
+include_once 'include/config.php';
 include_once 'include/tools.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
