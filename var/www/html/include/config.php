@@ -8,7 +8,7 @@ define("ABINFO", "34001");
 // IP address has mast /32 for netoworks use /24 etc 
 define("REMOTENET", "127.0.0.1/32");
 // RX Monitor YES = enabled NO = disabled
-define("RXMONITOR","NO");
+define("RXMONITOR","YES");
 define("LOGPATH", "/var/log/mmdvm");
 define("MMDVMLOGPREFIX", "MMDVM_Bridge");
 define("MMDVMINIPATH", "/opt/MMDVM_Bridge/");
