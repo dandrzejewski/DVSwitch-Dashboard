@@ -368,7 +368,7 @@ input.toggle-round-flat:checked + label:after {
 .link {background-color: #2A6594; outline:none;}
 .link:hover {background-color: #3a87cd; outline:none;}
 .blink {background-color: #b00; outline:none; color:white}
-.blink:hover {background-color: #ff584f; outline:none;color:white}
+.blink:hover {background-color: #ff5722; outline:none;color:white}
 
 .dropbtn {
   background-color: #2A659A;
