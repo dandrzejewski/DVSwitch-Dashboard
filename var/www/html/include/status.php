@@ -290,7 +290,7 @@ if ($configfile = fopen('/etc/ircddbgateway','r')) {
     echo "<br />\n";
     echo "<table>\n";
     echo "<tr><th colspan=\"2\">D-Star Net</th></tr>\n";
-    echo "<tr><th>IRC</th><td style=\"background: #ffffff;color:brown;\">".substr($configs['ircddbHostname'], 0 ,16)."</td></tr>\n";
+    echo "<tr><th width=\"20%\">IRC</th><td style=\"background: #ffffff;color:brown;\">".substr($configs['ircddbHostname'], 0 ,16)."</td></tr>\n";
     echo "<tr><td colspan=\"2\" style=\"background: #ffffed;\">".getActualLink($reverseLogLinesMMDVM, "D-Star")."</td></tr>\n";
     echo "</table>\n";
 }
