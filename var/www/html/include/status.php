@@ -122,6 +122,7 @@ if (file_exists('/tmp/ABInfo_'.ABINFO.'.json')) {
 
 // TRX Status code
 echo '<br><table><tr><th colspan="2">TRX Info</th></tr><tr>';
+if (isProcessRunning("MMDVM_Bridge")) {
 if (isset($lastHeard[0])) {
     $listElem = $lastHeard[0];
     if ( $listElem[2] && $listElem[6] == null && $listElem[5] == 'DVSM/UC') {
@@ -133,7 +134,7 @@ if (isset($lastHeard[0])) {
                     }
             elseif (getActualMode($lastHeard, $mmdvmconfigs) === NULL) {
                     if (isProcessRunning("MMDVM_Bridge")) { echo "<td style=\"background:#0b0; color:#030;\">Listening</td>"; 
-		} else { echo "<td style=\"background:#606060; color:#b0b0b0;\">OFFLINE</td>"; }
+		} else { echo "<td style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\">OFFLINE</td>"; }
                     }
             elseif ($listElem[2] && $listElem[6] == null && $abinfo['tlv']['ambe_mode']== "DSTAR" && getActualMode($lastHeard, $mmdvmconfigs) === 'D-Star') {
                     echo "<td style=\"background:#4aa361;\">RX D-Star</td>";
@@ -173,15 +174,14 @@ if (isset($lastHeard[0])) {
     	        }
 	}
     }
-else {
-    echo "<td></td>";
-}
+ else { echo "<td></td>";}
+} else { echo "<td style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\">OFFLINE</td>"; }
 echo "</tr></table>\n";
 echo "<br />\n";
-echo "<table>\n";
+echo "<table>\n";;
 echo "<tr><th colspan=\"2\">DMR Master</th></tr>\n";
 if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
-	if ($dmrMasterHost == '127.0.0.1') {
+	if ($dmrMasterHost == '127.0.0.1' && isProcessRunning("DMRGateway")) {
 	    if ((isset($configdmrgateway['XLX Network 1']['Enabled'])) && ($configdmrgateway['XLX Network 1']['Enabled'] == 1)) {
 		echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$xlxMasterHost1."</span></td></tr>\n";
 	    }
@@ -211,17 +211,17 @@ if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
 		    echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$dmrMasterHost5."</span></td></tr>\n";
 		}
 	    }
-	}
-	else {
+	} 	else {echo "<tr><td colspan=\"2\" style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\"><b>No DMR Network</b></td></tr>\n";}
+               
+	if ($dmrMasterHost != '127.0.0.1' && isProcessRunning("MMDVM_Bridge")){
 	    echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$dmrMasterHost."</span></td></tr>\n";
 	}
     }
     else {
-	echo "<tr><td colspan=\"2\" style=\"background:#606060; color:#b0b0b0;\"><b>No DMR Network</b></td></tr>\n";
+	echo "<tr><td colspan=\"2\" style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\"><b>No DMR Network</b></td></tr>\n";
     }
 echo "</table>\n";
 }
-
 $testMMDVModeYSF = getConfigItem("System Fusion Network", "Enable", $mmdvmconfigs);
 if ( $testMMDVModeYSF == 1 ) { //Hide the YSF information when System Fusion Network mode not enabled.
         $ysfLinkedTo = getActualLink($reverseLogLinesYSFGateway, "YSF");
