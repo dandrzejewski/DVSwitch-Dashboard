@@ -414,3 +414,16 @@ input.toggle-round-flat:checked + label:after {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3a87cd;}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-size: 13px;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
