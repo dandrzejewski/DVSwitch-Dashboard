@@ -1,8 +1,8 @@
 <?php
 header("Content-type: text/css");
-if (file_exists('/etc/pistar-css.ini')) {
+if (file_exists('/etc/dvs-css.ini')) {
     // Use the values from the file
-    $piStarCssFile = '/etc/dvsd-css.ini';
+    $piStarCssFile = '/etc/dvs-css.ini';
 	if (fopen($piStarCssFile,'r')) { $piStarCss = parse_ini_file($piStarCssFile, true); }
     
     // Set the Values from the config file
