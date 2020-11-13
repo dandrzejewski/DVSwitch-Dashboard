@@ -6,9 +6,9 @@
 header("Content-type: text/css");
 
 // Check if the config file exists
-if (file_exists('/etc/pistar-css.ini')) {
+if (file_exists('/etc/dvs-css.ini')) {
     // Use the values from the file
-    $piStarCssFile = '/etc/pistar-css.ini';
+    $piStarCssFile = '/etc/dvs-css.ini';
 	if (fopen($piStarCssFile,'r')) { $piStarCss = parse_ini_file($piStarCssFile, true); }
     
     // Set the Values from the config file
@@ -419,15 +419,33 @@ input.toggle-round-flat:checked + label:after {
 .dropdown:hover .dropbtn {background-color: #3a87cd;}
 
 input[type=button], input[type=submit], input[type=reset] {
-  background-color: #4CAF50;
+  background-color: #448f47;
   border: none;
   color: white;
+  font-weight: 600;
   font-size: 13px;
   padding: 4px 12px;
   text-decoration: none;
   margin: 4px 4px;
   cursor: pointer;
   border-radius: 4px;
+}
+input[type="radio"] {
+  margin-top: -2px;
+  vertical-align: middle;
+}
+input[type=text] {
+  background-color: white;
+  border: 1px solid #ccc;
+  width:90px;
+  color: #b5651d;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 4px 12px;
+  text-decoration: none;
+  margin: 4px 4px;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 	
