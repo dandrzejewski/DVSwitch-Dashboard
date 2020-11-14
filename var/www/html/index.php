@@ -33,7 +33,7 @@ include_once 'include/tools.php';
 </head>
 <body style="background-color: #f8f8f8f8;font: 11pt arial, sans-serif;">
 <center>
-<fieldset style="box-shadow:0 0 10px #999; background-color:#fafafa; width:770px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<fieldset style="box-shadow:0 0 10px #999; background-color:#fafafa; width:900px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <div class="container"> 
 <div class="header">
 <center>
@@ -120,7 +120,7 @@ $mmdvmconfigfile = getMMDVMConfigFileContent();
 <div class="content">
 <center><span style="font: 7pt arial, sans-serif;">DVSwitch Dashboard <?php $cdate=date("Y"); if ($cdate > "2020") {$cdate="2020-".date("Y");} echo $cdate; ?>
 	<br>Dashboard based on Pi-Star Dashboard, © Andy Taylor (MW0MWZ) and adapted to DVSwitch by SP2ONG</span></center>
-<!-- DVSwitch Dashboard: version 20201112 -->
+<!-- DVSwitch Dashboard: version 20201114 -->
 	</div>
 </div>
 </fieldset>
