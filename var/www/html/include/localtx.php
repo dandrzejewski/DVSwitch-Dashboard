@@ -21,7 +21,7 @@ $counter = 0;
 $i = 0;
 for ($i = 0; $i < count($localTXList); $i++) {
 		$listElem = $localTXList[$i];
-		if ($listElem[5] == "DVSM/UC" && ($listElem[1] == "D-Star" || startsWith($listElem[1], "DMR") || $listElem[1] == "YSF" || $listElem[1]== "P25" || $listElem[1]== "NXDN")) {
+		if ($listElem[5] == "LNet" && ($listElem[1] == "D-Star" || startsWith($listElem[1], "DMR") || $listElem[1] == "YSF" || $listElem[1]== "P25" || $listElem[1]== "NXDN")) {
 			if ($counter <= 19) { //last 20 calls
 				$utc_time = $listElem[0];
                         	$utc_tz =  new DateTimeZone('UTC');
@@ -47,8 +47,8 @@ for ($i = 0; $i < count($localTXList); $i++) {
 		    }
 			if (strlen($listElem[4]) == 1) { $listElem[4] = str_pad($listElem[4], 8, " ", STR_PAD_LEFT); }
 			echo"<td align=\"left\">&nbsp;<span style=\"color:#b5651d;font-weight:bold;\">".str_replace(" ","&nbsp;", $listElem[4])."</span></td>";
-			if ($listElem[5] == "DVSM/UC"){
-				echo "<td style=\"background:#1d1;\">DVSM/UC</td>";
+			if ($listElem[5] == "LNet"){
+				echo "<td style=\"background:#1d1;\">LNet</td>";
 			} else {
 				echo "<td>$listElem[5]</td>";
 			}
