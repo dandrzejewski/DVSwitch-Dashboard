@@ -125,7 +125,7 @@ echo '<br><table><tr><th colspan="2">TRX Info</th></tr><tr>';
 if (isProcessRunning("MMDVM_Bridge")) {
 if (isset($lastHeard[0])) {
     $listElem = $lastHeard[0];
-    if ( $listElem[2] && $listElem[6] == null && $listElem[5] == 'DVSM/UC') {
+    if ( $listElem[2] && $listElem[6] == null && $listElem[5] == 'LNet') {
             echo "<td style=\"background:#f33;\">TX $listElem[1]</td>";
             }
             else {
