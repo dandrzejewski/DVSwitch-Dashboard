@@ -52,8 +52,8 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
 		}
 
 
-		if ($listElem[5] == "DVSM/UC"){
-			echo "<td style=\"background:#1d1;\">DVSM/UC</td>";
+		if ($listElem[5] == "LNet"){
+			echo "<td style=\"background:#1d1;\">LNet</td>";
 		}else{
 			echo "<td>$listElem[5]</td>";
 		}
@@ -64,7 +64,7 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
                              if ($listElem[1] == "P25" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#f9f;\">&nbsp;&nbsp;&nbsp;RX P25&nbsp;&nbsp;&nbsp;</td>";}
 			     if ($listElem[1] == "NXDN" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#c9f;\">&nbsp;&nbsp;&nbsp;RX NXDN&nbsp;&nbsp;</td>";}
                              if ($listElem[1] == "D-Star" && $listElem[5] == "Net")  {echo "<td colspan=\"3\" style=\"background:#ade;\">&nbsp;&nbsp;&nbsp;RX D-Star</td>";}
-                             if ($listElem[5] == "DVSM/UC")  {echo "<td colspan=\"3\" style=\"background:#f33;\">TX</td>";}
+                             if ($listElem[5] == "LNet")  {echo "<td colspan=\"3\" style=\"background:#f33;\">TX</td>";}
 			} else if ($listElem[6] == "SMS") {
 				echo "<td colspan=\"3\" style=\"background:#1d1;\">SMS</td>";
 			} else if ($listElem[6] == "GPS") {
