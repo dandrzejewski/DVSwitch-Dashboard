@@ -100,10 +100,19 @@ function showMode($mode, $mmdvmconfigs) {
 			}
 		}
 		elseif ($mode == "System Fusion Network") {
-			if (isProcessRunning("YSFGateway")) {
-				echo "<td style=\"background:#12AD2A; color:#030; width:10%;\">";
-			} else {
-				echo "<td style=\"background:#b00; color:#f9f9f9; width:10%;\">";
+			if (getConfigItem("System Fusion Network", "GatewayAddress", $mmdvmconfigs) == '127.0.0.1') {
+				if (isProcessRunning("YSFGateway")) {
+					echo "<td style=\"background:#12AD2A; color:#030; width:8%;\">&nbsp;";
+				} else {
+					echo "<td style=\"background:#b00; color:#f9f9f9; width:8%;\">&nbsp;";
+				}
+			}
+			else {
+				if (isProcessRunning("MMDVM_Bridge")) {
+					echo "<td style=\"background:#12AD2A; color:#030; width:8%;\">&nbsp;";
+				} else {
+					echo "<td style=\"background:#b00; color:#f9f9f9; width:8%;\">&nbsp;";
+				}
 			}
 		}
 		elseif ($mode == "P25 Network") {
