@@ -252,8 +252,10 @@ if ( $testMMDVModeYSF == 1 ) { //Hide the YSF information when System Fusion Net
         }
         } else {
 	if (file_exists("/var/lib/mmdvm/YSFHosts.txt")) { $ysfstatus = exec('grep \''.$ysfMasterHost.'\' /var/lib/mmdvm/YSFHosts.txt | tail -1'); }
-            $ysfname= explode(";",$ysfstatus);
-	    if (strlen($ysfname[1]) > 20) { $ysfname = substr($ysfname[1], 0, 18) . '..'; } else {$ysfname=$ysfname[1];}
+           if ( $ysfstatus != "" ){
+	       $ysfname= explode(";",$ysfstatus);
+	       if (strlen($ysfname[1]) > 20) { $ysfname = substr($ysfname[1], 0, 18) . '..'; } else {$ysfname=$ysfname[1];} else {
+		       $ysfname = $ysfMasterHost;}
             $ysfLinkedToTxt = "Linked to<br><span style=\"color:#b5651d;font-weight: bold\">".$ysfname."</span>"; 
 	}
         echo "<br />\n";
