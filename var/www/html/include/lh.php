@@ -10,6 +10,9 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
       <th>Time (<?php echo date('T')?>)</th>
       <th>Mode</th>
       <th>Callsign</th>
+<?php
+    if (DISPLAYNAME == "YES" && file_exists(DMRIDDATPATH."/DMRIds.dat") && ! empty(DMRIDDATPATH."/DMRIds.dat")) { echo "<th>Name</th>"; }
+?>
       <th>Target</th>
       <th>Src</th>
       <th>Dur(s)</th>
@@ -42,6 +45,31 @@ for ($i = 0;  ($i <= 19); $i++) { //Last 20 calls
 			echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</b></a><span style=\"color:#464646;font-weight:bold;\">/$listElem[3]</span></td>";
 		    } else {
 			echo "<td align=\"left\">&nbsp;<a href=\"http://www.qrz.com/db/$listElem[2]\" target=\"_blank\"><b>$listElem[2]</b></a></td>";
+		    }
+		}
+		// Display NAME by DV8AWC
+		if ( DISPLAYNAME == "YES" && file_exists(DMRIDDATPATH."/DMRIds.dat") && ! empty(DMRIDDATPATH."/DMRIds.dat")) {
+		$arr2 = $listElem[2];
+		if (is_numeric($arr2) || $arr2 == "FCS" || $arr2 == "MMDVM" || $arr2 == "P25"|| $arr2 == "N0CALL") {
+			echo "<td align=\"left\" style=\"font-weight:bold;color:#464646;\">&nbsp;<b>&nbsp;</b></td>";
+		} else {
+			$pos = strpos($dmrIDline, $arr2." ");
+			if ($pos != false) {
+				$name = substr($dmrIDline, ($pos + strlen($arr2." ")));
+				$name = ltrim($name, " ");
+				$x = strpos($name, "\n");
+				$y = strpos($name, " ");
+				$name = rtrim($name, " ");
+				if ($x < $y) {
+					$name = substr($name, 0, $x);
+					echo "<td align=\"left\" style=\"font-weight:bold;color:#464646;\">&nbsp;<b>".$name."</b></td>";
+				} else {
+					$name = substr($name, 0, $y);
+					echo "<td align=\"left\" style=\"font-weight:bold;color:#464646;\">&nbsp;<b>".$name."</b></td>";
+				}
+			} else {
+				echo "<td align=\"left\" style=\"font-weight:bold;color:#464646;\">&nbsp;<b>&nbsp;</b></td>";
+			}
 		    }
 		}
 		if (strlen($listElem[4]) == 1) { $listElem[4] = str_pad($listElem[4], 8, " ", STR_PAD_LEFT); }
