@@ -938,6 +938,12 @@ if (!in_array($_SERVER["PHP_SELF"],array('/include/bm_links.php','/include/bm_ma
 		$logLinesNXDNGateway = getNXDNGatewayLog();
 		//$reverseLogLinesNXDNGateway = array_reverse(getNXDNGatewayLog());
 	}
+	// Only need these in index.php and lh.php
+	if (strpos($_SERVER["PHP_SELF"], 'index.php') !== false || strpos($_SERVER["PHP_SELF"], 'lh.php') !== false) {
+        if ( DISPLAYNAME == "YES"  && file_exists(DMRIDDATPATH."/DMRIds.dat") && ! empty(DMRIDDATPATH."/DMRIds.dat")) {
+	     $dmrIDline = file_get_contents(DMRIDDATPATH."/DMRIds.dat");
+	    }
+	}
 }
 
 function getABInfo($filename) {
