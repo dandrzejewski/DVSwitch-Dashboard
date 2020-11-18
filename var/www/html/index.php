@@ -33,7 +33,7 @@ include_once 'include/tools.php';
 </head>
 <body style="background-color: #f8f8f8f8;font: 11pt arial, sans-serif;">
 <center>
-<fieldset style="box-shadow:0 0 10px #999; background-color:#fafafa; width:900px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<fieldset style="box-shadow:0 0 10px #999; background-color:#fafafa; width:0px;margin-top:15px;margin-left:0px;margin-right:5px;font-size:13px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
 <div class="container"> 
 <div class="header">
 <center>
