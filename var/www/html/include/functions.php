@@ -925,8 +925,8 @@ if (!in_array($_SERVER["PHP_SELF"],array('/include/bm_links.php','/include/bm_ma
 	array_multisort($reverseLogLinesMMDVM,SORT_DESC);
 	$lastHeard = getLastHeard($reverseLogLinesMMDVM);
 
-	// Only need these in repeaterinfo.php
-	if (strpos($_SERVER["PHP_SELF"], 'status.php') !== false || strpos($_SERVER["PHP_SELF"], 'system.php') !== false || strpos($_SERVER["PHP_SELF"], 'index.php') !== false) {
+	// Only need these in:
+	if (strpos($_SERVER["PHP_SELF"], 'status.php') !== false || strpos($_SERVER["PHP_SELF"], 'index.php') !== false) {
 		//$YSFGatewayconfigs = getYSFGatewayConfig();
 		$logLinesYSFGateway = getYSFGatewayLog();
 		$reverseLogLinesYSFGateway = $logLinesYSFGateway;
@@ -937,10 +937,6 @@ if (!in_array($_SERVER["PHP_SELF"],array('/include/bm_links.php','/include/bm_ma
 		//$NXDNGatewayconfigs = getNXDNGatewayConfig();
 		$logLinesNXDNGateway = getNXDNGatewayLog();
 		//$reverseLogLinesNXDNGateway = array_reverse(getNXDNGatewayLog());
-	}
-	// Only need these in index.php
-	if (strpos($_SERVER["PHP_SELF"], 'index.php') !== false || strpos($_SERVER["PHP_SELF"], 'pages.php') !== false) {
-		$logLinesDAPNETGateway = getDAPNETGatewayLog();
 	}
 }
 
