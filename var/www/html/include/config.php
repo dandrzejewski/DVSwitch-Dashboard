@@ -9,6 +9,9 @@ define("ABINFO", "34001");
 define("REMOTENET", "127.0.0.1/32");
 // RX Monitor YES = enabled NO = disabled
 define("RXMONITOR","YES");
+// Display NAME on Dashboard YES = enable or NO =  disable
+define("DISPLAYNAME","YES");
+//
 define("LOGPATH", "/var/log/mmdvm");
 define("MMDVMLOGPREFIX", "MMDVM_Bridge");
 define("MMDVMINIPATH", "/opt/MMDVM_Bridge/");
@@ -25,6 +28,6 @@ define("NXDNGATEWAYINIPATH", "/opt/NXDNGateway");
 define("NXDNGATEWAYINIFILENAME", "NXDNGateway.ini");
 define("LINKLOGPATH", "/var/log/ircddbgateway");
 define("IRCDDBGATEWAY", "ircddbgatewayd");
-
+define("IRCDDBGATEWAYINIFILENAME", "/etc/ircddbgateway");
 
 ?>
