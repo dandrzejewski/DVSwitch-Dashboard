@@ -185,40 +185,57 @@ if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
 	    if ((isset($configdmrgateway['XLX Network 1']['Enabled'])) && ($configdmrgateway['XLX Network 1']['Enabled'] == 1)) {
 		echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$xlxMasterHost1."</span></td></tr>\n";
 	    }
-                        if ( !isset($configdmrgateway['XLX Network 1']['Enabled']) && isset($configdmrgateway['XLX Network']['Enabled']) && $configdmrgateway['XLX Network']['Enabled'] == 1) {
-		if (file_exists("/var/log/mmdvm/DMRGateway-".gmdate("Y-m-d").".log")) { $xlxMasterHost1 = exec('grep \'XLX, Linking\|Unlinking\' /var/log/pi-star/DMRGateway-'.gmdate("Y-m-d").'.log | tail -1 | awk \'{print $5 " " $8 " " $9}\''); }
-                                else { $xlxMasterHost1 = exec('grep \'XLX, Linking\|Unlinking\' /var/log/pi-star/DMRGateway-'.gmdate("Y-m-d", time() - 86340).'.log | tail -1 | awk \'{print $5 " " $8 " " $9}\''); }
+                if ( !isset($configdmrgateway['XLX Network 1']['Enabled']) && isset($configdmrgateway['XLX Network']['Enabled']) && $configdmrgateway['XLX Network']['Enabled'] == 1) {
+		if (file_exists("/var/log/mmdvm/DMRGateway-".gmdate("Y-m-d").".log")) { $xlxMasterHost1 = exec('grep \'XLX, Linking\|Unlinking\' /var/log/pi-star/DMRGateway-'.gmdate("Y-m-d").'.log | tail -1 | awk \'{print $5 " " $8 " " $9}\''); 
+		} else { $xlxMasterHost1 = exec('grep \'XLX, Linking\|Unlinking\' /var/log/pi-star/DMRGateway-'.gmdate("Y-m-d", time() - 86340).'.log | tail -1 | awk \'{print $5 " " $8 " " $9}\''); }
 		if ( strpos($xlxMasterHost1, 'Linking') !== false ) { $xlxMasterHost1 = str_replace('Linking ', '', $xlxMasterHost1); }
 		else if ( strpos($xlxMasterHost1, 'Unlinking') !== false ) { $xlxMasterHost1 = "XLX Not Linked"; }
 		echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$xlxMasterHost1."</span></td></tr>\n";
                         }
 	    if ($configdmrgateway['DMR Network 1']['Enabled'] == 1) {
-		echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$dmrMasterHost1."</span></td></tr>\n";
+		$dmrMasterhost1 = str_replace(' ', '_', $dmrMasterHost1);
+                echo getDMRGstat($dmrMasterhost1);
 	    }
 	    if ($configdmrgateway['DMR Network 2']['Enabled'] == 1) {
-		echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$dmrMasterHost2."</span></td></tr>\n";
+		$dmrMasterhost2 = str_replace(' ', '_', $dmrMasterHost2);
+                echo getDMRGstat($dmrMasterhost2);
 	    }
 	    if ($configdmrgateway['DMR Network 3']['Enabled'] == 1) {
-		echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$dmrMasterHost3."</span></td></tr>\n";
+		$dmrMasterhost3 = str_replace(' ', '_', $dmrMasterHost3);
+                echo getDMRGstat($dmrMasterhost3);
 	    }
 	    if (isset($configdmrgateway['DMR Network 4']['Enabled'])) {
 		if ($configdmrgateway['DMR Network 4']['Enabled'] == 1) {
-		    echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$dmrMasterHost4."</span></td></tr>\n";
-		}
+		$dmrMasterhost4 = str_replace(' ', '_', $dmrMasterHost4);
+                echo getDMRGstat($dmrMasterhost4);
 	    }
 	    if (isset($configdmrgateway['DMR Network 5']['Enabled'])) {
 		if ($configdmrgateway['DMR Network 5']['Enabled'] == 1) {
-		    echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$dmrMasterHost5."</span></td></tr>\n";
+		$dmrMasterhost5 = str_replace(' ', '_', $dmrMasterHost5);
+                echo getDMRGstat($dmrMasterhost5);
 		}
+	      }
 	    }
-	} 	else {echo "<tr><td colspan=\"2\" style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\"><b>No DMR Network</b></td></tr>\n";}
-               
-	if ($dmrMasterHost != '127.0.0.1' && isProcessRunning("MMDVM_Bridge")){
-	    echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$dmrMasterHost."</span></td></tr>\n";
-	}
+	} 	
+	elseif ($dmrMasterHost != '127.0.0.1' && isProcessRunning("MMDVM_Bridge")) {
+		if (file_exists("/var/log/mmdvm/MMDVM_Bridge-".gmdate("Y-m-d").".log")) { $dmrstatus = exec('grep \'DMR, Remote CMD: txTg=\' /var/log/mmdvm/MMDVM_Bridge-'.gmdate("Y-m-d").'.log | tail -1 | awk \'{print $7}\'');
+		} else {$dmrstatus = exec('grep \'DMR, Remote CMD: txTg=\' /var/log/mmdvm/MMDVM_Bridge-'.gmdate("Y-m-d", time() - 86340).'.log | tail -1 | awk \'{print $7}\''); }
+                 if ($dmrstatus !="") {$dmrMasterHost = get_string_between($dmrstatus,'@',':');}
+		$dmrMasterhost = str_replace(' ', '_', $dmrMasterHost);
+		if (file_exists("/var/log/mmdvm/MMDVM_Bridge-".gmdate("Y-m-d").".log")) { $dmrstatus = exec('grep \'DMR, Logged\|DMR, Closing DMR\|DMR, Opening DMR\|DMR, Connection\' /var/log/mmdvm/MMDVM_Bridge-'.gmdate("Y-m-d").'.log | tail -1 | awk \'{print $5}\''); 
+		} else {$dmrstatus = exec('grep \'DMR, Logged\|DMR, Closing DMR\|DMR, Opening DMR\|DMR, Connection\' /var/log/mmdvm/MMDVM_Bridge-'.gmdate("Y-m-d", time() - 86340).'.log | tail -1 | awk \'{print $5}\''); }
+		if (strlen($dmrMasterHost) > 19) { $dmrMasterHost = substr($dmrMasterHost, 0, 17) . '..'; }
+		if ( strpos($dmrstatus, 'Logged') !== false ) {
+                        echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$dmrMasterHost."</span></td></tr>\n";}
+		else if (strpos($dmrstatus, 'Opening') !== false || strpos($dmrstatus, 'Closing') !== false || strpos($dmrstatus, 'Connection') !== false) { 
+			echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b0b0b0;font-weight: bold\">".$dmrMasterHost."</span></td></tr>\n"; }    
+		}
+    else {
+	    echo "<tr><td colspan=\"2\" style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\"><b>No DMR Networka</b></td></tr>\n";
+        }
     }
     else {
-	echo "<tr><td colspan=\"2\" style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\"><b>No DMR Network</b></td></tr>\n";
+	    echo "<tr><td colspan=\"2\" style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\"><b>No DMR Networka</b></td></tr>\n";
     }
 echo "</table>\n";
 }
