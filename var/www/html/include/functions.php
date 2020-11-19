@@ -776,14 +776,23 @@ function getActualLink($logLines, $mode) {
 	// M: 0000-00-00 00:00:00.000 Disconnect via DTMF has been requested by M1ABC
 	// M: 0000-00-00 00:00:00.000 Connect to 00003 - "YSF2NXDN        " has been requested by M1ABC
 	// M: 0000-00-00 00:00:00.000 Link has failed, polls lost
-
-         if (isProcessRunning("YSFGateway") && !empty($logLines)) {
+         if (!empty($logLines)) {
             $to = "";
-            foreach($logLines as $logLine) {
-               if ( (strpos($logLine,"Linked to")) && (!strpos($logLine,"Linked to MMDVM")) ) {
+            foreach($logLines as $logLine) {            
+               if ( (strpos(substr($logLine, 37),":")) && (strpos(substr($logLine, 37),".")) &&(!strpos($logLine,"Linked to MMDVM"))) {
+                  $to = trim(substr($logLine, 37));
+		  $address=trim(substr($to,0,strpos($to,":")));
+		  $port=trim(substr($to,strpos($to,":")+1));
+		  $link = $address.";".$port;
+		if (file_exists("/var/lib/mmdvm/YSFHosts.txt")) { $ysfstatus = exec('egrep -h \''.$link.'\' /var/lib/mmdvm/YSFHosts.txt | tail -1'); }
+		    $ysfname= explode(";",$ysfstatus);
+		    $to = $ysfname[1];
+		    }
+               if ( (!strpos(substr($logLine, 37),":")) && (strpos($logLine,"Linked to")) && (!strpos($logLine,"Linked to MMDVM")) && (isProcessRunning("YSFGateway"))) {
                   $to = trim(substr($logLine, 37, 16));
 		  if (substr($to, 0, 3) === "FCS") { $to = str_replace(' ', '', str_replace('-', '', $to)); }
                }
+
                if (strpos($logLine,"Automatic (re-)connection to")) {
 		  if (strpos($logLine,"Automatic (re-)connection to FCS")) {
 			$to = substr($logLine, 56, 8);
