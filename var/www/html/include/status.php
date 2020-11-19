@@ -240,8 +240,6 @@ echo "</table>\n";
 }
 $testMMDVModeYSF = getConfigItem("System Fusion Network", "Enable", $mmdvmconfigs);
 if ( $testMMDVModeYSF == 1 ) { //Hide the YSF information when System Fusion Network mode not enabled.
-       $ysfMasterHost = getConfigItem("System Fusion Network", "GatewayAddress", $mmdvmconfigs);
-       if ($ysfMasterHost == '127.0.0.1') {
         $ysfLinkedTo = getActualLink($reverseLogLinesYSFGateway, "YSF");
         if ($ysfLinkedTo == 'Not Linked' || $ysfLinkedTo == 'No YSF Network') {
                 $ysfLinkedToTxt = '<span style="color:#b0b0b0;"><b>'.$ysfLinkedTo.'</b></span>';
@@ -266,17 +264,6 @@ if ( $testMMDVModeYSF == 1 ) { //Hide the YSF information when System Fusion Net
 	}
 	    $ysfLinkedToTxt = str_replace('_', ' ', $ysfLinkedToTxt);
         }
-        } else {
-	if (file_exists("/var/lib/mmdvm/YSFHosts.txt")) { $ysfstatus = exec('grep \''.$ysfMasterHost.'\' /var/lib/mmdvm/YSFHosts.txt | tail -1'); }
-	if ($ysfstatus != "") {
-	    $ysfname= explode(";",$ysfstatus);
-	if (strlen($ysfname[1]) > 20) { $ysfname = substr($ysfname[1], 0, 18) . '..'; 
-	} else { $ysfname=$ysfname[1]; }
-	} else { $ysfname = $ysfMasterHost; }
-        if (isProcessRunning("MMDVM_Bridge")) {
-		 $ysfLinkedToTxt = "Linked to<br><span style=\"color:#b5651d;font-weight: bold\">".$ysfname."</span>"; 
-        } else { $ysfLinkedToTxt = "<span style=\"color:#b0b0b0;font-weight: bold\">No YSF Network</span>"; }
-	}
         echo "<br />\n";
         echo "<table>\n";
         echo "<tr><th colspan=\"2\">YSF Net</th></tr>\n";
