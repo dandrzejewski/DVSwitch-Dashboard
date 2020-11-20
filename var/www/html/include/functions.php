@@ -770,7 +770,7 @@ function getActualLink($logLines, $mode) {
          if (!empty($logLines)) {
             $to = "";
             foreach($logLines as $logLine) {            
-               if ( (strpos(substr($logLine, 37),":")) && (strpos(substr($logLine, 37),".")) &&(!strpos($logLine,"Linked to MMDVM"))) {
+               if ( (strpos(substr($logLine, 37),":")) && (strpos(substr($logLine, 37),"."))) {
                   $to = trim(substr($logLine, 37));
 		  $address=trim(substr($to,0,strpos($to,":")));
 		  $port=trim(substr($to,strpos($to,":")+1));
