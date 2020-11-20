@@ -776,8 +776,9 @@ function getActualLink($logLines, $mode) {
 		  $port=trim(substr($to,strpos($to,":")+1));
 		  $link = $address.";".$port;
 		if (file_exists("/var/lib/mmdvm/YSFHosts.txt")) { $ysfstatus = exec('egrep -a -h \''.$link.'\' /var/lib/mmdvm/YSFHosts.txt | tail -1'); }
-		    $ysfname= explode(";",$ysfstatus);
-		    $to = $ysfname[1];
+		    if ($ysfstatus != "") {
+		        $ysfname= explode(";",$ysfstatus);
+		        $to = $ysfname[1];}
 		    }
                if ( (!strpos(substr($logLine, 37),":")) && (strpos($logLine,"Linked to")) && (!strpos($logLine,"Linked to MMDVM")) && (isProcessRunning("YSFGateway"))) {
                   $to = trim(substr($logLine, 37, 16));
