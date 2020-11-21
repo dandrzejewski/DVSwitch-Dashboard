@@ -6,7 +6,7 @@ $localTXList = $lastHeard;
 ?>
 <div>
 <span style="font-weight: bold;font-size:14px;">Local Activity</span>
-<fieldset style="box-shadow:0 0 10px #999;background-color:#e8e8e8e8; width:660px;margin-top:8px;margin-left:0px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+<fieldset style="box-shadow:0 0 10px #999;background-color:#e8e8e8e8; width:640px;margin-top:8px;margin-left:0px;margin-right:0px;font-size:12px;border-top-left-radius: 10px; border-top-right-radius: 10px;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
   <table style="margin-top:2px;">
     <tr>
       <th>Time (<?php echo date('T')?>)</th>
