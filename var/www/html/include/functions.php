@@ -767,7 +767,7 @@ function getActualLink($logLines, $mode) {
 	// M: 0000-00-00 00:00:00.000 Disconnect via DTMF has been requested by M1ABC
 	// M: 0000-00-00 00:00:00.000 Connect to 00003 - "YSF2NXDN        " has been requested by M1ABC
 	// M: 0000-00-00 00:00:00.000 Link has failed, polls lost
-         if ((isProcessRunning("YSFGateway")) && (isProcessRunning("MMDVM_Bridge"))||(isProcessRunning("MMDVM_Bridge"))) {
+         if ((isProcessRunning("YSFGateway")) && (isProcessRunning("MMDVM_Bridge"))||(isProcessRunning("MMDVM_Bridge"))||(isProcessRunning("YSFGateway"))) {
             $to = "";
             foreach($logLines as $logLine) {            
                if ( (strpos(substr($logLine, 37),":")) && (strpos(substr($logLine, 37),"."))) {
