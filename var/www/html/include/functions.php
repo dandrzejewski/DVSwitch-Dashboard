@@ -828,7 +828,7 @@ function getActualLink($logLines, $mode) {
         // 2000-01-01 00:00:00.000 Unlinked from reflector 10100 by M1ABC
         // 2000-01-01 00:00:00.000 Linked to reflector 10200 by M1ABC
         // 2000-01-01 00:00:00.000 No response from 10200, unlinking
-        if (isProcessRunning("NXDNGateway") && !empty($logLines)) {
+        if (isProcessRunning("NXDNGateway")) {
             foreach($logLines as $logLine) {
                $to = "";
                if (strpos($logLine,"Linked to")) {
@@ -851,7 +851,7 @@ function getActualLink($logLines, $mode) {
                   return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
             }
-            return "Not Linked";
+            return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
         } else {
             return "<span style=\"color:#b0b0b0;\"><b>No NXDN Network</b></span>";
         }
@@ -864,7 +864,7 @@ function getActualLink($logLines, $mode) {
 	// 2000-01-01 00:00:00.000 Unlinked from reflector 10100 by M1ABC
 	// 2000-01-01 00:00:00.000 Linked to reflector 10200 by M1ABC
 	// 2000-01-01 00:00:00.000 No response from 10200, unlinking
-	if (isProcessRunning("P25Gateway") && !empty($logLines)) {
+	if (isProcessRunning("P25Gateway")) {
 	    foreach($logLines as $logLine) {
                $to = "";
                if (strpos($logLine,"Linked to")) {
@@ -887,7 +887,7 @@ function getActualLink($logLines, $mode) {
                   return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
                }
 	    }
-            return "Not Linked";
+            return "<span style=\"color:#b0b0b0;\"><b>Not Linked</b></span>";
 	} else {
             return "<span style=\"color:#b0b0b0;\"><b>No P25 Network</b></span>";
         }
