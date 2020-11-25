@@ -221,7 +221,7 @@ if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
 	elseif (isProcessRunning("MMDVM_Bridge")) {
 		if (file_exists("/var/log/mmdvm/MMDVM_Bridge-".gmdate("Y-m-d").".log")) { $dmrstatus = exec('grep -a \'DMR, Logged\|DMR, Closing DMR\|DMR, Opening DMR\|DMR, Connection\' /var/log/mmdvm/MMDVM_Bridge-'.gmdate("Y-m-d").'.log | tail -1 | awk \'{print $5 " " $7}\'');
 		} else {$dmrstatus = exec('grep -a \'DMR, Logged\|DMR, Closing DMR\|DMR, Opening DMR\|DMR, Connection\' /var/log/mmdvm/MMDVM_Bridge-'.gmdate("Y-m-d", time() - 86340).'.log | tail -1 | awk \'{print $5 " " $7}\''); }
-                if ($dmrstat !="") {$dmrMasterHost = get_string_between($dmrstat,'@',':');}
+                if (($dmrstat !="") && (strpos($dmrstat, '@') !== false)) {$dmrMasterHost = get_string_between($dmrstat,'@',':');}
 		$dmrMasterhost = str_replace(' ', '_', $dmrMasterHost);
     		if (strlen($dmrMasterHost) > 19) { $dmrMasterHost = substr($dmrMasterHost, 0, 17) . '..'; }
 		if ( strpos($dmrstat, 'Logged') !== false ) {
