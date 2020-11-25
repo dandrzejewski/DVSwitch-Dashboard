@@ -122,7 +122,7 @@ function showMode($mode, $mmdvmconfigs) {
 		}
 		elseif ($mode == "DMR Network") {
 			if (getConfigItem("DMR Network", "Address", $mmdvmconfigs) == '127.0.0.1') {
-				if (isProcessRunning("DMRGateway")) {
+				if (isProcessRunning("DMRGateway") || isProcessRunning("MMDVM_Bridge") ) {
 					echo "<td style=\"background:#12AD2A; color:#030; width:8%;\">&nbsp;";
 				} else {
 					echo "<td style=\"background:#b00; color:#f9f9f9; width:8%;\">&nbsp;";
