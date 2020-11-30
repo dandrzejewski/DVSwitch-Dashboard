@@ -219,22 +219,34 @@ if (getEnabled("DMR Network", $mmdvmconfigs) == 1) {
 	    }
 	} 	
 	elseif (isProcessRunning("MMDVM_Bridge")) {
-		if (file_exists("/var/log/mmdvm/MMDVM_Bridge-".gmdate("Y-m-d").".log")) { $dmrstatus = exec('grep -a \'DMR, Logged\|DMR, Closing DMR\|DMR, Opening DMR\|DMR, Connection\' /var/log/mmdvm/MMDVM_Bridge-'.gmdate("Y-m-d").'.log | tail -1 | awk \'{print $5 " " $7}\'');
-		} else {$dmrstatus = exec('grep -a \'DMR, Logged\|DMR, Closing DMR\|DMR, Opening DMR\|DMR, Connection\' /var/log/mmdvm/MMDVM_Bridge-'.gmdate("Y-m-d", time() - 86340).'.log | tail -1 | awk \'{print $5 " " $7}\''); }
-                if (($dmrstat !="") && (strpos($dmrstat, '@') !== false)) {$dmrMasterHost = get_string_between($dmrstat,'@',':');}
-		$dmrMasterhost = str_replace(' ', '_', $dmrMasterHost);
+		if (file_exists("/var/log/mmdvm/MMDVM_Bridge-".gmdate("Y-m-d").".log")) { $dmrstat = exec('grep -a \'DMR, Logged\|DMR, Closing DMR\|DMR, Opening DMR\|DMR, Connection\' /var/log/mmdvm/MMDVM_Bridge-'.gmdate("Y-m-d").'.log | tail -1 | awk \'{print $5 " " $10}\'');
+		} else {$dmrstat = exec('grep -a \'DMR, Logged\|DMR, Closing DMR\|DMR, Opening DMR\|DMR, Connection\' /var/log/mmdvm/MMDVM_Bridge-'.gmdate("Y-m-d", time() - 86340).'.log | tail -1 | awk \'{print $5 " " $10}\''); }
+                 if (($dmrstat !="") && (strpos($dmrstat, ':') !== false) ) { 
+		    $dmrMasterHost = trim(substr($dmrstat,7,strpos($dmrstat,':')-strlen(trim(substr($dmrstat, strpos($dmrstat,':')-1)))));
+		  $dmrMasterPort=trim(substr($dmrstat,strpos($dmrstat,":")+1));
+		    $dmrMasterFile = fopen("/var/lib/mmdvm/DMR_Hosts.txt", "r");
+		    while (!feof($dmrMasterFile)) {
+			$dmrMasterLine = fgets($dmrMasterFile);
+            		$dmrMasterHostF = preg_split('/\s+/', $dmrMasterLine);
+			if ((count($dmrMasterHostF) >= 4) && (strpos($dmrMasterHostF[0], '#') === FALSE) && ($dmrMasterHostF[0] != '')) {
+			if (($dmrMasterHost == $dmrMasterHostF[2]) && ($dmrMasterPort == $dmrMasterHostF[4])) { $dmrMasterHost = str_replace('_', ' ', $dmrMasterHostF[0]); }
+				}
+			    }
+			fclose($dmrMasterFile);
+		} 
+		$dmrMasterHost = str_replace('_', ' ', $dmrMasterHost);
     		if (strlen($dmrMasterHost) > 19) { $dmrMasterHost = substr($dmrMasterHost, 0, 17) . '..'; }
 		if ( strpos($dmrstat, 'Logged') !== false ) {
                         echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b5651d;font-weight: bold\">".$dmrMasterHost."</span></td></tr>\n";}
 		else if (strpos($dmrstat, 'Opening') !== false || strpos($dmrstatus, 'Closing') !== false || strpos($dmrstatus, 'Connection') !== false) { 
-			echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b0b0b0;font-weight: bold\">Not connected</span></td></tr>\n"; }    
+			echo "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b0b0b0;font-weight: bold\">Not Connected</span></td></tr>\n"; }    
 		}
     else {
-	    echo "<tr><td colspan=\"2\" style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\"><b>No DMR Networka</b></td></tr>\n";
+	    echo "<tr><td colspan=\"2\" style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\"><b>No DMR Network</b></td></tr>\n";
         }
     }
     else {
-	    echo "<tr><td colspan=\"2\" style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\"><b>No DMR Networka</b></td></tr>\n";
+	    echo "<tr><td colspan=\"2\" style=\"background:#ffffed; color:#b0b0b0;font-weight: bold\"><b>No DMR Network</b></td></tr>\n";
     }
 echo "</table>\n";
 }
