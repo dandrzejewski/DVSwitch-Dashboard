@@ -976,7 +976,7 @@ function getDMRGstat($dmrserver) {
              return "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b0b0b0;font-weight: bold\">".$dmrserver."</span></td></tr>\n"; }
 }
 
-function format_time($seconds) {
+function format_uptime($seconds) {
     $secs = intval($seconds % 60);
     $mins = intval($seconds / 60 % 60);
     $hours = intval($seconds / 3600 % 24);
