@@ -4,6 +4,11 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/config.php';
 include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 
+$data = shell_exec('uptime');
+$uptime = explode(' up ', $data);
+$uptime = explode(',', $uptime[1]);
+$uptime = $uptime[0].', '.$uptime[1];
+
 $free_mem=shell_exec("free -m | awk 'NR==2{printf \"%.0f%%\", $3*100/$2 }'");
 $disk_used=shell_exec("df -h | awk '\$NF==\"/\"{printf \"%s\",$5}'");
 
@@ -38,7 +43,7 @@ if ($cpuTempCRaw !="") {
   <tr>
     <th>Hostname<br/><span style="font-weight: bold;color:#effd5f;font-size:10px;">IP: <?php echo str_replace(' ', '<br />', exec('hostname -I'));?></span></th>
     <th><b>Kernel<br/>release</b></th>
-    <th colspan="2">Platform <br><span style="font-weight: bold;color:#effd5f;font-size:12px;">Uptime: <?php echo str_replace(',', ',', exec('uptime -p'));?></span></th>
+    <th colspan="2">Platform <br><span style="font-weight: bold;color:#effd5f;font-size:12px;">Uptime: <?php echo $uptime; ?></span></th>
     <th><span>&nbsp;<b>Disk&nbsp;<br> used</b></span></th>
     <th><span>&nbsp;<b>Memory&nbsp;<br> used</b></span></th>
     <th><span><b>CPU Load</b></span></th>
