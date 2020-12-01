@@ -976,27 +976,5 @@ function getDMRGstat($dmrserver) {
              return "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b0b0b0;font-weight: bold\">".$dmrserver."</span></td></tr>\n"; }
 }
 
-function format_uptime($seconds) {
-    $secs = intval($seconds % 60);
-    $mins = intval($seconds / 60 % 60);
-    $hours = intval($seconds / 3600 % 24);
-    $days = intval($seconds / 86400);
-    $uptimeString = "";
-
-    if ($days > 0) {
-	$uptimeString .= $days;
-	$uptimeString .= (($days == 1) ? "&nbsp;day" : "&nbsp;days");
-    }
-    if ($hours > 0) {
-	$uptimeString .= (($days > 0) ? ", " : "") . $hours;
-	$uptimeString .= (($hours == 1) ? "&nbsp;hr" : "&nbsp;hrs");
-    }
-    if ($mins > 0) {
-	$uptimeString .= (($days > 0 || $hours > 0) ? ", " : "") . $mins;
-	$uptimeString .= (($mins == 1) ? "&nbsp;min" : "&nbsp;mins");
-    }
-    return $uptimeString;
-}
-
 
 ?>
