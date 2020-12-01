@@ -5,7 +5,7 @@ include_once $_SERVER['DOCUMENT_ROOT'].'/include/functions.php';
 $progname = basename($_SERVER['SCRIPT_FILENAME'],".php");
 
 $rawuptime = shell_exec('cat /proc/uptime');
-$uptime = format_time(substr($output,0,strpos($rawuptime," ")));
+$uptime = format_uptime(substr($rawuptime,0,strpos($rawuptime," ")));
 
 $free_mem=shell_exec("free -m | awk 'NR==2{printf \"%.0f%%\", $3*100/$2 }'");
 $disk_used=shell_exec("df -h | awk '\$NF==\"/\"{printf \"%s\",$5}'");
