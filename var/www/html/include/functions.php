@@ -441,10 +441,10 @@ function getHeardList($logLines) {
 			if (strpos($logLine,"ended RF data") || strpos($logLine,"ended network") || strpos($logLine,"GPS Position") ) {
 				switch (substr($logLine, 27, strpos($logLine,",") - 27)) {
 					case "DMR Slot 1":
-						$ts1duration = "SMS";
+						$ts1duration = "DMR Data";
 						break;
 					case "DMR Slot 2":
-						$ts2duration = "SMS";
+						$ts2duration = "DMR Data";
 						break;
 					case "YSF":
 						$ysfduration = "GPS";
