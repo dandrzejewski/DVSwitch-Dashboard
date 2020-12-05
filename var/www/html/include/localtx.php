@@ -55,7 +55,7 @@ for ($i = 0; $i < count($localTXList); $i++) {
 			if ($listElem[6] == null) {
 				echo "<td colspan=\"1\" style=\"background:#f33;\">TX</td>";
 			} else if ($listElem[6] == "SMS") {
-				echo "<td colspan=\"1\" style=\"background:#1d1;\">SMS</td>";
+				echo "<td colspan=\"1\" style=\"background:#1d1;\">DMR data</td>";
 			}  else {
 		echo"<td>$listElem[6]</td>"; //duration
 		}
