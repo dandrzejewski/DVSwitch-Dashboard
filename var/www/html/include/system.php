@@ -45,7 +45,9 @@ if ($cpuTempCRaw !="") {
     <th><span>&nbsp;<b>Disk&nbsp;<br> used</b></span></th>
     <th><span>&nbsp;<b>Memory&nbsp;<br> used</b></span></th>
     <th><span><b>CPU Load</b></span></th>
-    <th><span><b>CPU Temp</b></span></th>
+<?php if (file_exists('/sys/class/thermal/thermal_zone0/temp')) {
+    echo "<th><span><b>CPU Temp</b></span></th>"; }
+?>
   </tr>
   <tr height="24px">
     <td><?php echo php_uname('n');?></td>
@@ -54,7 +56,7 @@ if ($cpuTempCRaw !="") {
     <td><?php echo $disk_used;?></td>
     <td><?php echo $free_mem;?></td>
     <td><?php echo round($cpuLoad[0],1);?> / <?php echo round($cpuLoad[1],1);?> / <?php echo round($cpuLoad[2],1);?></td>
-    <?php echo $cpuTempHTML; ?>
+   <?php if (file_exists('/sys/class/thermal/thermal_zone0/temp')) { echo $cpuTempHTML; } ?>
   </tr>
 </table>
 </fieldset>
