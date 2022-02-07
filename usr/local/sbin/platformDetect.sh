@@ -62,8 +62,10 @@ if [[ ${modelName} == "ARM"* ]]; then
 	*b03111) raspberryVer="Pi 4 Model B (2GB) - Sony, UK";;
 	*c03111) raspberryVer="Pi 4 Model B (4GB) - Sony, UK";;
 	*b03112) raspberryVer="Pi 4 Model B Rev 1.2 (2GB) - Sony, UK";;
+	*b03114) raspberryVer="Pi 4 Model B Rev 1.4 (2GB) - Sony, UK";;
 	*c03112) raspberryVer="Pi 4 Model B Rev 1.2 (4GB) - Sony, UK";;
 	*d03114) raspberryVer="Pi 4 Model B Rev 1.4 (8GB) - Sony, UK";;
+	*902120) raspberryVer="Pi Zero 2 W (512 MB)";;
 	*) raspberryVer="Unknown ARM based System";;
 	esac
 
