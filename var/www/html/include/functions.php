@@ -351,6 +351,13 @@ function getHeardList($logLines) {
 	$pocsagduration	= "";
 	$lat		= "";
 	$long		= "";
+        $mode           = "";
+        $callsign       = "";
+        $id             = "";
+        $target         = "";
+        $source         = "";
+        $timestamp      = "";
+
 	foreach ($logLines as $logLine) {
 		$duration	= "";
 		$loss		= "";
@@ -556,8 +563,8 @@ function getHeardList($logLines) {
                 		$loss		= $ysfloss;
                 		$ber		= $ysfber;
 				$rssi		= $ysfrssi;
-                		$lat		= $ysflat;
-				$long		= $ysflong;
+                		$lat		= $ysflat ?? 0.0;
+				$long		= $ysflong ?? 0.0;
 				$target		= preg_replace('!\s+!', ' ', $target);
                 		break;
 			case "P25":
@@ -631,8 +638,8 @@ function getActualMode($metaLastHeard, $mmdvmconfigs) {
     $now =  new DateTime();
     $hangtime = "0";
     $timestamp->add(new DateInterval('PT' . $hangtime . 'S'));
-    
-    if ($listElem[6] != null) { //if terminated, hangtime counts after end of transmission
+
+    if ($listElem[6] != null && $listElem[6] != '---') { //if terminated, hangtime counts after end of transmission
 	$timestamp->add(new DateInterval('PT' . ceil($listElem[6]) . 'S'));
     } else { //if not terminated, always return mode
 	return $mode;
@@ -975,6 +982,56 @@ function getDMRGstat($dmrserver) {
         } else if (strpos($dmrstatus, 'Opening') !== false || strpos($dmrstatus, 'Closing') !== false || strpos($dmrstatus, 'Connection') !== false) { 
              return "<tr><td  style=\"background: #ffffed;\" colspan=\"2\"><span style=\"color:#b0b0b0;font-weight: bold\">".$dmrserver."</span></td></tr>\n"; }
 }
+
+
+function Get_User_IP()
+{
+    $IP = false;
+    if (getenv('HTTP_CLIENT_IP'))
+    {
+        $IP = getenv('HTTP_CLIENT_IP');
+    }
+    else if(getenv('HTTP_X_FORWARDED_FOR'))
+    {
+        $IP = getenv('HTTP_X_FORWARDED_FOR');
+    }
+    else if(getenv('HTTP_X_FORWARDED'))
+    {
+        $IP = getenv('HTTP_X_FORWARDED');
+    }
+    else if(getenv('HTTP_FORWARDED_FOR'))
+    {
+        $IP = getenv('HTTP_FORWARDED_FOR');
+    }
+    else if(getenv('HTTP_FORWARDED'))
+    {
+        $IP = getenv('HTTP_FORWARDED');
+    }
+    else if(getenv('REMOTE_ADDR'))
+    {
+        $IP = getenv('REMOTE_ADDR');
+    }
+
+    //If HTTP_X_FORWARDED_FOR == server ip
+    if((($IP) && ($IP == getenv('SERVER_ADDR')) && (getenv('REMOTE_ADDR')) || (!filter_var($IP, FILTER_VALIDATE_IP))))
+    {
+        $IP = getenv('REMOTE_ADDR');
+    }
+
+    if($IP)
+    {
+        if(!filter_var($IP, FILTER_VALIDATE_IP))
+        {
+            $IP = false;
+        }
+    }
+    else
+    {
+        $IP = false;
+    }
+    return $IP;
+}
+
 
 
 ?>
